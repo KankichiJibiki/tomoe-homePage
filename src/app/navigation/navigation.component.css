@@ -1,0 +1,30 @@
+:root{
+    --navFontSize: 0.06rem;
+}
+
+#nav{
+    position: fixed;
+    opacity: .9;
+}
+
+#nav a{
+    text-decoration: none; 
+    color: white;
+    font-size: var(--navFontSize);
+    padding: .5rem;
+}
+
+#nav a:hover{
+    opacity: .8;
+}
+
+#icon{
+    font-weight: 450;
+    font-size: 1.8rem !important;
+    padding: 1rem;
+}
+
+#address{
+    font-weight: 10;
+    font-size: smaller !important;
+}

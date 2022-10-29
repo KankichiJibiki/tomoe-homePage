@@ -28,3 +28,9 @@
     font-weight: 10;
     font-size: smaller !important;
 }
+
+
+/* temporaly */
+.disabled{
+    opacity: .5;
+}

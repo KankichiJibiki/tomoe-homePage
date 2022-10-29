@@ -5,7 +5,8 @@ import { MapPageComponent } from './home/map-page/map-page.component';
 import { ReservationPageComponent } from './home/reservation-page/reservation-page.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  // {path: '', component: HomeComponent},
+  {path: '', component: MapPageComponent},
   {path: 'mapPage', component: MapPageComponent},
   {path: 'reservation', component: ReservationPageComponent},
 ];

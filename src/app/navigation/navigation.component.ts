@@ -8,6 +8,7 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 })
 export class NavigationComponent implements OnInit {
   faLocationDot = faLocationDot;
+  isCollapsed = true;
 
   constructor() { }
 

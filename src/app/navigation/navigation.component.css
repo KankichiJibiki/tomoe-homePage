@@ -10,7 +10,7 @@
 #nav a{
     text-decoration: none; 
     color: white;
-    font-size: var(--navFontSize);
+    font-size: 11px;
     padding: .5rem;
 }
 
@@ -26,9 +26,13 @@
 
 #address{
     font-weight: 10;
-    font-size: smaller !important;
+    font-size: .7rem !important;
 }
 
+
+li{
+    list-style: none;
+}
 
 /* temporaly */
 .disabled{

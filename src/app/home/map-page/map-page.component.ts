@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faMap } from '@fortawesome/free-solid-svg-icons';
+import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
   selector: 'app-map-page',
@@ -9,11 +7,8 @@ import { faMap } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./map-page.component.css']
 })
 export class MapPageComponent implements OnInit {
-  faLocationDot = faLocationDot;
-  faPhone = faPhone;
-  faMap = faMap;
 
-  constructor() { }
+  constructor(public globalService: GlobalService) { }
 
   ngOnInit(): void {
   }

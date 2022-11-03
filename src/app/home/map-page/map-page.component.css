@@ -1,21 +1,24 @@
 body{
-
+    /* font-family: 'Yu Mincho' ,sans-serif; */
+    font-family: 'Yu Mincho',sans-serif !important;
 }
 
 #header_map{
     background-image: url('https://wallpaperaccess.com/full/1322011.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    height: 30rem;
+    background-position: center;
+    height: 23rem;
     width: 100%;
 }
 
 #access_map{
-    color: black;
+    color: f7f7f7;
+    background-color: black;
 }
 
 #access_map a{
-    color: black;
+    color: #f7f7f7;
     margin-bottom: 8px;
 }
 

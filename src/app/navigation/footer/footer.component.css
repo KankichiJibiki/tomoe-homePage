@@ -1,0 +1,32 @@
+:host{
+    --icon_size: 1.1rem;
+    --footer_border: 2.5px solid #bbbfbf;
+}
+
+#footer{
+    background-color: #f5f7f7;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: var(--footer_border);
+}
+
+#main_icon_container{
+    border-right: var(--footer_border);
+}
+
+li .main_icon{
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+li .icon{
+    font-size: var(--icon_size);
+}
+
+li a {
+    list-style: none;
+    color: black;
+}

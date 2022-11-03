@@ -1,34 +1,43 @@
-<div>
-    <div id="header_map" class="d-flex align-items-center justify-content-center">
-        <h1 class="text-center">お店へのアクセス</h1>
+<div class="bg-light">
+    <div>
+        <div id="header_map" class="d-flex align-items-center justify-content-center">
+            <h1 class="text-center"><strong>お店へのアクセス</strong></h1>
+        </div>
     </div>
-    <div class="col-11 mx-auto border-light rounded bg-light p-2 my-3" id="access_map">
-        <h2 class="pt-2 text-center">アクセスマップ/Access Map</h2>
+    <div class="col-11 mx-auto border-light rounded p-2 mt-3 mb-5" id="access_map">
+        <h2 class="pt-2 text-center">アクセスマップ</h2>Hello
         <hr>
-        <div class="d-flex flex-column justify-content-center align-items-centerp-2">
+        <div class="d-flex flex-column justify-content-center p-2">
             <h3 class="p-2"><span style="font-size: smaller;">和食</span> 巴</h3>
             <div class="d-flex flex-wrap justify-content-around">
-                <div class="d-flex flex-column col-11 mt-4 col-lg-4">
+                <div class="d-flex flex-column col-12 mt-4 col-lg-4">
                     <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田7丁目10-7クレソンビル1F" id="address" target="_blank">
-                        <fa-icon [icon]="faLocationDot"></fa-icon>
+                        <fa-icon [icon]="globalService.faLocationDot"></fa-icon>
                          東京都大田区西蒲田7丁目10-7クレソンビル1F
                     </a>
-                    <a href="tel:65694834" class="mb-2">
-                        <fa-icon [icon]="faPhone"></fa-icon>
-                         657-9543-123
+                    <a href="tel:0364248466" class="mb-2">
+                        <fa-icon [icon]="globalService.faPhone"></fa-icon>
+                         03-6424-8466
                     </a>
                     <div class="mb-2">
-                        最寄り駅: ＪＲ蒲田駅より徒歩５分　蓮沼駅から340m
+                        <strong>最寄り駅: </strong>
+                        ＪＲ蒲田駅より徒歩５分　蓮沼駅から340m
                     </div>
                     <div class="mb-2">
-                        営業時間: 17:00 ～ 22:00
+                        <strong>営業時間: </strong>
+                        17:30 ～ 23:00
+                        <br>
+                        <small>
+                            [L.O - 22:00、コースのみ21:00 最終受付]
+                        </small>
                     </div>
                     <div class="mb-2">
-                        定休日: 日・祝
+                        <strong>定休日: </strong>
+                        日曜日
                     </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田7丁目10-7クレソンビル1F" class="btn border-success rounded text-primary mt-4 col-8 col-lg-11 max-auto">
-                        <fa-icon [icon]="faMap"></fa-icon> 
-                        Google Mapで行く!
+                    <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田7丁目10-7クレソンビル1F" class="btn border-light rounded text-light mt-4 col-8 col-lg-11 mx-auto p-3">
+                        <fa-icon [icon]="globalService.faMap"></fa-icon> 
+                        Google Mapで行く >
                     </a>
                 </div>
                 <div class="col-11 col-lg-7 p-2">

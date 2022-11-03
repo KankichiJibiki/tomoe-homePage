@@ -22,11 +22,14 @@ li .main_icon{
     text-decoration: none;
 }
 
+ul li{
+    list-style: none;
+}
+
 li .icon{
     font-size: var(--icon_size);
 }
 
 li a {
-    list-style: none;
     color: black;
 }

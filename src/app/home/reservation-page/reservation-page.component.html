@@ -1,1 +1,97 @@
-<p>reservation-page works!</p>
+<div class="bg-light">
+    <!-- header img -->
+    <div id="header_map"></div>
+    <div class="col-11 mx-auto text-dark">
+
+        <!-- phone number -->
+        <div class="text-center my-4 ">
+            <h4>お電話のご予約の方はこちら</h4>
+            <hr>
+            <h1>
+                <a href="tel:0364248466" class="text-dark">
+                    <fa-icon [icon]="globalService.faPhone"></fa-icon>
+                    03-6424-8466
+                </a>
+            </h1>
+        </div>
+
+        <!-- description -->
+        <div class="mx-auto col-10 col-md-8 p-2" id="description">
+            <div class="row mb-3">
+                <div class="col-3 text-end">
+                    営業時間
+                </div>
+                <div class="col">
+                    17:30 ～ 23:00
+                    <br>
+                    <small>
+                        [ラストオーダー 22:00、コースのみ21:00 最終受付]
+                    </small>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-3">
+                    <h6 class="text-end">定休日</h6>
+                </div>
+                <div class="col">
+                    日曜日・祝日
+                    <br>
+                    <small>
+                        年末年始や夏季休暇は未定ですので、お問い合わせいただくか、巴の
+                        <a href="https://instagram.com/washoku.tomoe?igshid=YmMyMTA2M2Y" target="_blank">Instagram</a>・
+                        <a href="https://twitter.com/washoku_tomoe" target="_blank">Twitter</a> 
+                        にてご確認よろしくお願い致します。
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reservation-form -->
+        <div id="formArea">
+            <h4 class="text-center">
+                ネットご予約の方はこちら
+            </h4>
+            <hr>
+    
+            <div class="d-grid mx-auto col-6 col-md-4">
+                <button type="button" class="btn btn-outline-success" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="formSection">
+                    ネット予約
+                </button>
+            </div>
+            <app-reservation-form [isCollapsed]="isCollapsed">
+            </app-reservation-form>
+        </div>
+
+        
+    <!-- reservations -->
+    <table class="table table-hover table-striped pb-5 mb-5">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>お名前</th>
+                <th>人数</th>
+                <th>日付</th>
+                <th>時間</th>
+                <th>Email</th>
+                <th>電話番号</th>
+                <th>受理日時</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let reservation of reservations; let i = index">
+                <tr>
+                    <td>{{ i+1 }}</td>
+                    <td>{{ reservation.name }}</td>
+                    <td>{{ reservation.howMany }}</td>
+                    <td>{{ reservation.bookedDate }}</td>
+                    <td>{{ reservation.bookedTime }}</td>
+                    <td>{{ reservation.email }}</td>
+                    <td>{{ reservation.phone }}</td>
+                    <td>{{ reservation.created }}</td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="text-dark mt-5">
+    <div class="modal-header wh-100">
+        <h4 class="modal-title">{{ reserveService.bookingInfo.name }} 様 ご予約確定</h4>
+        <button type="button" class="close btn-default" aria-label="Close" (click)="reserveService.close()">
+            戻る
+        </button>
+        <!-- <button type="button" class="close btn-default" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            戻る
+        </button> -->
+    </div>
+    <div class="modal-body mx-auto">
+        <ul class="col-11 col-md-10 mx-auto">
+            <li class="row mb-3">
+                <span class="col">お名前</span>
+                <span class="col">{{ reserveService.bookingInfo.name }}</span>
+            </li>
+            <li class="row mb-3">
+                <span class="col">ご人数</span>
+                <span class="col">{{ reserveService.bookingInfo.howMany }}</span>
+            </li>
+            <li class="row mb-3">
+                <span class="col">お日にち</span>
+                <span class="col">{{ reserveService.bookingInfo.bookedDate }}</span>
+            </li>
+            <li class="row mb-3">
+                <span class="col">お時間帯</span>
+                <span class="col">{{ reserveService.bookingInfo.bookedTime }}</span>
+            </li>
+            <li class="row mb-3">
+                <span class="col">コース</span>
+                <span class="col">{{ reserveService.bookingInfo.course }}</span>
+            </li>
+            <li class="row mb-3">
+                <span class="col">メールアドレス</span>
+                <span class="col">{{ reserveService.bookingInfo.email }}</span>
+            </li>
+            <li class="row mb-3">
+                <span class="col">お電話番号</span>
+                <span class="col">{{ reserveService.bookingInfo.phone }}</span>
+            </li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+        <div class="d-grid col-6 mx-auto">
+            <button class="btn btn-outline-success" (click)="onSubmit()">ご予約確定</button>
+        </div>
+    </div>
+</div>
+    

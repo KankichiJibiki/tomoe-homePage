@@ -1,0 +1,20 @@
+:host{
+    --descTextSize: 1rem;
+}
+
+#header_map{
+    background-image: url(../../../assets/images/巴+かな_納品20220915[232]_page-0001.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 23rem;
+    width: 100%;
+}
+
+#description{
+    font-size: var(--descTextSize);
+}
+
+#formArea{
+    padding-bottom: 4rem;
+}

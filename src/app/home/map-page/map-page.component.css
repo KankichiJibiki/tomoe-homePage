@@ -4,11 +4,11 @@ body{
 }
 
 #header_map{
-    background-image: url('https://wallpaperaccess.com/full/1322011.jpg');
+    background-image: url('../../../assets/images/tomoe-image9.JPG');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: 23rem;
+    height: 21rem;
     width: 100%;
 }
 
@@ -28,4 +28,21 @@ body{
 
 a:hover{
     opacity: .7;
+}
+
+.google_map_relative{
+    border: 2px solid #dbf5c9;
+}
+
+@media screen and (min-width: 800px) {
+
+    #header_map{
+        background-image: url('../../../assets/images/tomoe-image9.JPG');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 37rem;
+        width: 100%;
+    }
+    
 }

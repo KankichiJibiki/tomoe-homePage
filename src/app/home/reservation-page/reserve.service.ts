@@ -110,7 +110,7 @@ export class ReserveService implements OnInit{
 
   destroyForms(){
     this.bookingInfo.name = '';
-    this.bookingInfo.howMany = 0;
+    this.bookingInfo.howMany = {} as number;
     this.bookingInfo.bookedDate = {} as Date;
     this.bookingInfo.bookedTime = "";
     this.bookingInfo.course = "";

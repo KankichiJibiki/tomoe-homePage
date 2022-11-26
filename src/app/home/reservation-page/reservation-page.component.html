@@ -1,6 +1,10 @@
 <div class="bg-light">
     <!-- header img -->
-    <div id="header_map"></div>
+    <div id="header_map" class="d-flex align-items-center justify-content-center">
+        <h1 class="text-center">
+            <strong>ご予約ページ</strong>
+        </h1>
+    </div>
     <div class="col-11 mx-auto text-dark">
 
         <!-- phone number -->
@@ -35,7 +39,7 @@
                     <h6 class="text-end">定休日</h6>
                 </div>
                 <div class="col">
-                    日曜日・祝日
+                    日曜日
                     <br>
                     <small>
                         年末年始や夏季休暇は未定ですので、お問い合わせいただくか、巴の
@@ -55,43 +59,17 @@
             <hr>
     
             <div class="d-grid mx-auto col-6 col-md-4">
-                <button type="button" class="btn btn-outline-success" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="formSection">
+                <button type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed;" [attr.aria-expanded]="!isCollapsed" aria-controls="formSection">
                     ネット予約
                 </button>
             </div>
             <app-reservation-form [isCollapsed]="isCollapsed">
             </app-reservation-form>
-        </div>
-
-        
-    <!-- reservations -->
-    <table class="table table-hover table-striped pb-5 mb-5">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>お名前</th>
-                <th>人数</th>
-                <th>日付</th>
-                <th>時間</th>
-                <th>Email</th>
-                <th>電話番号</th>
-                <th>受理日時</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let reservation of reservations; let i = index">
-                <tr>
-                    <td>{{ i+1 }}</td>
-                    <td>{{ reservation.name }}</td>
-                    <td>{{ reservation.howMany }}</td>
-                    <td>{{ reservation.bookedDate }}</td>
-                    <td>{{ reservation.bookedTime }}</td>
-                    <td>{{ reservation.email }}</td>
-                    <td>{{ reservation.phone }}</td>
-                    <td>{{ reservation.created }}</td>
-                </tr>
+            <ng-container>
+                <div class="form-text text-center mb-3" id="target" *ngIf="isCollapsed">
+                    ボタンを押した後下へスクロール
+                </div>
             </ng-container>
-        </tbody>
-    </table>
+        </div>
     </div>
 </div>

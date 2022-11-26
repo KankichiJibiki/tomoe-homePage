@@ -1,41 +1,41 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Booking } from 'src/app/types/booking';
 // httpClient 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
-// import 'rxjs/add/operator/map;'
+import * as moment from 'moment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReserveService implements OnInit{
   today: any = new Date();
+  bookedTime: any;
   selectedDay!: number;
   isDateValid: boolean = true;
   is_exec : boolean = false;
+  successAlert: string = '';
+  emailAlert: string = '';
+  isValidForm: boolean = false;
+  modalRef: any;
 
   //For ajax
     private base_url: string = 'http://localhost/tomoe_db_restapi/';
   //
 
-  // bookingInfo: Booking = {
-  //   name : '',
-  //   howMany : 0,
-  //   bookedDate : {} as Date,
-  //   bookedTime : "17:00",
-  //   course : '',
-  //   email : '',
-  //   phone : '',
-  // }
   bookingInfo: Booking = {
-    name : 'test',
-    howMany : 2,
+    name : "",
+    howMany : null,
     bookedDate : {} as Date,
-    bookedTime : "17:00",
-    course : '巴コース',
-    email : 'test@gmail.com',
-    phone : '13218546896',
+    bookedTime : "",
+    course : "",
+    option : null,
+    discription : "",
+    email : "",
+    phone : "",
+    dateForDisplay : "",
+    timeForDisplay : "",
   }
 
 
@@ -49,30 +49,74 @@ export class ReserveService implements OnInit{
   ngOnInit(): void {
   }
 
+  selectReset(){
+    this.bookingInfo.option = null;
+  }
+
+  isSpecialCourseValid(){
+    this.today = new Date(Date.now());
+
+    if(this.bookingInfo.course == "特別コース" && (new Date(this.bookingInfo.bookedDate).getDate() - this.today.getDate()) <= 3) {
+      this.isValidForm = false;
+      console.log(this.isValidForm);
+      return false;
+    }
+    this.isValidForm = true;
+    return true;
+  }
+
   getDay(){
     console.log(typeof this.bookingInfo.bookedDate)
     this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
     console.log(this.selectedDay);
-    if(this.selectedDay == 0) this.isDateValid = false;
-    else this.isDateValid = true;
+    if(this.selectedDay == 0) {
+      this.isDateValid = false;
+      this.isValidForm = false;
+      console.log(this.isValidForm);
+    }
+    else {
+      this.isDateValid = true;
+      this.isValidForm = true;
+    }
+  }
+
+  getDisplay(){
+    moment.locale('ja');
+    this.bookedTime = this.bookingInfo.bookedDate.toString() + " " + this.bookingInfo.bookedTime;
+    this.bookingInfo.dateForDisplay = moment(this.bookedTime).format('MMM Do');
+    this.bookingInfo.timeForDisplay = moment(this.bookedTime).format('LT');
   }
 
   open(content: any){
-		this.modalService.open(content);
-		// modalRef.componentInstance.name = 'World';
-  }
-
-  close(){
-    alert('close modal');
-    this.activeModal.dismiss('Cross click');
+    this.getDisplay();
+		this.modalRef = this.modalService.open(content);
   }
 
   createBooking(){
-    const headers = new HttpHeaders({'myHeader': 'tomoe'});
-    return this.http.post<any>(this.base_url+'insert.php', this.bookingInfo, {'headers': headers});
+    return this.http.post<any>(this.base_url+"insert.php", JSON.stringify(this.bookingInfo));
   }
 
   getReservations(){
     return this.http.get<Booking[]>(this.base_url+"view.php");
+  }
+
+  delete(id: any){
+    return this.http.delete(this.base_url + "delete.php?id=" + id);
+  }
+
+  submitEmail(){
+    return this.http.post<any>(this.base_url + "submitEmail.php", JSON.stringify(this.bookingInfo));
+  }
+
+  destroyForms(){
+    this.bookingInfo.name = '';
+    this.bookingInfo.howMany = 0;
+    this.bookingInfo.bookedDate = {} as Date;
+    this.bookingInfo.bookedTime = "";
+    this.bookingInfo.course = "";
+    this.bookingInfo.option = null;
+    this.bookingInfo.discription = "";
+    this.bookingInfo.email = "";
+    this.bookingInfo.phone = "";
   }
 }

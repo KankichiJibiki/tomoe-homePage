@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ReserveService } from '../../reserve.service';
 import { Router } from '@angular/router';
-import { Booking } from 'src/app/types/booking';
-import { Observable } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reservation-modal',
@@ -10,11 +9,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./reservation-modal.component.css']
 })
 export class ReservationModalComponent implements OnInit {
-  // newBooking: Observable<any>;
+  myInterval: any;
 
   constructor(
     public reserveService: ReserveService,
     private router: Router,
+    public modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +26,36 @@ export class ReservationModalComponent implements OnInit {
       res => {
         console.log(res);
         this.router.navigate(['/reservation']);
-      });
+        this.reserveService.successAlert = res.message;
+        this.reserveService.emailAlert = res.messageEmail;
+
+        //email if success
+        this.submitEmail();
+
+        this.myInterval = setInterval(() => {
+          window.location.reload();
+          this.myInterval.clearInterval();
+        }, 1500)
+      },
+      error => {
+        alert(error.message);
+      }
+    );
+  }
+
+  submitEmail(){
+    this.reserveService.submitEmail().subscribe(
+      res => {
+        alert(res.message);
+      },
+      error => {
+        alert(error.message);
+      }
+    )
+  }
+
+
+  close(){
+    this.modalService.dismissAll();
   }
 }

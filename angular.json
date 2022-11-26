@@ -67,11 +67,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "tomoe_homepage:build:production",
-              "proxyConfig": "src/proxy.conf.json"
+              "browserTarget": "tomoe_homepage:build:production"
             },
             "development": {
-              "browserTarget": "tomoe_homepage:build:development"
+              "browserTarget": "tomoe_homepage:build:development",
+              "proxyConfig": "src/proxy.conf.json",
+              "port": 4200
             }
           },
           "defaultConfiguration": "development"

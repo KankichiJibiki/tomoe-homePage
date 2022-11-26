@@ -9,11 +9,13 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
   providedIn: 'root'
 })
 export class GlobalService {
+  isEnglish: boolean = false;
   faLocationDot = faLocationDot;
   faPhone = faPhone;
   faMap = faMap;
   faInsta = faInstagram;
   faTwitter = faTwitter;
+
 
   constructor() { }
 }

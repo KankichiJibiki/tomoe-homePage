@@ -36,6 +36,7 @@
             required
             min="1"
             max="15"
+            placeholder="0"
             #howMany="ngModel"
             >
 
@@ -61,7 +62,7 @@
             min="{{reserveService.today | date:'yyyy-MM-dd'}}"
             class="form-control" 
             (change)="reserveService.getDay()"
-            [(ngModel)]="reserveService.bookingInfo.bookedDate" value="bookedDate"
+            [(ngModel)]="reserveService.bookingInfo.bookedDate"
             required
             #date="ngModel"
             >
@@ -71,7 +72,7 @@
                 </p>
             </ng-container>
             <div class="form-text text-light">
-                ※日曜日・祝日はお休みとさせていただいております
+                ※日曜日はお休みとさせていただいております
             </div>
         </div>
         <div class="form-group mb-3">
@@ -105,12 +106,18 @@
         </div>
         <div class="form-group mb-3">
             <label for="course" class="form-label">ご予約コース</label>
-            <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.bookingInfo.course" required #course="ngModel">
+            <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.bookingInfo.course" required #course="ngModel" (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()">
                 <!-- later, make this dynamic -->
                 <option value="無し">無し</option>
                 <option value="特別コース">特別コース ￥10,000～</option>
                 <option value="巴コース">巴コース ￥5,000</option>
             </select>
+            <ng-container *ngIf="reserveService.bookingInfo.course == '巴コース'">
+                <div class="form-check">
+                    <input type="checkbox" name="option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.bookingInfo.option">
+                    <label for="options" class="form-check-label">＋￥1,000 山形県産つや姫の土鍋ご飯</label>
+                </div>
+            </ng-container>
 
             <!-- validations -->
             <ng-container *ngIf="course.invalid && (course.dirty || course.touched)">
@@ -119,6 +126,16 @@
                     コースを無しの方は、無しと選択お願いいたします
                 </p>
             </ng-container>
+            <ng-container *ngIf="reserveService.bookingInfo.course == '特別コース' && !reserveService.isSpecialCourseValid()">
+                <p class="alert alert-danger">
+                    特別コースは事前予約制で3日前でのみご予約可能です。
+                </p>
+            </ng-container>
+        </div>
+        <div class="form-group mb-3">
+            <label for="discription" class="form-label">ご要望欄</label>
+            <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="アレルギーのある食材や苦手な食材があるなど、こちらでご遠慮なくお申し付けください" [(ngModel)]="reserveService.bookingInfo.discription">
+            </textarea>
         </div>
         <div class="form-group mb-3">
             <label for="email" class="form-label">メールアドレス</label>
@@ -177,7 +194,7 @@
         </ng-template>
 
         <div class="mb-3 d-grid col-6 mx-auto">
-            <button type="button" class="btn btn-primary" (click)="reserveService.open(content);" [disabled]="reserveForm.form.invalid">
+            <button type="button" class="btn btn-primary" (click)="reserveService.open(content);" [disabled]="reserveForm.form.invalid ||!reserveService.isValidForm">
                 確認画面へ
             </button>
         </div>

@@ -21,7 +21,8 @@ export class ReserveService implements OnInit{
   modalRef: any;
 
   //For ajax
-    private base_url: string = 'http://localhost/tomoe_db_restapi/';
+    // private base_url: string = 'http://localhost/tomoe_db_restapi/';
+    private base_url: string = 'https://tomoereservation.s3.ap-northeast-1.amazonaws.com/tomoe_db_restapi_prod/';
   //
 
   bookingInfo: Booking = {
@@ -40,8 +41,7 @@ export class ReserveService implements OnInit{
 
 
   constructor(
-    private modalService: NgbModal, 
-    private activeModal: NgbActiveModal, 
+    private modalService: NgbModal,
     private http: HttpClient) {
 
   }

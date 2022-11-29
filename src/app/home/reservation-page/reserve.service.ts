@@ -24,7 +24,7 @@ export class ReserveService implements OnInit{
 
   //For ajax
     // private base_url: string = 'http://localhost/tomoe_db_restapi/';
-    private base_url: string = 'https://tomoereservation.s3.ap-northeast-1.amazonaws.com/tomoe_db_restapi_prod/';
+    private base_url: string = 'https://http://tomoereservation-env.eba-9z6xx2ex.ap-northeast-1.elasticbeanstalk.com/tomoe_db_restapi_prod/';
   //
 
   bookingInfo: Booking = {

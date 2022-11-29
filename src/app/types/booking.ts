@@ -6,7 +6,7 @@ export interface Booking{
     bookedDate : Date,
     bookedTime : string,
     course: string,
-    option: boolean | null,
+    course_option: boolean | null,
     discription: string,
     email: string,
     phone: string,

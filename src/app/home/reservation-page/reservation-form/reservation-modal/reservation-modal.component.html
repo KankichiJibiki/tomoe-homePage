@@ -33,7 +33,7 @@
             <li class="row mb-3">
                 <span class="col">コース</span>
                 <span class="col">{{ reserveService.bookingInfo.course }}</span>
-                <ng-container *ngIf="reserveService.bookingInfo.option != null && reserveService.bookingInfo.option != false">
+                <ng-container *ngIf="reserveService.bookingInfo.course_option != null && reserveService.bookingInfo.course_option != false">
                     <div class="form-text text-end">＋山形県産つや姫の土鍋ご飯付き</div>
                 </ng-container>
             </li>

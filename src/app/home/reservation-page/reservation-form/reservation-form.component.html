@@ -66,9 +66,14 @@
             required
             #date="ngModel"
             >
-            <ng-container *ngIf="!reserveService.isDateValid">
+            <ng-container *ngIf="!reserveService.isSunday">
                 <p class="alert alert-danger">
                     日曜日は休日とさせていただいております。大変申し訳ございませんがほかの日の指定お願いいたします
+                </p>
+            </ng-container>
+            <ng-container *ngIf="!reserveService.isDateValid">
+                <p class="alert alert-danger">
+                    お日にちが過ぎています。再選択お願い致します。
                 </p>
             </ng-container>
             <div class="form-text text-light">
@@ -114,7 +119,7 @@
             </select>
             <ng-container *ngIf="reserveService.bookingInfo.course == '巴コース'">
                 <div class="form-check">
-                    <input type="checkbox" name="option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.bookingInfo.option">
+                    <input type="checkbox" name="course_option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.bookingInfo.course_option">
                     <label for="options" class="form-check-label">＋￥1,000 山形県産つや姫の土鍋ご飯</label>
                 </div>
             </ng-container>

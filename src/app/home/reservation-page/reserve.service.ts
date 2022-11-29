@@ -13,6 +13,8 @@ export class ReserveService implements OnInit{
   today: any = new Date();
   bookedTime: any;
   selectedDay!: number;
+  selectedDate!: number;
+  isSunday: boolean = true;
   isDateValid: boolean = true;
   is_exec : boolean = false;
   successAlert: string = '';
@@ -31,7 +33,7 @@ export class ReserveService implements OnInit{
     bookedDate : {} as Date,
     bookedTime : "",
     course : "",
-    option : null,
+    course_option : null,
     discription : "",
     email : "",
     phone : "",
@@ -41,24 +43,28 @@ export class ReserveService implements OnInit{
 
 
   constructor(
-    private modalService: NgbModal,
+    private modalService: NgbModal, 
     private http: HttpClient) {
 
   }
 
   ngOnInit(): void {
+    this.today = new Date(Date.now());
   }
 
   selectReset(){
-    this.bookingInfo.option = null;
+    this.bookingInfo.course_option = null;
   }
 
   isSpecialCourseValid(){
-    this.today = new Date(Date.now());
-
-    if(this.bookingInfo.course == "特別コース" && (new Date(this.bookingInfo.bookedDate).getDate() - this.today.getDate()) <= 3) {
+    if(this.bookingInfo.course == "特別コース" && ((new Date(this.bookingInfo.bookedDate).getTime() - new Date(this.today).getTime())) <= 172800000) {
       this.isValidForm = false;
       console.log(this.isValidForm);
+
+      console.log(new Date(this.bookingInfo.bookedDate).getTime());
+      console.log(new Date(this.today).getTime());
+      console.log((new Date(this.bookingInfo.bookedDate).getTime() - new Date(this.today).getTime()));
+
       return false;
     }
     this.isValidForm = true;
@@ -68,13 +74,15 @@ export class ReserveService implements OnInit{
   getDay(){
     console.log(typeof this.bookingInfo.bookedDate)
     this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
-    console.log(this.selectedDay);
+    this.selectedDate = new Date(this.bookingInfo.bookedDate).getTime();
     if(this.selectedDay == 0) {
+      this.isSunday = false;
+      this.isValidForm = false;
+    } else if(this.selectedDate < this.today.getTime()) {
       this.isDateValid = false;
       this.isValidForm = false;
-      console.log(this.isValidForm);
-    }
-    else {
+    } else {
+      this.isSunday = true;
       this.isDateValid = true;
       this.isValidForm = true;
     }
@@ -114,7 +122,7 @@ export class ReserveService implements OnInit{
     this.bookingInfo.bookedDate = {} as Date;
     this.bookingInfo.bookedTime = "";
     this.bookingInfo.course = "";
-    this.bookingInfo.option = null;
+    this.bookingInfo.course_option = null;
     this.bookingInfo.discription = "";
     this.bookingInfo.email = "";
     this.bookingInfo.phone = "";

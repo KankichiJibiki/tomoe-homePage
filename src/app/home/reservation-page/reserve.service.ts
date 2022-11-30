@@ -21,11 +21,11 @@ export class ReserveService implements OnInit{
   emailAlert: string = '';
   isValidForm: boolean = false;
   modalRef: any;
+  dateForDisplay :string = "";
+  timeForDisplay :string = "";
 
   //For ajax
-    // private base_url: string = 'http://localhost/tomoe_db_restapi/';
-    private base_url: string = 'http://tomoereservation-env.eba-9z6xx2ex.ap-northeast-1.elasticbeanstalk.com/tomoe_db_restapi_prod/';
-    
+    private base_url: string = 'http://localhost/tomoe_db_restapi/';
   //
 
   bookingInfo: Booking = {
@@ -37,9 +37,7 @@ export class ReserveService implements OnInit{
     course_option : null,
     discription : "",
     email : "",
-    phone : "",
-    dateForDisplay : "",
-    timeForDisplay : "",
+    phone : ""
   }
 
 
@@ -92,8 +90,8 @@ export class ReserveService implements OnInit{
   getDisplay(){
     moment.locale('ja');
     this.bookedTime = this.bookingInfo.bookedDate.toString() + " " + this.bookingInfo.bookedTime;
-    this.bookingInfo.dateForDisplay = moment(this.bookedTime).format('MMM Do');
-    this.bookingInfo.timeForDisplay = moment(this.bookedTime).format('LT');
+    this.dateForDisplay = moment(this.bookedTime).format('MMM Do');
+    this.timeForDisplay = moment(this.bookedTime).format('LT');
   }
 
   open(content: any){

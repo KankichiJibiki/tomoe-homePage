@@ -10,6 +10,4 @@ export interface Booking{
     discription: string,
     email: string,
     phone: string,
-    dateForDisplay: string,
-    timeForDisplay: string,
 }

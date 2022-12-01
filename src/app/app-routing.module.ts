@@ -17,7 +17,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: "top",
   anchorScrolling: 'enabled',
   scrollOffset: [0, 50],
-  useHash: true,
 })],
   exports: [RouterModule]
 })

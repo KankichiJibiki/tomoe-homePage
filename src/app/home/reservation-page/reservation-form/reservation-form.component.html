@@ -64,11 +64,12 @@
             (change)="reserveService.getDay()"
             [(ngModel)]="reserveService.bookingInfo.bookedDate"
             required
+            [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedDate == null}"
             #date="ngModel"
             >
             <ng-container *ngIf="!reserveService.isSunday">
                 <p class="alert alert-danger">
-                    日曜日は休日とさせていただいております。大変申し訳ございませんがほかの日の指定お願いいたします
+                    日曜日は休日とさせていただいております。
                 </p>
             </ng-container>
             <ng-container *ngIf="!reserveService.isDateValid">
@@ -76,7 +77,7 @@
                     お日にちが過ぎています。再選択お願い致します。
                 </p>
             </ng-container>
-            <div class="form-text text-light">
+            <div class="form-text text-light" style="font-size: 11px;">
                 ※日曜日はお休みとさせていただいております
             </div>
         </div>
@@ -84,10 +85,10 @@
             <label for="bookedTime" class="form-label">お時間帯</label>
             <select name="bookedTime" id="bookedTime" class="form-control"
             [(ngModel)]="reserveService.bookingInfo.bookedTime"
+            [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedTime == ''}"
             #time="ngModel"
             >
-                <option value="17:00" selected>17:00</option>
-                <option value="17:15">17:15</option>
+                <option disabled="disabled" value="">ご予約時間の選択</option>
                 <option value="17:30">17:30</option>
                 <option value="17:45">17:45</option>
                 <option value="18:00">18:00</option>
@@ -105,14 +106,17 @@
                 <option value="21:00">21:00</option>
                 <option value="21:15">21:15</option>
                 <option value="21:30">21:30</option>
-                <option value="21:45">21:45</option>
-                <option value="22:00">22:00</option>
             </select>
         </div>
         <div class="form-group mb-3">
             <label for="course" class="form-label">ご予約コース</label>
-            <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.bookingInfo.course" required #course="ngModel" (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()">
+            <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.bookingInfo.course" required #course="ngModel" 
+            (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()
+            "
+            [ngClass]="{'text-secondary': reserveService.bookingInfo.course == ''}"
+            >
                 <!-- later, make this dynamic -->
+                <option value="" disabled="disabled">コースの有無</option>
                 <option value="無し">無し</option>
                 <option value="特別コース">特別コース ￥10,000～</option>
                 <option value="巴コース">巴コース ￥5,000</option>
@@ -139,7 +143,7 @@
         </div>
         <div class="form-group mb-3">
             <label for="discription" class="form-label">ご要望欄</label>
-            <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="アレルギーのある食材や苦手な食材があるなど、こちらでご遠慮なくお申し付けください" [(ngModel)]="reserveService.bookingInfo.discription">
+            <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="アレルギーまたは苦手な食材があるなど、お客様のご希望をこちらで承らせていただきます。" [(ngModel)]="reserveService.bookingInfo.discription">
             </textarea>
         </div>
         <div class="form-group mb-3">
@@ -173,7 +177,7 @@
             name="phone" 
             id="phone" 
             class="form-control" 
-            placeholder="08055552222" 
+            placeholder="ハイフンなしで入力お願いします" 
             [(ngModel)]="reserveService.bookingInfo.phone"
             #phone="ngModel"
             pattern="[0-9]{11}"
@@ -182,13 +186,11 @@
             <!-- validations -->
             <ng-container *ngIf="phone.invalid && (phone.dirty || phone.touched)">
                 <p class="alert alert-danger" *ngIf="phone.errors?.['pattern']">
-                    お電話番号が有効ではありません
+                    お電話番号が有効ではありません(文字、ハイフン等)
                 </p>
             </ng-container>
             <div class="form-text text-light">
                 ご入力は必須ではありませんが確認のため、お電話をかけさせていただく場合があります。
-                <br>
-                (ハイフン無し入力)
             </div>
         </div>
 

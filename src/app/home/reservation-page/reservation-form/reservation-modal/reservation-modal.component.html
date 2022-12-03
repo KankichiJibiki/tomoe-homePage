@@ -47,10 +47,12 @@
                 <span class="col">メールアドレス</span>
                 <span class="col">{{ reserveService.bookingInfo.email }}</span>
             </li>
-            <li class="row mb-3">
-                <span class="col">お電話番号</span>
-                <span class="col">{{ reserveService.bookingInfo.phone }}</span>
-            </li>
+            <ng-container *ngIf="reserveService.bookingInfo.phone.length > 0">
+                <li class="row mb-3">
+                    <span class="col">お電話番号</span>
+                    <span class="col">{{ reserveService.bookingInfo.phone }}</span>
+                </li>
+            </ng-container>
         </ul>
     </div>
     <div class="modal-footer">

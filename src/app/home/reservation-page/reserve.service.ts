@@ -104,9 +104,7 @@ export class ReserveService implements OnInit{
   }
 
   createBooking(){
-    console.log(this.bookingInfo.bookedTime);
     this.bookingInfo.bookedTime = this.createBookedDateForDB();
-    console.log(this.bookingInfo.bookedTime);
 
     return this.http.post<any>(this.base_url+"insert.php", JSON.stringify(this.bookingInfo));
   }

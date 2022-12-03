@@ -24,8 +24,6 @@ export class ReservationModalComponent implements OnInit {
     console.log("onSubmit");
     this.reserveService.createBooking().subscribe(
       res => {
-        console.log(res);
-        this.router.navigate(['/reservation']);
         this.reserveService.successAlert = res.message;
 
         //email if success

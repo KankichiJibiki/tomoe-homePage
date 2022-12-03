@@ -3,7 +3,7 @@
         <div class="alert alert-success">
             {{ reserveService.successAlert }}
 
-            <ng-container *ngIf="reserveService.emailAlert.length > 0">{{ reserveService.emailAlert}}</ng-container>
+            <ng-container *ngIf="reserveService.emailAlert != ''">{{ reserveService.emailAlert}}</ng-container>
         </div>
     </ng-container>
     <div class="modal-header wh-100">

@@ -99,7 +99,15 @@ export class ReserveService implements OnInit{
 		this.modalRef = this.modalService.open(content);
   }
 
+  createBookedDateForDB(){
+    return this.bookingInfo.bookedDate + " " + this.bookingInfo.bookedTime;
+  }
+
   createBooking(){
+    console.log(this.bookingInfo.bookedTime);
+    this.bookingInfo.bookedTime = this.createBookedDateForDB();
+    console.log(this.bookingInfo.bookedTime);
+
     return this.http.post<any>(this.base_url+"insert.php", JSON.stringify(this.bookingInfo));
   }
 
@@ -112,7 +120,7 @@ export class ReserveService implements OnInit{
   }
 
   submitEmail(){
-    return this.http.post<any>(this.base_url + "submitEmail.php", JSON.stringify(this.bookingInfo));
+    return this.http.post<any>(this.base_url + "submitEmail.php", JSON.stringify(this.bookingInfo), { responseType: 'text' as 'json' });
   }
 
   destroyForms(){

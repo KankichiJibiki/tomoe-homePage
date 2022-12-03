@@ -4,7 +4,7 @@ export interface Booking{
     name: string,
     howMany: number | null,
     bookedDate : Date,
-    bookedTime : string,
+    bookedTime : string | Date,
     course: string,
     course_option: boolean | null,
     discription: string,

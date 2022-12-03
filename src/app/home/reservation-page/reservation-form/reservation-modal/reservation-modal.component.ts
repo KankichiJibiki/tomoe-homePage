@@ -27,7 +27,6 @@ export class ReservationModalComponent implements OnInit {
         console.log(res);
         this.router.navigate(['/reservation']);
         this.reserveService.successAlert = res.message;
-        this.reserveService.emailAlert = res.messageEmail;
 
         //email if success
         this.submitEmail();
@@ -35,7 +34,7 @@ export class ReservationModalComponent implements OnInit {
         this.myInterval = setInterval(() => {
           window.location.reload();
           this.myInterval.clearInterval();
-        }, 1500)
+        }, 2000)
       },
       error => {
         alert(error.message);
@@ -46,9 +45,10 @@ export class ReservationModalComponent implements OnInit {
   submitEmail(){
     this.reserveService.submitEmail().subscribe(
       res => {
-        alert(res.message);
+        alert('Email Successfully sent');
       },
       error => {
+        this.reserveService.emailAlert = error.message;
         alert(error.message);
       }
     )

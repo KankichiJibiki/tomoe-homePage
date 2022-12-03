@@ -34,7 +34,7 @@ export class ReservationModalComponent implements OnInit {
         this.myInterval = setInterval(() => {
           window.location.reload();
           this.myInterval.clearInterval();
-        }, 2000)
+        }, 2500)
       },
       error => {
         alert(error.message);

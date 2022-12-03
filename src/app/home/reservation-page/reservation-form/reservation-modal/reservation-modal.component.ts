@@ -24,8 +24,6 @@ export class ReservationModalComponent implements OnInit {
     console.log("onSubmit");
     this.reserveService.createBooking().subscribe(
       res => {
-        console.log(res);
-        this.router.navigate(['/reservation']);
         this.reserveService.successAlert = res.message;
 
         //email if success
@@ -34,7 +32,7 @@ export class ReservationModalComponent implements OnInit {
         this.myInterval = setInterval(() => {
           window.location.reload();
           this.myInterval.clearInterval();
-        }, 2000)
+        }, 2500)
       },
       error => {
         alert(error.message);

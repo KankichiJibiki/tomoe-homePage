@@ -122,8 +122,8 @@ export class ReserveService implements OnInit{
   }
 
   destroyForms(){
-    this.bookingInfo.name = '';
-    this.bookingInfo.howMany = {} as number;
+    this.bookingInfo.name = "";
+    this.bookingInfo.howMany = null;
     this.bookingInfo.bookedDate = {} as Date;
     this.bookingInfo.bookedTime = "";
     this.bookingInfo.course = "";
@@ -131,5 +131,7 @@ export class ReserveService implements OnInit{
     this.bookingInfo.discription = "";
     this.bookingInfo.email = "";
     this.bookingInfo.phone = "";
+    this.bookingInfo.dateForDisplay = "";
+    this.bookingInfo.timeForDisplay = "";
   }
 }

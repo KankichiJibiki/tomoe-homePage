@@ -29,10 +29,10 @@ export class ReservationModalComponent implements OnInit {
         //email if success
         this.submitEmail();
 
-        // this.myInterval = setInterval(() => {
-        //   window.location.reload();
-        //   this.myInterval.clearInterval();
-        // }, 2500)
+        this.myInterval = setInterval(() => {
+          window.location.reload();
+          this.myInterval.clearInterval();
+        }, 2500)
       },
       error => {
         alert(error.message);

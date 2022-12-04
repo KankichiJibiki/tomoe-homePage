@@ -4,36 +4,62 @@
             <h1 class="text-center"><strong>お店へのアクセス</strong></h1>
         </div>
     </div>
-    <div class="col-11 mx-auto border-light rounded p-2 mt-3 mb-5" id="access_map">
+    <div class="col-11 mx-auto border-light rounded p-2 mt-3 mb-4" id="access_map">
         <h2 class="pt-2 text-center">アクセスマップ</h2>
         <hr>
         <div class="d-flex flex-column justify-content-center p-2">
             <h3 class="p-2"><span style="font-size: smaller;">和食</span> 巴</h3>
             <div class="d-flex flex-wrap justify-content-around">
                 <div class="d-flex flex-column col-12 mt-4 col-lg-4">
-                    <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" id="address" target="_blank" class="mb-4">
-                        <fa-icon [icon]="globalService.faLocationDot"></fa-icon>
-                        東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ
-                    </a>
-                    <a href="tel:0364248466" class="mb-4">
-                        <fa-icon [icon]="globalService.faPhone"></fa-icon>
-                         03-6424-8466
-                    </a>
-                    <div class="mb-4">
-                        <strong>最寄り駅: </strong>
-                        ＪＲ蒲田駅より徒歩５分　蓮沼駅から340m
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="col-3">
+                            <fa-icon [icon]="globalService.faLocationDot"></fa-icon>
+                            住所
+                        </div>
+                        <p class="col text-start">
+                            <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" target="_blank">
+                                東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ
+                            </a>
+                        </p>
                     </div>
-                    <div class="mb-4">
-                        <strong>営業時間: </strong>
-                        17:30 ～ 23:00
-                        <br>
-                        <small>
-                            [L.O - 22:00、コースのみ21:00 最終受付]
-                        </small>
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="col-3">
+                            <fa-icon [icon]="globalService.faPhone"></fa-icon>
+                            電話番号
+                        </div>
+                        <p class="col text-start">
+                            <a href="tel:0364248466" target="_blank">
+                                03-6424-8466
+                            </a>
+                        </p>
                     </div>
-                    <div class="mb-4">
-                        <strong>定休日: </strong>
-                        日曜日
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="col-3">
+                            最寄り駅: 
+                        </div>
+                        <p class="col text-start">
+                            ＪＲ蒲田駅より徒歩５分　蓮沼駅から340m
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="col-3">
+                            営業時間: 
+                        </div>
+                        <p class="col text-start">
+                            17:30 ～ 23:00<br>
+                            <small>[L.O - 22:00、コースのみ21:00 最終受付]</small>
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between mb-4">
+                        <div class="col-3">
+                            定休日:
+                        </div>
+                        <p class="col text-start">
+                            日曜日<br>
+                            <small>
+                                年末年始や夏季休暇は未定ですので、お問い合わせいただくか、巴の <a href="https://instagram.com/washoku.tomoe?igshid=YmMyMTA2M2Y=">Instagram</a>・ <a href="https://twitter.com/washoku_tomoe">Twitter</a> にてご確認よろしくお願い致します
+                            </small>
+                        </p>
                     </div>
                     <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" class="google_map_relative btn text-light mt-4 col-9 col-lg-11 mx-auto p-3" target="_blank">
                         <fa-icon [icon]="globalService.faMap"></fa-icon> 

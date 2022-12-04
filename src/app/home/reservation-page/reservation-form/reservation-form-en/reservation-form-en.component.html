@@ -1,0 +1,206 @@
+<form method="post" #reserveForm="ngForm">
+    <div class="form-group mb-3">
+        <label for="name" class="form-label">Your Name</label>
+        <input 
+        type="text" 
+        name="name" 
+        id="name" 
+        class="form-control" 
+        placeholder="Rosen Michael" 
+        [(ngModel)]="reserveService.bookingInfo.name" 
+        #name="ngModel"
+        required
+        maxlength="100"
+        >
+
+        <!-- validations -->
+        <ng-container  
+        *ngIf="name.invalid && (name.dirty || name.touched)">
+            <p *ngIf="name.errors?.['required']" class="alert alert-danger">
+                Enter Your Name
+            </p>
+            <p *ngIf="name.errors?.['maxlength']" class="alert alert-danger">
+                Name should be less than 100 letters
+            </p>
+        </ng-container>
+    </div>
+    <div class="form-group mb-3">
+        <label for="howMany" class="form-label">How many people</label>
+        <input 
+        type="number" 
+        name="howMany" 
+        id="howMany" 
+        class="form-control" 
+        [(ngModel)]="reserveService.bookingInfo.howMany"
+        required
+        min="1"
+        max="15"
+        placeholder="Enter how many"
+        #howMany="ngModel"
+        >
+
+        <!-- validations -->
+        <ng-container *ngIf="howMany.invalid && (howMany.dirty || howMany.touched)">
+            <p class="alert alert-danger" *ngIf="howMany.errors?.['required']">
+                Please complete this input
+            </p>
+            <p class="alert alert-danger" *ngIf="howMany.errors?.['min']">
+                More than 1 person
+            </p>
+            <p class="alert alert-danger" *ngIf="howMany.errors?.['max']">
+                If you make a reservation for more than 15 people, please contact us by 03-6424-8466 Or kan.0408@outlook.jp.
+            </p>
+        </ng-container>
+    </div>
+    <div class="form-group mb-3">
+        <label for="bookedDate" class="form-label">Date</label>
+        <input 
+        type="date" 
+        name="bookedDate" 
+        id="bookedDate" 
+        min="{{reserveService.today | date:'yyyy-MM-dd'}}"
+        class="form-control" 
+        (change)="reserveService.getDay()"
+        [(ngModel)]="reserveService.bookingInfo.bookedDate"
+        required
+        [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedDate == null}"
+        #date="ngModel"
+        >
+        <ng-container *ngIf="!reserveService.isSunday">
+            <p class="alert alert-danger">
+                Close on Sunday
+            </p>
+        </ng-container>
+        <ng-container *ngIf="!reserveService.isDateValid">
+            <p class="alert alert-danger">
+                Date is passed already
+            </p>
+        </ng-container>
+        <div class="form-text text-light" style="font-size: 11px;">
+            ※Close on Sunday
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <label for="bookedTime" class="form-label">Preferable time</label>
+        <select name="bookedTime" id="bookedTime" class="form-control"
+        [(ngModel)]="reserveService.bookingInfo.bookedTime"
+        [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedTime == ''}"
+        #time="ngModel"
+        >
+            <option disabled="disabled" value="">Select here</option>
+            <option value="17:30">17:30</option>
+            <option value="17:45">17:45</option>
+            <option value="18:00">18:00</option>
+            <option value="18:15">18:15</option>
+            <option value="18:30">18:30</option>
+            <option value="18:45">18:45</option>
+            <option value="19:00">19:00</option>
+            <option value="19:15">19:15</option>
+            <option value="19:30">19:30</option>
+            <option value="19:45">19:45</option>
+            <option value="20:00">20:00</option>
+            <option value="20:15">20:15</option>
+            <option value="20:30">20:30</option>
+            <option value="20:45">20:45</option>
+            <option value="21:00">21:00</option>
+            <option value="21:15">21:15</option>
+            <option value="21:30">21:30</option>
+        </select>
+    </div>
+    <div class="form-group mb-3">
+        <label for="course" class="form-label">Course</label>
+        <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.bookingInfo.course" required #course="ngModel" 
+        (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()
+        "
+        [ngClass]="{'text-secondary': reserveService.bookingInfo.course == ''}"
+        >
+            <!-- later, make this dynamic -->
+            <option value="" disabled="disabled">Choice of courses</option>
+            <option value="無し">None</option>
+            <option value="特別コース">Special course ￥10,000～</option>
+            <option value="巴コース">Tomoe course ￥5,000</option>
+        </select>
+        <ng-container *ngIf="reserveService.bookingInfo.course == '巴コース'">
+            <div class="form-check">
+                <input type="checkbox" name="course_option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.bookingInfo.course_option">
+                <label for="options" class="form-check-label">＋￥1,000 Tsuyahime rice made of Yamagata prefecture</label>
+            </div>
+        </ng-container>
+
+        <!-- validations -->
+        <ng-container *ngIf="course.invalid && (course.dirty || course.touched)">
+            <p class="alert alert-danger" *ngIf="course.errors?.['required']">
+                Please Select your course. If none, select None.
+            </p>
+        </ng-container>
+        <ng-container *ngIf="reserveService.bookingInfo.course == '特別コース' && !reserveService.isSpecialCourseValid()">
+            <p class="alert alert-danger">
+                Special course takes 3 days prior.
+            </p>
+        </ng-container>
+    </div>
+    <div class="form-group mb-3">
+        <label for="discription" class="form-label">Request</label>
+        <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="Feel free to enter any requests of yours such as allergy, food you hate and so on." [(ngModel)]="reserveService.bookingInfo.discription">
+        </textarea>
+    </div>
+    <div class="form-group mb-3">
+        <label for="email" class="form-label">E-mail</label>
+        <input 
+        type="email" 
+        name="email" 
+        id="email" 
+        class="form-control" 
+        placeholder="tanaka@aaaaa.com" 
+        [(ngModel)]="reserveService.bookingInfo.email"
+        #email="ngModel"
+        required
+        email
+        >
+
+        <!-- validations -->
+        <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+            <p class="alert alert-danger" *ngIf="email.errors?.['required']">
+                Please enter your Email address
+            </p>
+            <p class="alert alert-danger" *ngIf="email.errors?.['email']">
+                Invalid email address
+            </p>
+        </ng-container>
+    </div>
+    <div class="form-group mb-3">
+        <label for="phone" class="form-label">Phone</label>
+        <input 
+        type="text" 
+        name="phone" 
+        id="phone" 
+        class="form-control" 
+        placeholder="Without hyphen {-}" 
+        [(ngModel)]="reserveService.bookingInfo.phone"
+        #phone="ngModel"
+        pattern="[0-9]{11}"
+        >
+
+        <!-- validations -->
+        <ng-container *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+            <p class="alert alert-danger" *ngIf="phone.errors?.['pattern']">
+                Invalid Phone name(String、hyphen..etc).
+            </p>
+        </ng-container>
+        <div class="form-text text-light">
+            ※Phone number is not required if you don't have a valid number in Japan.
+        </div>
+    </div>
+
+    <!-- modal page -->
+    <ng-template #content let-modal>
+        <app-reservation-modal>
+        </app-reservation-modal>
+    </ng-template>
+
+    <div class="mb-3 d-grid col-6 mx-auto">
+        <button type="button" class="btn btn-primary" (click)="reserveService.open(content);" [disabled]="reserveForm.form.invalid ||!reserveService.isValidForm">
+            Check your info
+        </button>
+    </div>
+</form>

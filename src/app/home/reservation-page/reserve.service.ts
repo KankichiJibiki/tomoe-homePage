@@ -4,6 +4,7 @@ import { Booking } from 'src/app/types/booking';
 // httpClient 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import * as moment from 'moment';
+import { GlobalService } from 'src/app/service/global.service';
 
 
 @Injectable({
@@ -43,9 +44,9 @@ export class ReserveService implements OnInit{
 
   constructor(
     private modalService: NgbModal, 
-    private http: HttpClient) {
-
-  }
+    private http: HttpClient,
+    public globalService: GlobalService
+    ) {}
 
   ngOnInit(): void {
     this.today = new Date(Date.now());
@@ -74,6 +75,8 @@ export class ReserveService implements OnInit{
     console.log(typeof this.bookingInfo.bookedDate)
     this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
     this.selectedDate = new Date(this.bookingInfo.bookedDate).getTime();
+    console.log("selected"+this.selectedDate);
+    console.log("today"+this.today.getTime());
     if(this.selectedDay == 0) {
       this.isSunday = false;
       this.isValidForm = false;
@@ -88,7 +91,9 @@ export class ReserveService implements OnInit{
   }
 
   getDisplay(){
-    moment.locale('ja');
+    if(this.globalService.isEnglish) moment.locale('en');
+    else moment.locale('ja');
+
     this.bookedTime = this.bookingInfo.bookedDate.toString() + " " + this.bookingInfo.bookedTime;
     this.bookingInfo.dateForDisplay = moment(this.bookedTime).format('MMM Do');
     this.bookingInfo.timeForDisplay = moment(this.bookedTime).format('LT');

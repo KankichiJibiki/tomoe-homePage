@@ -1,0 +1,67 @@
+<ng-container *ngIf="reserveService.successAlert.length > 0">
+    <div class="alert alert-success">
+        {{ reserveService.successAlert }}
+
+        <ng-container *ngIf="reserveService.emailAlert != ''">{{ reserveService.emailAlert}}</ng-container>
+    </div>
+</ng-container>
+<div class="modal-header wh-100">
+    <h4 class="modal-title">{{ reserveService.bookingInfo.name }} 's Reservation</h4>
+    <button type="button" class="close btn btn-outline-dark" aria-label="Close" (click)="formService.close()">
+        Back
+    </button>
+</div>
+<div class="modal-body mx-auto">
+    <ul class="col-11 col-md-10 mx-auto">
+        <li class="row mb-3">
+            <span class="col">Your Name</span>
+            <span class="col">{{ reserveService.bookingInfo.name }}</span>
+        </li>
+        <li class="row mb-3">
+            <span class="col">How many people</span>
+            <span class="col">{{ reserveService.bookingInfo.howMany }} 
+                <ng-container *ngIf="reserveService.bookingInfo.howMany != null && reserveService.bookingInfo.howMany > 2">People</ng-container>
+                <ng-container *ngIf="reserveService.bookingInfo.howMany != null && reserveService.bookingInfo.howMany == 1">Person</ng-container>
+            </span>
+        </li>
+        <li class="row mb-3">
+            <span class="col">Date</span>
+            <span class="col">{{ reserveService.bookingInfo.dateForDisplay }}</span>
+        </li>
+        <li class="row mb-3">
+            <span class="col">Time</span>
+            <span class="col">{{ reserveService.bookingInfo.timeForDisplay }}</span>
+        </li>
+        <li class="row mb-3">
+            <span class="col">Course</span>
+            <span class="col">
+                {{reserveService.bookingInfo.course}}
+            </span>
+
+            <ng-container *ngIf="reserveService.bookingInfo.course_option != null && reserveService.bookingInfo.course_option != false">
+                <div class="form-text text-end">＋Tsuyahime rice made of Yamagata prefecture</div>
+            </ng-container>
+        </li>
+        <ng-container *ngIf="reserveService.bookingInfo.discription.length > 0">
+            <li class="row mb-3">
+                <span class="col">Request</span>
+                <span class="col">{{ reserveService.bookingInfo.discription }}</span>
+            </li>
+        </ng-container>
+        <li class="row mb-3">
+            <span class="col">Email</span>
+            <span class="col">{{ reserveService.bookingInfo.email }}</span>
+        </li>
+        <ng-container *ngIf="reserveService.bookingInfo.phone.length > 0">
+            <li class="row mb-3">
+                <span class="col">Phone</span>
+                <span class="col">{{ reserveService.bookingInfo.phone }}</span>
+            </li>
+        </ng-container>
+    </ul>
+</div>
+<div class="modal-footer">
+    <div class="d-grid col-6 mx-auto">
+        <button class="btn btn-outline-success" (click)="formService.onSubmit()">Submit</button>
+    </div>
+</div>

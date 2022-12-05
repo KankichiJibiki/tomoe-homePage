@@ -12,15 +12,23 @@ import { GlobalService } from 'src/app/service/global.service';
 })
 export class ReserveService implements OnInit{
   today: any = new Date();
+  year: any = "";
+  month: any = "";
+  date: any = "";
+  fullDate: Date = {} as Date;
+  now: any = "";
+  limitTime : Date = {} as Date;
+
   bookedTime: any;
   selectedDay!: number;
-  selectedDate!: number;
-  isSunday: boolean = true;
-  isDateValid: boolean = true;
+  selectedDate!: Date;
+  isSunday: boolean = false;
+  isDateValid: String = "valid";
+  isValidForm: boolean = false;
+
   is_exec : boolean = false;
   successAlert: string = '';
   emailAlert: string = '';
-  isValidForm: boolean = false;
   modalRef: any;
 
   //For ajax
@@ -46,10 +54,20 @@ export class ReserveService implements OnInit{
     private modalService: NgbModal, 
     private http: HttpClient,
     public globalService: GlobalService
-    ) {}
+    ) {
+      this.setDate();
+    }
 
   ngOnInit(): void {
+  }
+
+  setDate(){
     this.today = new Date(Date.now());
+    this.year = this.today.getFullYear();
+    this.month = this.today.getMonth();
+    this.date = this.today.getDate();
+    this.fullDate = new Date(this.year, this.month, this.date);
+    this.limitTime = new Date(this.year, this.month, this.date, 15, 0);
   }
 
   selectReset(){
@@ -72,20 +90,31 @@ export class ReserveService implements OnInit{
   }
 
   getDay(){
-    console.log(typeof this.bookingInfo.bookedDate)
+    // initailize
+    this.isSunday = false;
+    this.isDateValid = "valid";
+    this.today = new Date(Date.now());
+    this.now = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+
     this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
-    this.selectedDate = new Date(this.bookingInfo.bookedDate).getTime();
-    console.log("selected"+this.selectedDate);
-    console.log("today"+this.today.getTime());
+    this.selectedDate = new Date(this.bookingInfo.bookedDate + " " + this.now);
+
+    //Sunday
     if(this.selectedDay == 0) {
-      this.isSunday = false;
+      this.isSunday = true;
       this.isValidForm = false;
-    } else if(this.selectedDate < this.today.getTime()) {
-      this.isDateValid = false;
+    } else if(new Date(this.bookingInfo.bookedDate).getMonth() == this.fullDate.getMonth() && new Date(this.bookingInfo.bookedDate).getDate() == this.fullDate.getDate() && this.limitTime < this.selectedDate) {
+      // Same date && after 3pm
+      this.isDateValid = "limitation";
+      this.isValidForm = false;
+    } else if(new Date(this.bookingInfo.bookedDate).getMonth() != this.fullDate.getMonth() || new Date(this.bookingInfo.bookedDate).getDate() != this.fullDate.getDate() && this.selectedDate < this.today){
+      // passed date
+      this.isDateValid = "passed";
       this.isValidForm = false;
     } else {
-      this.isSunday = true;
-      this.isDateValid = true;
+      // valid
+      this.isSunday = false;
+      this.isDateValid = "valid";
       this.isValidForm = true;
     }
   }

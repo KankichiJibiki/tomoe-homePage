@@ -64,17 +64,23 @@
                 (change)="reserveService.getDay()"
                 [(ngModel)]="reserveService.bookingInfo.bookedDate"
                 required
+                min="{{reserveService.today | date:'yyyy-MM-dd'}}"
                 [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedDate == null}"
                 #date="ngModel"
                 >
-                <ng-container *ngIf="!reserveService.isSunday">
+                <ng-container *ngIf="reserveService.isSunday">
                     <p class="alert alert-danger">
                         日曜日は休日とさせていただいております。
                     </p>
                 </ng-container>
-                <ng-container *ngIf="!reserveService.isDateValid">
+                <ng-container *ngIf="reserveService.isDateValid == 'passed'">
                     <p class="alert alert-danger">
                         お日にちが過ぎています。再選択お願い致します。
+                    </p>
+                </ng-container>
+                <ng-container *ngIf="reserveService.isDateValid == 'limitation'">
+                    <p class="alert alert-danger">
+                        当日のご予約は15時までとなっております。
                     </p>
                 </ng-container>
                 <div class="form-text text-light" style="font-size: 11px;">
@@ -189,7 +195,7 @@
                         お電話番号が有効ではありません(文字、ハイフン等)
                     </p>
                 </ng-container>
-                <div class="form-text text-light">
+                <div class="form-text text-light" style="font-size: 11px;">
                     ご入力は必須ではありませんが確認のため、お電話をかけさせていただく場合があります。
                 </div>
             </div>

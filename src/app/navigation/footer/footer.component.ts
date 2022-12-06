@@ -9,7 +9,7 @@ import { GlobalService } from 'src/app/service/global.service';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public gloabalService: GlobalService) { }
+  constructor(public globalService: GlobalService) { }
 
   ngOnInit(): void {
   }

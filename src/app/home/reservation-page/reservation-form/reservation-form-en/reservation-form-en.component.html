@@ -66,14 +66,19 @@
         [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedDate == null}"
         #date="ngModel"
         >
-        <ng-container *ngIf="!reserveService.isSunday">
+        <ng-container *ngIf="reserveService.isSunday">
             <p class="alert alert-danger">
                 Close on Sunday
             </p>
         </ng-container>
-        <ng-container *ngIf="!reserveService.isDateValid">
+        <ng-container *ngIf="reserveService.isDateValid == 'passed'">
             <p class="alert alert-danger">
                 Date is passed already
+            </p>
+        </ng-container>
+        <ng-container *ngIf="reserveService.isDateValid == 'limitation'">
+            <p class="alert alert-danger">
+                Sorry. You are not able to reserve today after 3pm
             </p>
         </ng-container>
         <div class="form-text text-light" style="font-size: 11px;">

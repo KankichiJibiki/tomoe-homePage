@@ -10,6 +10,7 @@ import { ReservationModalComponent } from './reservation-form/reservation-modal/
 import { ReservationPageEnComponent } from './reservation-page-en/reservation-page-en.component';
 import { ReservationFormEnComponent } from './reservation-form/reservation-form-en/reservation-form-en.component';
 import { ReservationModalEnComponent } from './reservation-form/reservation-modal/reservation-modal-en/reservation-modal-en.component';
+import { Ng2FlatpickrModule } from 'ng2-flatpickr';
 
 
 
@@ -31,6 +32,7 @@ import { ReservationModalEnComponent } from './reservation-form/reservation-moda
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2FlatpickrModule
   ]
 })
 export class ReservationPageModule { }

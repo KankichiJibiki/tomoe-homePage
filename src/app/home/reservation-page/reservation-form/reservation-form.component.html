@@ -56,18 +56,18 @@
             </div>
             <div class="form-group mb-3">
                 <label for="bookedDate" class="form-label">お日にち</label>
-                <input 
-                type="date" 
+                
+                <ng2-flatpickr 
+                [config]="options"
                 name="bookedDate" 
                 id="bookedDate" 
-                class="form-control" 
                 (change)="reserveService.getDay()"
                 [(ngModel)]="reserveService.bookingInfo.bookedDate"
+                placeholder="ご予約日の選択"
                 required
-                min="{{reserveService.today | date:'yyyy-MM-dd'}}"
-                [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedDate == null}"
                 #date="ngModel"
                 >
+                </ng2-flatpickr>
                 <ng-container *ngIf="reserveService.isSunday">
                     <p class="alert alert-danger">
                         日曜日は休日とさせていただいております。

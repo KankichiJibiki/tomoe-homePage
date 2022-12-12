@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ReserveService } from '../reserve.service';
 import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/service/global.service';
+import { FlatpickrOptions } from 'ng2-flatpickr/src/flatpickr-options.interface';
+import Japanese from 'flatpickr/dist/l10n/ja.js';
+import flatpickr from 'flatpickr';
 
 
 @Component({
@@ -13,6 +16,10 @@ export class ReservationFormComponent implements OnInit {
   @Input() isCollapsed: boolean = {} as boolean;
   reservations: any;
 
+  options: FlatpickrOptions = {
+    locale: Japanese,
+    minDate: this.reserveService.fullDate,
+  }
 
   constructor(
     public reserveService: ReserveService,

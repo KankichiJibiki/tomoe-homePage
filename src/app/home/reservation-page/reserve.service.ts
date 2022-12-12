@@ -16,7 +16,6 @@ export class ReserveService implements OnInit{
   month: any = "";
   date: any = "";
   fullDate: Date = {} as Date;
-  now: any = "";
   limitTime : Date = {} as Date;
 
   bookedTime: any;
@@ -74,15 +73,16 @@ export class ReserveService implements OnInit{
     this.bookingInfo.course_option = null;
   }
 
+  addTime(date : Date){
+    date.setHours(this.today.getHours());
+    date.setMinutes(this.today.getMinutes());
+    date.setSeconds(this.today.getSeconds());
+    return date;
+  }
+
   isSpecialCourseValid(){
-    if(this.bookingInfo.course == "特別コース" && ((new Date(this.bookingInfo.bookedDate).getTime() - new Date(this.today).getTime())) <= 172800000) {
+    if(this.bookingInfo.course == "特別コース" && new Date((this.addTime(new Date(this.bookingInfo.bookedDate)).getTime() - this.today.getTime())).getDate() <= 3) {
       this.isValidForm = false;
-      console.log(this.isValidForm);
-
-      console.log(new Date(this.bookingInfo.bookedDate).getTime());
-      console.log(new Date(this.today).getTime());
-      console.log((new Date(this.bookingInfo.bookedDate).getTime() - new Date(this.today).getTime()));
-
       return false;
     }
     this.isValidForm = true;
@@ -94,10 +94,9 @@ export class ReserveService implements OnInit{
     this.isSunday = false;
     this.isDateValid = "valid";
     this.today = new Date(Date.now());
-    this.now = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
 
     this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
-    this.selectedDate = new Date(this.bookingInfo.bookedDate + " " + this.now);
+    this.selectedDate = this.addTime(new Date(this.bookingInfo.bookedDate));
 
     //Sunday
     if(this.selectedDay == 0) {

@@ -1,0 +1,16 @@
+:host {
+    --subHeader: 1.5rem;
+}
+
+#header_intro{
+    background-image: url(../../assets/images/tomoe-image5.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 45rem;
+    width: 100%;
+}
+
+#subHeader{
+    font-size: var(--subHeader);
+}

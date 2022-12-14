@@ -1,6 +1,7 @@
 body{
     /* font-family: 'Yu Mincho' ,sans-serif; */
     font-family: 'Yu Mincho',sans-serif !important;
+    background-color: black;
 }
 
 #header_map{
@@ -15,6 +16,7 @@ body{
 #access_map{
     color: f7f7f7;
     background-color: black;
+    border: 2px #261803 solid;
 }
 
 #access_map a{

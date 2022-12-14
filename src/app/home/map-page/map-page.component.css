@@ -17,6 +17,7 @@ body{
     color: f7f7f7;
     background-color: black;
     border: 2px #261803 solid;
+    border-radius: 2%;
 }
 
 #access_map a{

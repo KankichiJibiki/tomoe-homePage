@@ -83,6 +83,11 @@
                         当日のご予約は15時までとなっております。
                     </p>
                 </ng-container>
+                <ng-container *ngIf="reserveService.isDateValid == 'unavailable'">
+                    <p class="alert alert-danger">
+                        申し訳ございませんがその日は満席です。
+                    </p>
+                </ng-container>
                 <div class="form-text text-light" style="font-size: 11px;">
                     ※日曜日はお休みとさせていただいております
                 </div>

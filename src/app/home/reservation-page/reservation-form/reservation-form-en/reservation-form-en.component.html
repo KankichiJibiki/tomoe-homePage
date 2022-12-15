@@ -81,6 +81,11 @@
                 Sorry. You are not able to reserve today after 3pm
             </p>
         </ng-container>
+        <ng-container *ngIf="reserveService.isDateValid == 'unavailable'">
+            <p class="alert alert-danger">
+                No table is available
+            </p>
+        </ng-container>
         <div class="form-text text-light" style="font-size: 11px;">
             ※Close on Sunday
         </div>

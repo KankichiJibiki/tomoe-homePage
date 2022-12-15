@@ -11,6 +11,7 @@ import { GlobalService } from 'src/app/service/global.service';
   providedIn: 'root'
 })
 export class ReserveService implements OnInit{
+  restrictedDate: string = "2022-12-17";
   today: any = new Date();
   year: any = "";
   month: any = "";
@@ -97,6 +98,10 @@ export class ReserveService implements OnInit{
 
     this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
     this.selectedDate = this.addTime(new Date(this.bookingInfo.bookedDate));
+    console.log(typeof this.bookingInfo.bookedDate);
+    console.log(this.bookingInfo.bookedDate);
+    console.log(typeof this.restrictedDate);
+    console.log(this.restrictedDate);
 
     //Sunday
     if(this.selectedDay == 0) {
@@ -109,6 +114,10 @@ export class ReserveService implements OnInit{
     } else if(new Date(this.bookingInfo.bookedDate).getMonth() != this.fullDate.getMonth() || new Date(this.bookingInfo.bookedDate).getDate() != this.fullDate.getDate() && this.selectedDate < this.today){
       // passed date
       this.isDateValid = "passed";
+      this.isValidForm = false;
+    } else if(this.bookingInfo.bookedDate.toString() == this.restrictedDate){
+      // restricted
+      this.isDateValid = "unavailable";
       this.isValidForm = false;
     } else {
       // valid

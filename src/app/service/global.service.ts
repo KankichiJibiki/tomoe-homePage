@@ -16,6 +16,30 @@ export class GlobalService {
   faInsta = faInstagram;
   faTwitter = faTwitter;
 
+  images: string[] = [
+    'tomoe-image1.JPG',
+    'tomoe-image2.JPG',
+    'tomoe-image3.JPG',
+    'tomoe-image4.JPG',
+    'tomoe-image5.JPG',
+    'tomoe-image6.JPG',
+    'tomoe-image7.JPG',
+    'tomoe-image8.JPG',
+    'tomoe-image9.JPG',
+    'tomoe-image10.JPG',
+  ];
+  counter: number = 0;
+  imageAmount: number = this.images.length;
+  returnImage: string = "";
+  imagePath: string = '../assets/images/';
+  myInterval: any;
+
 
   constructor() { }
+
+  getImage(){
+    this.returnImage = this.images[(this.counter%this.imageAmount)];
+    this.counter++;
+    return this.returnImage;
+  }
 }

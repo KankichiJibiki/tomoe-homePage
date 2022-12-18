@@ -13,17 +13,24 @@
 }
 
 .link{
-    width: 40%;
+    width: 42%;
     border: 1px #878a88 solid;
     border-radius: 3%;
     color: black;
     background-color: #fff;
     text-decoration: none;
     padding: .6rem;
+    transition: all 1s linear;
+}
+
+.linkToPage{
+    background-color: #0c5ccc;
+    color: #fff;
 }
 
 .link:hover{
     opacity: .8;
+    transform: scale(1.05);
 }
 
 @media screen and (min-width: 768px) {

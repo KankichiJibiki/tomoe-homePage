@@ -20,20 +20,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageBackGround = document.getElementById('header_intro');
-    this.startGoCircleImages();
+    this.globalService.startGoCircleImages(this.imageBackGround, this.imagePath, true);
   }
-
-  startGoCircleImages(){
-    this.myInterval = setInterval (() => {
-      this.animationImages();
-    }, 5000);
-  }
-
-  animationImages(){
-    this.fullPath = this.imagePath + this.globalService.getImage();
-    console.log(this.fullPath);
-    console.log(this.imageBackGround);
-    this.imageBackGround.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url(' + this.fullPath + ')';
-  }
-
 }

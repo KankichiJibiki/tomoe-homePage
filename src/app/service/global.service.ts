@@ -28,14 +28,30 @@ export class GlobalService {
     'tomoe-image9.JPG',
     'tomoe-image10.JPG',
   ];
-  counter: number = 0;
   imageAmount: number = this.images.length;
+  counter: number = Math.floor(Math.random()*(this.imageAmount+0));
   returnImage: string = "";
-  imagePath: string = '../assets/images/';
+  effect: boolean = false;
+  fullPath: string = '';
   myInterval: any;
 
 
   constructor() { }
+
+  startGoCircleImages(element: any, imagePath: string, effect: boolean){
+    console.log(this.counter);
+    this.myInterval = setInterval (() => {
+      this.effect = effect;
+      this.animationImages(element, imagePath);
+    }, 5000);
+  }
+
+  animationImages(element: any, imagePath: string){
+    this.fullPath = imagePath + this.getImage();
+    element.style.backgroundImage = 'url(' + this.fullPath + ')';
+    if(this.effect) element.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url(' + this.fullPath + ')';
+    else element.style.backgroundImage = 'url(' + this.fullPath + ')';
+  }
 
   getImage(){
     this.returnImage = this.images[(this.counter%this.imageAmount)];

@@ -1,0 +1,14 @@
+<div #intro_modal>
+    <ng-container *ngIf="introService.displayContent == 'meal'" style="background-color: black;">        
+        <app-intro-meal></app-intro-meal>
+    </ng-container>
+    <ng-container *ngIf="introService.displayContent == 'drink'" style="background-color: black;">        
+        <app-intro-drink></app-intro-drink>
+    </ng-container>
+    <ng-container *ngIf="introService.displayContent == 'plate'" style="background-color: black;">        
+        <app-intro-plate></app-intro-plate>
+    </ng-container>
+    <ng-container *ngIf="introService.displayContent == 'inner'" style="background-color: black;">        
+        <app-intro-inner></app-intro-inner>
+    </ng-container>
+</div>

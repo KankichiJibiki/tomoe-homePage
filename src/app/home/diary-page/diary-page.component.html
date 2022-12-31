@@ -1,0 +1,67 @@
+<div class="d-flex flex-column p-3 justify-content-center align-items-center" id="mainContainer">
+    <div class="blank-block"></div>
+
+    <div class="my-4" id="content">
+        <div class="col">
+            <ng-container
+            *ngIf="diaryService.selectedPost.caption == null;
+            then none;
+            else title"
+            >
+            </ng-container>
+            <ng-template #none>
+                <h1 id="title" class="text-center">
+                    No title
+                </h1>
+            </ng-template>
+            <ng-template #title>
+                <h1 id="title" class="text-center">{{ diaryService.selectedPost.caption.substring(0, 30) }}</h1>
+            </ng-template>
+        </div>
+        <div class="col d-flex justify-content-between">
+            <a routerLink="/" class="btn btn outline-dark"><< 戻る</a> 
+            <p id="timeStamp" class="text-end mb-0">
+                {{ diaryService.selectedPost.timestamp | date: "shortDate" }}
+            </p>
+        </div>
+    </div>
+    <hr>
+    <!-- image -->
+    <div class="mx-auto mb-3" id="image_conteiner">
+        <ng-container
+            *ngIf="diaryService.selectedPost.media_type == 'VIDEO';
+            then video;
+            else image
+            "
+        >
+
+        </ng-container>
+        <ng-template #video>
+            <video controls class="post-img mb-1" id="post-video">
+                <source src="{{ diaryService.selectedPost.media_url }}">
+            </video>
+        </ng-template>
+        <ng-template #image>
+            <img id="post-image" src="{{ diaryService.selectedPost.media_url }}" alt="main-image" class="post-img mb-1">
+
+            <ng-container *ngIf="diaryService.selectedPost.media_type == 'CAROUSEL_ALBUM'">
+                <div class="d-flex flex-wrap justify-content-around align-items-center">
+                    <div *ngFor="let img of diaryService.selectedPost.children.data let i = index">
+                        <ng-container *ngIf="i < 9">
+                            <a (click)="changeImg($event)" id="post-img-link">
+                                <img src="{{ img.media_url }}" alt="post-img-child"class="post-img-child"
+                                [ngClass]="{'disabled selected': selectedImg == i}" 
+                                [attr.data-index]="i">
+                            </a>
+                        </ng-container>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-template>
+    </div>
+    <p class="p-2 text-center" id="article">
+        {{ diaryService.selectedPost.caption }}
+    </p>
+
+    <div class="blank-block"></div>
+</div>

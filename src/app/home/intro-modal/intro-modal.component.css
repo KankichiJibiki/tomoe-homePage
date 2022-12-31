@@ -49,4 +49,9 @@
         text-decoration: none;
         padding: .6rem;
     }
+
+    .linkToPage{
+        background-color: #0c5ccc;
+        color: #fff;
+    }
 }

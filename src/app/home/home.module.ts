@@ -12,6 +12,11 @@ import { IntroMealComponent } from './intro-modal/intro-meal/intro-meal.componen
 import { IntroDrinkComponent } from './intro-modal/intro-drink/intro-drink.component';
 import { IntroPlateComponent } from './intro-modal/intro-plate/intro-plate.component';
 import { IntroInnerComponent } from './intro-modal/intro-inner/intro-inner.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { DiaryPageComponent } from './diary-page/diary-page.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HomeEnComponent } from './home-en/home-en.component'; 
+
 
 
 
@@ -24,7 +29,9 @@ import { IntroInnerComponent } from './intro-modal/intro-inner/intro-inner.compo
     IntroMealComponent,
     IntroDrinkComponent,
     IntroPlateComponent,
-    IntroInnerComponent
+    IntroInnerComponent,
+    DiaryPageComponent,
+    HomeEnComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +39,8 @@ import { IntroInnerComponent } from './intro-modal/intro-inner/intro-inner.compo
     FontAwesomeModule,
     NgbModule,
     ReservationPageModule,
+    NgxPaginationModule,
+    MatProgressSpinnerModule
   ],
 })
 export class HomeModule { }

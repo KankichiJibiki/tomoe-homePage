@@ -1,0 +1,193 @@
+<div id="content">
+    <!-- subArtForTomoeWhenSmallDisplay -->
+    <div class="col-11 col-md-9 p-3 mx-auto my-4">
+        <h2 class="card-title mb-2">
+            About Tomoe
+        </h2>
+        <hr>
+        <div class="d-block d-md-none">
+            <img src="../../assets/images/tomoe-image3.JPG" alt="strength" id="strengthImg">
+            <p id="subArt">
+                Japanese traditinal dish is served using such as fresh fish that is coming from Toyosu market every single morning, Ezo deer[Hokkaido deer] from the production area and things like those ingredients that are very much taken care of.
+                Rice, [Tsuyahime] made by a Clay pot provides both well sweet taste and scent.
+                Alcohol With dishes we serve is Japanese seasonal Sake and variery of other ones.
+                Spending time with your friends, co-workers or any people you love, we provide experiences you will never forget.
+            </p>
+        </div>
+        <!-- overview -->
+        <ng-template #content let-modal>
+            <app-intro-modal id="mainModal">
+            </app-intro-modal>
+        </ng-template>
+
+        <div class="d-flex justify-content-around align-items-center">
+            <a class="stren_card" (click)="introService.open(content, 'meal')">
+                <div style="background-color: #e3dfd8;">
+                    <img src="../../assets/images/tomoe-image4.JPG" alt="meals" class="card-img-top">
+                    <p class="text-center my-2">Dishes</p>
+                </div>
+            </a>
+            <a class="stren_card" (click)="introService.open(content, 'drink')">
+                <div style="background-color: #e3dfd8;">
+                    <img src="../../assets/images/tomoe-image6.JPG" alt="drinks" class="card-img-top">
+                    <p class="text-center my-2">Drinks</p>
+                </div>
+            </a>
+            <a class="stren_card" (click)="introService.open(content, 'plate')">
+                <div style="background-color: #e3dfd8;">
+                    <img src="../../assets/images/tomoe-image1.JPG" alt="plates" class="card-img-top">
+                    <p class="text-center m-2">Plates</p>
+                </div>
+            </a>
+            <a class="stren_card" (click)="introService.open(content, 'inner')">
+                <div style="background-color: #e3dfd8;">
+                    <img src="../../assets/images/tomoe-image9.JPG" alt="inner" class="card-img-top">
+                    <p class="text-center my-2">Space</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- owner Introduction -->
+    <div class="col-11 col-md-9 px-3 mx-auto">
+        <h2 style="opacity: .8;">Greetings</h2>
+        <hr>
+            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div class="col-12 col-md-4">
+                    <div class="d-flex justify-content-center">
+                        <img src="../../assets/images/owner-img2.jpg" alt="shota-image" class="mb-2 mx-auto" id="intro_img">
+                    </div>
+                    <p id="owner_name" class="text-center">
+                        Owner
+                        <span>Shota Jibiki</span>
+                    </p>
+                </div>
+                <div class="col-12 col-md-7 p-2">
+                    <p id="owner_intro">
+                        I have begun working as a chef since I turned 15 years old in various places, Yoshizumi in Kyoto, Koguma・Kuma3 in Ginza as a sous chef. Now finally running my own restarant here in Kamata.
+                        <br><br>
+
+                        My job I wish to be is I can serve dishes and provide great expriences that brings you a great time of your day. <br>
+                        Well, the most important for us is <br>
+                        wether you have great drinks ,<br> wether you encounter great dises that the most and only counts after all. I believe.<br><br>
+                        Cheers!!
+                    </p>
+                </div>
+            </div>
+        <hr>
+    </div>
+
+    <!-- diary from instagram -->
+    <div class="d-flex flex-wrap justify_content-center align-items-top my-3">
+        <ng-container *ngIf="homeService.isLoading">
+            <div class="overlay mx-auto my-5">
+                <mat-progress-spinner class="spinner" mode="indeterminate">
+                </mat-progress-spinner>
+            </div>
+        </ng-container>
+        <!-- tweet -->
+        <ng-container *ngIf="!homeService.isLoading">
+            <div class="col-12 col-md-6 mx-auto" id="diary_container">
+                <h2 id="diary_title" class="text-center mb-4">Posts</h2>
+                <!-- pagination size changer-->
+                <div>
+                    <select (change)="homeService.onDisplaySizeChange($event)" id="paginate_size">
+                        <option *ngFor="let size of homeService.displaySizes">
+                            {{ size }}
+                        </option>
+                    </select>
+                </div>
+                <ng-container *ngFor="let post of homeService.postsRes | paginate:{
+                    itemsPerPage: homeService.displaySize,
+                    currentPage: homeService.page,
+                    totalItems: homeService.count
+                }; let i = index">
+                    <div class="diary_post p-2 my-3">
+                        <a [routerLink]="['/diaryPage', post.id]" class="diary_link"
+                        (click)="diaryService.selectedPost = post"
+                        >
+                            <ng-container
+                                *ngIf="post.caption == null;
+                                then none;
+                                else title"
+                            >
+                            </ng-container>
+                            <ng-template #none>
+                                No title
+                            </ng-template>
+                            <ng-template #title>
+                                {{ homeService.getPostTitle(post.caption) }}
+                            </ng-template>
+                        </a>
+                    </div>
+                </ng-container>
+                <!-- pagination data changer-->
+                <div class="text-center" id="paginate_change">
+                    <pagination-controls 
+                        previousLabel="Prev"
+                        nextLabel="Next"
+                        (pageChange)="homeService.onDisplayDataChange($event)">
+                    </pagination-controls>
+                </div>
+            </div>
+            <!-- insta -->
+            <div class="col-12 col-md-5 mx-auto" id="insta_main">
+                <!-- header -->
+                <div id="insta_header_img">
+                    <a href="https://instagram.com/washoku.tomoe?igshid=YmMyMTA2M2Y=" target="_blank" id="insta_top">
+                        <div class="d-flex p-2">
+                            <div style="width: 60px;"> 
+                                <img src="../../assets/images/owner-img.jpg" alt="icon" id="insta_header_icon">
+                            </div>
+                            <div>
+                                Washoku Tomoe <br>
+                                {{ homeService.insta_follower }} Followers
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- main -->
+                <div class="d-flex flex-column justify_content-center align-items-center" id="insta_container">
+                    <ng-container *ngFor="let post of homeService.postsRes">
+                        <div class="mx-auto bg-light mb-3" id="insta_post">
+                            <a href="{{ post.permalink }}" target="_blank">
+                                <ng-container *ngIf="post.media_type == 'VIDEO'">
+                                    <video controls id="insta_img">
+                                        <source src="{{ post.media_url }}" type="video/mp4">
+                                    </video>
+                                </ng-container>
+                                <ng-container *ngIf="post.media_type == 'IMAGE' || post.media_type == 'CAROUSEL_ALBUM' ">
+                                    <img src="{{ post.media_url }}" alt="{{ post.id }}" id="insta_img" 
+                                    >
+                                </ng-container>
+                            </a>
+                            <div class="d-flex p-2">
+                                <div style="width: 60px;"> 
+                                    <img src="../../assets/images/owner-img.jpg" alt="icon" id="insta_header_icon">
+                                </div>
+                                <div>
+                                    Washoku Tomoe<br>
+                                    {{ post.timestamp | date : 'shortDate' : 'JST'}}
+                                </div>
+                            </div>
+                            <div class="p-2 my-1" id="insta_content">
+                                <p class="px-2">{{ post.caption }}</p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <!-- links -->
+    <div class="mb-5 col-12 col-md-9 mx-auto px-3 pb-3 links">
+        <div class="row mx-auto justify-content-between mb-2">
+            <a href="" routerLink="/" class="col-5 text-center link disabled">Dishes</a>
+            <a href="" routerLink="/" class="col-5 text-center link disabled">Drinks</a>
+        </div>
+        <div class="row mx-auto justify-content-between">
+            <a href="" routerLink="/mapPage" class="col-5 text-center link">Access</a>
+            <a href="" routerLink="/reservation" class="col-5 text-center link">Reservation</a>
+        </div>
+    </div>
+</div>

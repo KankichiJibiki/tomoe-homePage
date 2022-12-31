@@ -34,12 +34,19 @@ export class GlobalService {
   effect: boolean = false;
   fullPath: string = '';
   myInterval: any;
+  
+  rawPosts: any;
+  posts: any;
+
+  //For ajax
+    // public base_url: string = 'http://tomoereservation-env.eba-9z6xx2ex.ap-northeast-1.elasticbeanstalk.com/tomoe_db_restapi_prod/';
+    public base_url: string = 'http://localhost/tomoe_db_restapi_prod/';
+  //
 
 
   constructor() { }
 
   startGoCircleImages(element: any, imagePath: string, effect: boolean){
-    console.log(this.counter);
     this.myInterval = setInterval (() => {
       this.effect = effect;
       this.animationImages(element, imagePath);
@@ -57,5 +64,10 @@ export class GlobalService {
     this.returnImage = this.images[(this.counter%this.imageAmount)];
     this.counter++;
     return this.returnImage;
+  }
+
+  clearMyInterval(): void{
+    clearInterval(this.myInterval);
+    console.log('cleared interval')
   }
 }

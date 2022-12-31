@@ -5,16 +5,40 @@
         </div>
         <div class="col-12 col-md-7">
             <p class="discription">
-                京料理に欠かせない「お出汁」。当店では、京都で修業した料理人が本場の味を再現。食材は産地から厳選して直送。四季折々の旬の素材を使用した京料理をご提供します。北海道から仕入れるエゾシカは、日本料理と好相性。旨味が濃いのに臭みがなく、上品な味わい。当店へお越しの際は是非、ご賞味いただきたい逸品です。旬の京野菜など本場京都の食材もお愉しみいただけます。
+                <ng-container
+                    *ngIf="globalService.isEnglish
+                    then en;
+                    else jp"
+                >
+                </ng-container>
+                <ng-template #en>
+                    Dashi(soup) is one of thing that is indispensable for Kyoto cuisine. The chef who was in training in Kyoto serves the exact dishes as if you could have in only Kyoto. The owner also is devoted to picking out ingredients coming directly from production areas.
+                    Kyoto dishes with variety of seasonal ingredients will be served for you.
+                    Ezo deer[Hokkaido deer] from Hokkaido with Umami[flavour, fifth category of taste] without any wild odor is excellent conbination with Japanese traditional meals.
+                    Tomoe brings you a memorable moment of your day.
+                </ng-template>
+                <ng-template #jp>
+                    京料理に欠かせない「お出汁」。当店では、京都で修業した料理人が本場の味を再現。食材は産地から厳選して直送。四季折々の旬の素材を使用した京料理をご提供します。北海道から仕入れるエゾシカは、日本料理と好相性。旨味が濃いのに臭みがなく、上品な味わい。当店へお越しの際は是非、ご賞味いただきたい逸品です。旬の京野菜など本場京都の食材もお愉しみいただけます。
+                </ng-template>
             </p>
         </div>
     </div>
     <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
         <button class="mx-auto text-center link" (click)="introService.close()">
-            << 戻る
+            <ng-container *ngIf="globalService.isEnglish">
+                << Back
+            </ng-container>
+            <ng-container *ngIf="!globalService.isEnglish">
+                << 戻る
+            </ng-container>
         </button>
-        <a href="" routerLink="/" class="mx-auto text-center link linkToPage" (click)="introService.close()">
-            巴のお料理へ
+        <a href="" routerLink="/" class="mx-auto text-center link linkToPage disabled" (click)="introService.close()">
+            <ng-container *ngIf="globalService.isEnglish">
+                Dishes
+            </ng-container>
+            <ng-container *ngIf="!globalService.isEnglish">
+                巴のお料理へ
+            </ng-container>
         </a>
     </div>
 </div>

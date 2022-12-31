@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalService } from 'src/app/service/global.service';
 import { IntroService } from '../intro.service';
 
 @Component({
@@ -12,8 +13,10 @@ import { IntroService } from '../intro.service';
 export class IntroDrinkComponent implements OnInit {
 
   constructor(
-    public introService: IntroService
-  ) { }
+    public introService: IntroService,
+    public globalService: GlobalService,
+  ) {
+  }
 
   ngOnInit(): void {
   }

@@ -8,7 +8,7 @@
     background-color: #e3dfd8;
 }
 
-#header_intro{
+#header_intro, #header_intro_en{
     background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url(../../assets/images/tomoe-image5.JPG);
     background-repeat: no-repeat;
     background-size: cover;
@@ -66,7 +66,8 @@
 }
 
 #intro_img{
-    background-color: #e3dfd8;
+    width: 90%;
+    height: 450px;
 }
 
 .link{
@@ -110,6 +111,85 @@
     padding: 1.1rem;
 }
 
+#diary_container{
+    color: #206c91;
+    padding: 1rem;
+}
+
+.diary_post{
+    border-bottom: #206c91 1px solid;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.diary_link{
+    text-decoration: none;
+    color: #0d3d54;
+    text-align: center;
+}
+
+#insta_main{
+    width: 380px;
+    padding: 1.3rem;
+}
+
+#insta_header_img{
+    background-image: url(../../assets/images/tomoe-image6.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 8rem;
+}
+
+#insta_top{
+    text-decoration: none;
+    color: #fff;
+}
+
+#insta_header_icon{
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fa7fdd;
+    border-radius: 50%;
+}
+
+#insta_container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 24rem;
+    width: 340px;
+    padding: .4rem;
+    background-color: #d7d7d9;
+}
+
+#insta_img{
+    width: 320px;
+    height: 280px;
+}
+
+#insta_post{
+    border-radius: 1%;
+    box-shadow: 2px 2px 2px 2px rgba(114, 110, 110, 0.6);
+}
+
+
+
+#paginate_change{
+    margin-left: auto;
+    margin-right: auto;
+    width: 370px;
+    padding: 0px;
+}
+
+#paginate_size{
+    color: #206c91;
+}
+
+#ngx-pagination{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
 @keyframes deplete {
     0% {
         opacity: .5;
@@ -130,5 +210,34 @@
         width: 740px;
         position: relative;
         right: 120px;
+    }
+
+    #intro_img{
+        width: 95%;
+        height: 80%;
+    }
+
+    #insta_main{
+        width: 430px;
+        padding: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #insta_container{
+        width: 400px;
+    }
+
+    #insta_img{
+        width: 415px;
+        height: 320px;
+    }
+
+    #insta_content{
+        padding: 2.5rem;
+    }
+
+    #insta_header_img{
+        height: 12rem;
     }
 }

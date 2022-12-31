@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
+import { YPipe } from './y.pipe';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AdminComponent } from './admin/admin.component';
     NavigationComponent,
     FooterComponent,
     AdminComponent,
+    YPipe,
   ],
   imports: [
     BrowserModule,

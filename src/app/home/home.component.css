@@ -228,18 +228,18 @@
     }
 
     #insta_main{
-        width: 430px;
+        width: 500px;
         padding: 1.5rem;
         margin-left: 1rem;
         margin-right: 1rem;
     }
 
     #insta_container{
-        width: 400px;
+        width: 490px;
     }
 
     #insta_img{
-        width: 415px;
+        width: 480px;
         height: 320px;
     }
 
@@ -248,6 +248,7 @@
     }
 
     #insta_header_img{
+        width: 490px;
         height: 12rem;
     }
 }

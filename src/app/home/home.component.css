@@ -59,10 +59,16 @@
     transform: scale(1.05);
 }
 
+
+
 #owner_intro{
     font-size: var(--intro);
     opacity: .9;
     line-height: 1.8rem;
+}
+
+.card-img-top{
+    height: 90px;
 }
 
 #intro_img{
@@ -215,6 +221,10 @@
     #intro_img{
         width: 95%;
         height: 80%;
+    }
+
+    .card-img-top{
+        height: 145px;
     }
 
     #insta_main{

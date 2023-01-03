@@ -55,6 +55,7 @@ export class HomeService {
 
         this.globalService.rawPosts = this.rawPostsRes;
         this.globalService.posts = this.postsRes;
+        console.log("Insta api is successfully done");
 
         this.isLoading = false;
       },

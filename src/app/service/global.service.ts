@@ -39,8 +39,7 @@ export class GlobalService {
   posts: any;
 
   //For ajax
-    // public base_url: string = 'https://washokutomoeapi.click/tomoe_db_restapi_prod/';
-    public base_url: string = 'http://localhost/tomoe_db_restapi_prod/';
+    public base_url: string = 'https://washokutomoeapi.click/tomoe_db_restapi_prod/';
   //
 
 

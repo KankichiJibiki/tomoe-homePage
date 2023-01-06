@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { GlobalService } from '../service/global.service';
+import { NavigationService } from './navigation.service';
 
 @Component({
   selector: 'app-navigation',
@@ -9,11 +10,15 @@ import { GlobalService } from '../service/global.service';
 })
 export class NavigationComponent implements OnInit {
   faLocationDot = faLocationDot;
-  isCollapsed = true;
 
-  constructor(public globalService: GlobalService) { }
-
-  ngOnInit(): void {
+  constructor(
+    public globalService: GlobalService,
+    public navService: NavigationService
+  ) {
   }
 
+  ngOnInit(): void {
+    let nav = document.getElementById('nav');
+    this.navService.navDoc = nav;
+  }
 }

@@ -1,0 +1,32 @@
+<div>
+    <div class="d-flex flex-wrap justify-content-around align-items-center mb-3">
+        <div class="col-12 col-md-4 mb-3">
+            <img src="../../../../assets/images/tomoe-image1.JPG" alt="meal" id="meal_img">
+        </div>
+        <div class="col-12 col-md-7">
+            <p class="discription">
+                <ng-container
+                    *ngIf="globalService.isEnglish
+                    then en;
+                    else jp"
+                >
+                </ng-container>
+                <ng-template #en>
+                    Our plates are special and cared much to pick.
+                    I serve dishes with those plates that I have started collecting as one of a thing I liked to do in my spare time for such a quite long time. You will be excited at not only Japanese dish itself but through your sence of eyes, plates of shape, color and texture with Sake.
+                </ng-template>
+                <ng-template #jp>
+                    修行中に趣味で集めていた信楽焼、唐津焼、京焼などの自分の好みの陶器にこだわり器としてお料理と一緒にお出ししております。ぜひ器の形、色合い、肌ざわりと一緒に巴の料理、お酒を楽しんでください。
+                </ng-template>
+            </p>
+        </div>
+    </div>
+    <button class="d-grid mx-auto text-center link" (click)="introService.close()">
+        <ng-container *ngIf="globalService.isEnglish">
+            << Back
+        </ng-container>
+        <ng-container *ngIf="!globalService.isEnglish">
+            << 戻る
+        </ng-container>
+    </button>
+</div>

@@ -1,0 +1,42 @@
+<div>
+    <div class="d-flex flex-wrap justify-content-around align-items-center mb-3">
+        <div class="col-12 col-md-4 mb-3">
+            <img src="../../../../assets/images/inner5.jpeg" alt="meal" id="meal_img">
+        </div>
+        <div class="col-12 col-md-7">
+            <p class="discription">
+                <ng-container
+                    *ngIf="globalService.isEnglish
+                    then en;
+                    else jp"
+                >
+                </ng-container>
+                <ng-template #en>
+                    It takes you only for 5 minutes from JR Kamata Station. Tomoe, place is such a hidden spot with Japanese unique atmosphere.
+                    There is a counter table that you can see directly the process of cooking like a live show and half private space that separates form others as well.
+                </ng-template>
+                <ng-template #jp>
+                    蒲田駅から徒歩5分。隠れ家的にひっそり佇む当店。落ち着いた雰囲気の店内には、料理人の手仕事を目の前で楽しめるライブ感あるカウンター席に、半個室のテーブル席をご用意しました。周りを気にせず寛げるので、誕生日や記念日、退職祝などサプライズにも最適です。
+                </ng-template>
+            </p>
+        </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+        <button class="mx-auto text-center link" (click)="introService.close()">
+            <ng-container *ngIf="globalService.isEnglish">
+                << Back
+            </ng-container>
+            <ng-container *ngIf="!globalService.isEnglish">
+                << 戻る
+            </ng-container>
+        </button>
+        <a href="" routerLink="/reservation" class="mx-auto text-center link linkToPage" (click)="introService.close()">
+            <ng-container *ngIf="globalService.isEnglish">
+                Drinks
+            </ng-container>
+            <ng-container *ngIf="!globalService.isEnglish">
+                予約をする
+            </ng-container>
+        </a>
+    </div>
+</div>

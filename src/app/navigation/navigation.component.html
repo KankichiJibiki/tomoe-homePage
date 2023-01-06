@@ -1,8 +1,6 @@
 <nav class="container-fluid justify-content-between align-items-center bg-dark navbar navbar-expand-sm navbar-dark p-0 px-2" id="nav">
     <div class="d-flex flex-wrap align-items-center" style="width: 250px;">
         <a routerLink="/" id="icon">
-            <!-- <span style="font-size: smaller;" class="navbar-brand">和食
-            </span>巴 -->
             <ng-container *ngIf="!globalService.isEnglish">
                 <span style="font-size: smaller;" class="navbar-brand">和食
                 </span>巴
@@ -11,7 +9,7 @@
                 Tomoe
             </ng-container>
         </a>
-        <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" id="address" target="_blank" class="col-12 col-lg-6 p-0 m-0" style="width: 170px;">
+        <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" id="address" target="_blank" class="col-12 col-lg-6 p-0 m-0" style="width: 200px;">
             <fa-icon [icon]="faLocationDot"></fa-icon>
             <ng-container *ngIf="!globalService.isEnglish">
                 東京都大田区西蒲田7丁目10-7
@@ -22,14 +20,14 @@
         </a>
     </div>
     <div>
-        <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="subAnchor" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler d-lg-none" type="button" (click)="navService.isCollapsed = !navService.isCollapsed" [attr.aria-expanded]="!navService.isCollapsed" aria-controls="subAnchor" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" id="toggler"></span>
         </button>
     </div>
-    <div id="subAnchor" class="collapse navbar-collapse w-50" [ngbCollapse]="isCollapsed">
+    <div id="subAnchor" class="collapse navbar-collapse bg-dark navbar-light container-f,luid px-2" [ngbCollapse]="navService.isCollapsed">
         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a routerLink="" class="disabled nav-link" (click)="isCollapsed = !isCollapsed">
+                <a routerLink="" class="nav-link" (click)="navService.isCollapsed = !navService.isCollapsed">
                     <ng-container *ngIf="!globalService.isEnglish">
                         ご挨拶
                     </ng-container>
@@ -39,7 +37,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a routerLink="" class="disabled nav-link" (click)="isCollapsed = !isCollapsed">
+                <a routerLink="" class="disabled nav-link" (click)="navService.isCollapsed = !navService.isCollapsed">
                     <ng-container *ngIf="!globalService.isEnglish">
                         お品書き
                     </ng-container>
@@ -49,7 +47,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a routerLink="" class="disabled nav-link" (click)="isCollapsed = !isCollapsed">
+                <a routerLink="" class="disabled nav-link" (click)="navService.isCollapsed = !navService.isCollapsed">
                     <ng-container *ngIf="!globalService.isEnglish">
                         お飲み物
                     </ng-container>
@@ -59,7 +57,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a routerLink="/mapPage" class="nav-link" (click)="isCollapsed = !isCollapsed">
+                <a routerLink="/mapPage" class="nav-link" (click)="navService.isCollapsed = !navService.isCollapsed">
                     <ng-container *ngIf="!globalService.isEnglish">
                         アクセス
                     </ng-container>
@@ -69,7 +67,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a routerLink="/reservation" class="nav-link" (click)="isCollapsed = !isCollapsed">
+                <a routerLink="/reservation" class="nav-link" (click)="navService.isCollapsed = !navService.isCollapsed">
                     <ng-container *ngIf="!globalService.isEnglish">
                         ご予約
                     </ng-container>
@@ -82,7 +80,7 @@
                 <a 
                 type="button"
                 class="nav-link" 
-                (click)="isCollapsed = !isCollapsed; globalService.isEnglish = !globalService.isEnglish">
+                (click)="navService.isCollapsed = !navService.isCollapsed; globalService.isEnglish = !globalService.isEnglish">
                     <ng-container *ngIf="!globalService.isEnglish">
                         English
                     </ng-container>

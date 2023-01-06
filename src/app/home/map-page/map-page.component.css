@@ -18,16 +18,17 @@ body{
 }
 
 #access_map a{
-    color: #f7f7f7;
-    margin-bottom: 8px;
+    color: #d5f7f2;
 }
 
-.btn:hover{
-    opacity: .7;
+#reservation {
+    font-size: .9rem;
+    color: #dbf5c9 !important;
 }
 
 a:hover{
     opacity: .7;
+    cursor: pointer;
 }
 
 .google_map_relative{

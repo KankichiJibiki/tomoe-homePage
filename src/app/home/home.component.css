@@ -1,0 +1,254 @@
+:host {
+    --subHeader: 1.4rem;
+    --intro: 1rem;
+    --subArt: .8rem;
+}
+
+#home{
+    background-color: #e3dfd8;
+}
+
+#header_intro, #header_intro_en{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url(../../assets/images/tomoe-image5.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 42rem;
+    width: 100%;
+}
+
+#subHeader{
+    font-size: var(--subHeader);
+}
+
+#subArt{
+    font-size: var(--subArt);
+    opacity: .9;
+    line-height: 1.6rem;
+}
+
+#content{
+    color: #13101a;;
+}
+
+#strengthImg{
+    width: 100%;
+    height: 92%;
+    margin-bottom: 1rem;
+}
+
+.stren_card{
+    width: 24.5%;
+    height: 32%;
+    text-decoration: none;
+    background-color: #e3dfd8;
+    color: #13101a;
+    border-radius: 3.5%;
+    font-size: var(--subArt);
+    box-shadow: .5px .5px .5px .5px;
+    transition: all 1s ease;
+}
+
+.stren_card p{
+    margin: 0;
+}
+
+.stren_card:hover{
+    opacity: .8;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+
+
+#owner_intro{
+    font-size: var(--intro);
+    opacity: .9;
+    line-height: 1.8rem;
+}
+
+.card-img-top{
+    height: 90px;
+}
+
+#intro_img{
+    width: 90%;
+    height: 450px;
+}
+
+.link{
+    background-color: #d8d7db;
+    padding: .8rem;
+    color: #13101a;
+    font-size: .9;
+    text-decoration: none;
+    border-radius: 3.5%;
+}
+
+.link:hover{
+    opacity: .5;
+}
+
+.link-head:nth-child(odd){
+    padding: .8rem;
+    border-left: 1px #fff solid;
+}
+
+.links-head{
+    margin-top: 2.5rem;
+}
+
+.link-head{
+    padding: .8rem;
+    border-right: 1px #fff solid;
+    color: #fff;
+    font-size: .9;
+    opacity: .8;
+    text-decoration: none;
+}
+
+.link-head:hover{
+    background-color: black;
+    opacity: .5;
+}
+
+#mainModal{
+    background-color: #13101a;
+    padding: 1.1rem;
+}
+
+#diary_container{
+    color: #206c91;
+    padding: 1rem;
+}
+
+.diary_post{
+    border-bottom: #206c91 1px solid;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.diary_link{
+    text-decoration: none;
+    color: #0d3d54;
+    text-align: center;
+}
+
+#insta_main{
+    width: 380px;
+    padding: 1.3rem;
+}
+
+#insta_header_img{
+    background-image: url(../../assets/images/tomoe-image6.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 8rem;
+}
+
+#insta_top{
+    text-decoration: none;
+    color: #fff;
+}
+
+#insta_header_icon{
+    width: 50px;
+    height: 50px;
+    border: 2px solid #fa7fdd;
+    border-radius: 50%;
+}
+
+#insta_container{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 24rem;
+    width: 340px;
+    padding: .4rem;
+    background-color: #d7d7d9;
+}
+
+#insta_img{
+    width: 320px;
+    height: 280px;
+}
+
+#insta_post{
+    border-radius: 1%;
+    box-shadow: 2px 2px 2px 2px rgba(114, 110, 110, 0.6);
+}
+
+
+
+#paginate_change{
+    margin-left: auto;
+    margin-right: auto;
+    width: 370px;
+    padding: 0px;
+}
+
+#paginate_size{
+    color: #206c91;
+}
+
+#ngx-pagination{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+@keyframes deplete {
+    0% {
+        opacity: .5;
+        transform: scale(0.8);
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .5;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #mainModal{
+        background-color: #13101a;
+        padding: 1.1rem;
+        width: 740px;
+        position: relative;
+        right: 120px;
+    }
+
+    #intro_img{
+        width: 95%;
+        height: 80%;
+    }
+
+    .card-img-top{
+        height: 145px;
+    }
+
+    #insta_main{
+        width: 500px;
+        padding: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    #insta_container{
+        width: 490px;
+    }
+
+    #insta_img{
+        width: 480px;
+        height: 320px;
+    }
+
+    #insta_content{
+        padding: 2.5rem;
+    }
+
+    #insta_header_img{
+        width: 490px;
+        height: 12rem;
+    }
+}

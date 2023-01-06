@@ -1,58 +1,92 @@
 <div class="bg-light">
     <div>
         <div id="header_map" class="d-flex align-items-center justify-content-center">
-            <h1 class="text-center"><strong>お店へのアクセス</strong></h1>
+            <h1 class="text-center">
+                <ng-container *ngIf="!globalService.isEnglish">
+                    <strong>お店へのアクセス</strong>
+                </ng-container>
+                <ng-container *ngIf="globalService.isEnglish">
+                    <strong>On your way to Tomoe</strong>
+                </ng-container>
+            </h1>
         </div>
     </div>
-    <div class="col-11 mx-auto border-light rounded p-2 mt-3 mb-5" id="access_map">
-        <ng-container *ngIf="!globalService.isEnglish;
-        then jpPage;
-        else enPage">
-        </ng-container>
-        <ng-template #jpPage>
+    <ng-container *ngIf="!globalService.isEnglish">
+        <div class="col-11 mx-auto border-light rounded p-2 mt-3 mb-5" id="access_map">
             <h2 class="pt-2 text-center">アクセスマップ</h2>
             <hr>
             <div class="d-flex flex-column justify-content-center p-2">
-                <h3 class="p-2"><span style="font-size: smaller;">和食</span> 巴</h3>
+                <div class="d-flex justify-content-between mb-3">
+                    <h3 class=""><span style="font-size: smaller;">和食</span> 巴</h3>
+                    <a routerLink="/reservation" class="pt-1" id="reservation">
+                        ご予約はこちら >>
+                    </a>
+                </div>
                 <div class="d-flex flex-wrap justify-content-around">
                     <div class="d-flex flex-column col-12 mt-4 col-lg-4">
-                        <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" id="address" target="_blank" class="mb-4">
-                            <fa-icon [icon]="globalService.faLocationDot"></fa-icon>
-                            東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ
-                        </a>
-                        <a href="tel:0364248466" class="mb-4">
-                            <fa-icon [icon]="globalService.faPhone"></fa-icon>
-                                03-6424-8466
-                        </a>
-                        <div class="mb-4">
-                            <strong>最寄り駅: </strong>
-                            ＪＲ蒲田駅より徒歩５分　蓮沼駅から340m
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="col-4">
+                                <fa-icon [icon]="globalService.faLocationDot"></fa-icon>
+                                住所
+                            </div>
+                            <p class="col text-start">
+                                <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" target="_blank">
+                                    東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ
+                                </a>
+                            </p>
                         </div>
-                        <div class="mb-4">
-                            <strong>営業時間: </strong>
-                            17:30 ～ 23:00
-                            <br>
-                            <small>
-                                [L.O - 22:00、コースのみ21:00 最終受付]
-                            </small>
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="col-4">
+                                <fa-icon [icon]="globalService.faPhone"></fa-icon>
+                                電話番号
+                            </div>
+                            <p class="col text-start">
+                                <a href="tel:0364248466" target="_blank">
+                                    03-6424-8466
+                                </a>
+                            </p>
                         </div>
-                        <div class="mb-4">
-                            <strong>定休日: </strong>
-                            日曜日
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="col-4">
+                                最寄り駅: 
+                            </div>
+                            <p class="col text-start">
+                                ＪＲ蒲田駅より徒歩５分　蓮沼駅から340m
+                            </p>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" class="google_map_relative btn text-light mt-4 col-9 col-lg-11 mx-auto p-3" target="_blank">
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="col-4">
+                                営業時間: 
+                            </div>
+                            <p class="col text-start">
+                                17:30 ～ 23:00<br>
+                                <small>[L.O - 22:00、コースのみ21:00 最終受付]</small>
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="col-4">
+                                定休日:
+                            </div>
+                            <p class="col text-start">
+                                日曜日<br>
+                                <small>
+                                    年末年始や夏季休暇は未定ですので、お問い合わせいただくか、巴の <a href="https://instagram.com/washoku.tomoe?igshid=YmMyMTA2M2Y=">Instagram</a>・ <a href="https://twitter.com/washoku_tomoe">Twitter</a> にてご確認よろしくお願い致します
+                                </small>
+                            </p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=東京都大田区西蒲田７丁目１０−７ 和食 巴 ともえ" class="google_map_relative btn text-light mt-2 col-9 col-lg-11 mx-auto p-3 mb-2" target="_blank">
                             <fa-icon [icon]="globalService.faMap"></fa-icon> 
                             Google Mapで向かう >
                         </a>
                     </div>
                     <div class="col-11 col-lg-7 google_map_relative mx-auto">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.5795263042983!2d139.71012081517478!3d35.5640853439953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018616d4bd9a5bb%3A0xd2274c743ebf4e5b!2z5ZKM6aOfIOW3tCDjgajjgoLjgYg!5e0!3m2!1sja!2sjp!4v1668208559437!5m2!1sja!2sjp" width="98%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mx-auto p-2"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.5795263042983!2d139.71012081517478!3d35.5640853439953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018616d4bd9a5bb%3A0xd2274c743ebf4e5b!2z5ZKM6aOfIOW3tCDjgajjgoLjgYg!5e0!3m2!1sja!2sjp!4v1668208559437!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="mx-auto p-2"></iframe>
                     </div>
                 </div>
             </div>
-        </ng-template>
-        <ng-template #enPage>
-            <h1>English Page!</h1>
-        </ng-template>
-    </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="globalService.isEnglish">
+        <app-map-page-en></app-map-page-en>
+    </ng-container>
 </div>

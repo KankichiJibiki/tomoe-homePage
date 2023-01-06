@@ -5,23 +5,30 @@
 #nav{
     position: fixed;
     opacity: .9;
+    top: 0px;
+    height: 82px;
 }
 
 #nav a{
     text-decoration: none; 
     color: white;
     font-size: 12px;
-    padding: .5rem;
 }
 
 #nav a:hover{
     opacity: .8;
 }
 
+#subAnchor{
+    margin-top: .7rem;
+    /* border: .6px solid #fff; */
+    width: 100%;
+}
+
 #icon{
     font-weight: 450;
     font-size: 1.8rem !important;
-    padding: 1rem;
+    padding: .5rem .5rem 0 .5rem;
 }
 
 #address{
@@ -37,4 +44,10 @@ li{
 /* temporaly */
 .disabled{
     opacity: .5;
+}
+
+@media screen and (max-width: 575px){
+    #subAnchor{
+        border: .6px solid #374a41;
+    } 
 }

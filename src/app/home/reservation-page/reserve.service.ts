@@ -2,7 +2,7 @@ import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Booking } from 'src/app/types/booking';
 // httpClient 
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 import { GlobalService } from 'src/app/service/global.service';
 
@@ -32,7 +32,7 @@ export class ReserveService implements OnInit{
   modalRef: any;
 
   //For ajax
-    private base_url: string = 'http://localhost/tomoe_db_restapi_dev/';
+    private base_url: string = 'http://tomoereservation-env.eba-9z6xx2ex.ap-northeast-1.elasticbeanstalk.com/tomoe_db_restapi_prod/';
   //
 
   bookingInfo: Booking = {
@@ -148,19 +148,19 @@ export class ReserveService implements OnInit{
   createBooking(){
     this.bookingInfo.bookedTime = this.createBookedDateForDB();
 
-    return this.http.post<any>(this.base_url+"insert.php", JSON.stringify(this.bookingInfo));
+    return this.http.post<any>(this.globalService.base_url+"insert.php", JSON.stringify(this.bookingInfo));
   }
 
   getReservations(){
-    return this.http.get<Booking[]>(this.base_url+"view.php");
+    return this.http.get<Booking[]>(this.globalService.base_url+"view.php");
   }
 
   delete(id: any){
-    return this.http.delete(this.base_url + "delete.php?id=" + id);
+    return this.http.delete(this.globalService.base_url + "delete.php?id=" + id);
   }
 
   submitEmail(){
-    return this.http.post<any>(this.base_url + "submitEmail.php", JSON.stringify(this.bookingInfo), { responseType: 'text' as 'json' });
+    return this.http.post<any>(this.globalService.base_url + "submitEmail.php", JSON.stringify(this.bookingInfo), { responseType: 'text' as 'json' });
   }
 
   destroyForms(){

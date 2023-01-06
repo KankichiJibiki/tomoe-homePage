@@ -36,7 +36,7 @@
                 [(ngModel)]="reserveService.bookingInfo.howMany"
                 required
                 min="1"
-                max="15"
+                max="13"
                 placeholder="ご人数の入力"
                 #howMany="ngModel"
                 >
@@ -50,7 +50,7 @@
                         おひとり様からご予約が可能です
                     </p>
                     <p class="alert alert-danger" *ngIf="howMany.errors?.['max']">
-                        15名様を超える場合、お手数をおかけしますが、お電話にて承らせていただきます。
+                        13名様を超える場合、お手数をおかけしますが、お電話にてご相談させていただきます。
                     </p>
                 </ng-container>
             </div>
@@ -85,7 +85,7 @@
                 </ng-container>
                 <ng-container *ngIf="reserveService.isDateValid == 'unavailable'">
                     <p class="alert alert-danger">
-                        申し訳ございませんがその日は満席です。
+                        申し訳ございませんがその日はご予約ができません。
                     </p>
                 </ng-container>
                 <div class="form-text text-light" style="font-size: 11px;">

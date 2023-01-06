@@ -11,6 +11,8 @@ import * as moment from 'moment';
 })
 export class ReservationPageComponent implements OnInit, OnDestroy{
   isCollapsed: boolean = true;
+  imageBackGround: any;
+  imagePath: string = '../../assets/images/';
 
   constructor(
     public globalService: GlobalService, 
@@ -20,7 +22,8 @@ export class ReservationPageComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     moment.locale('ja');
-    console.log(moment().format('dddd'));
+    this.imageBackGround = document.getElementById('header_map');
+    this.globalService.startGoCircleImages(this.imageBackGround, this.imagePath, false);
   }
 
   ngOnDestroy(): void {

@@ -34,7 +34,7 @@
         [(ngModel)]="reserveService.bookingInfo.howMany"
         required
         min="1"
-        max="15"
+        max="13"
         placeholder="Enter how many"
         #howMany="ngModel"
         >
@@ -48,7 +48,7 @@
                 More than 1 person
             </p>
             <p class="alert alert-danger" *ngIf="howMany.errors?.['max']">
-                If you make a reservation for more than 15 people, please contact us by 03-6424-8466 Or kan.0408@outlook.jp.
+                If you make a reservation for more than 13 people, please contact us by 03-6424-8466 Or kan.0408@outlook.jp.
             </p>
         </ng-container>
     </div>

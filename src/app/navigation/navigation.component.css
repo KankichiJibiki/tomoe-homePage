@@ -46,6 +46,10 @@ li{
     opacity: .5;
 }
 
+#enButton:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 575px){
     #subAnchor{
         border: .6px solid #374a41;

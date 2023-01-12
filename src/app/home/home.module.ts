@@ -15,7 +15,8 @@ import { IntroInnerComponent } from './intro-modal/intro-inner/intro-inner.compo
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DiaryPageComponent } from './diary-page/diary-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HomeEnComponent } from './home-en/home-en.component'; 
+import { HomeEnComponent } from './home-en/home-en.component';
+import { DishpageComponent } from './dishpage/dishpage.component'; 
 
 
 
@@ -31,7 +32,8 @@ import { HomeEnComponent } from './home-en/home-en.component';
     IntroPlateComponent,
     IntroInnerComponent,
     DiaryPageComponent,
-    HomeEnComponent
+    HomeEnComponent,
+    DishpageComponent
   ],
   imports: [
     CommonModule,

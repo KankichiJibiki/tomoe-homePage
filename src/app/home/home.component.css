@@ -140,8 +140,9 @@
 }
 
 #insta_header_img{
-    background-image: url(../../assets/images/tomoe-image6.JPG);
+    background-image: url(../../assets/images/inner2.jpeg);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     height: 8rem;
 }

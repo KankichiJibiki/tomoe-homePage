@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faLeaf, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faMap } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -15,6 +15,7 @@ export class GlobalService {
   faMap = faMap;
   faInsta = faInstagram;
   faTwitter = faTwitter;
+  faLeaf = faLeaf;
 
   images: string[] = [
     'tomoe-image1.JPG',

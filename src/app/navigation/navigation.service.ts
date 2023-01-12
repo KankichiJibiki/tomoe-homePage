@@ -17,6 +17,6 @@ export class NavigationService {
     let myInterval = setInterval(()=>{
       this.navDoc.style.top = 0;
       clearInterval(myInterval);
-    }, 2000)
+    }, 3500)
   }
 }

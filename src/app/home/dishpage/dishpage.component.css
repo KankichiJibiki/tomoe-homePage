@@ -1,6 +1,6 @@
 :host{
     --headerString: 1.3rem;
-    --header2String: 1.1rem;
+    --header2String: 0.95rem;
     --courseString: 1.5rem;
 }
 
@@ -44,6 +44,9 @@
 .discription{
     font-size: var(--header2String);
     line-height: 1.8rem;
+    color: #323333;
+    background-color: #f7fafa;
+    padding: .5rem;
 }
 
 #alacarte_container{

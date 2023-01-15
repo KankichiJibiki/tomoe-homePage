@@ -1,0 +1,40 @@
+<!-- Basic info jp-->
+<ng-component *ngIf="gService.isEnglish then en else jp"></ng-component>
+    <ng-template #jp>
+        <div id="content" class="text-center">
+            <h4 class="text-dark">ご予約・お問い合わせ</h4>
+            <p class="form-text">休日情報など、お気軽にお問い合わせください</p>
+            <hr>
+            <h2>
+                <a href="tel:0364248466" class="text-dark">
+                    <fa-icon [icon]="gService.faPhone"></fa-icon>
+                    03-6424-8466
+                </a>
+            </h2>
+            <p class="form-text">
+                営業時間 / 17:30 ～ 23:00<br>
+                定休日 / 毎週日曜日 
+            </p>
+            <a routerLink="/reservation" style="color: #07630c;">ネットでご予約はこちら >></a>
+        </div>
+    </ng-template>
+
+    <!-- Basic info en-->
+    <ng-template #en>
+        <div id="content" class="text-center">
+            <h4 class="text-dark">Reserve | Contact</h4>
+            <p class="form-text">Feel free to reach to us about anything</p>
+            <hr>
+            <h2>
+                <a href="tel:0364248466" class="text-dark">
+                    <fa-icon [icon]="gService.faPhone"></fa-icon>
+                    03-6424-8466
+                </a>
+            </h2>
+            <p class="form-text">
+                Open / 17:30 ～ 23:00<br>
+                Close / Sunday 
+            </p>
+            <a routerLink="/reservation" style="color: #07630c;">Reserve by form here >></a>
+        </div>
+    </ng-template>

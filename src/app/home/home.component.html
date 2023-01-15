@@ -40,7 +40,7 @@
 
             <div class="d-block d-md-none links-head p-2">
                 <div class="row mx-auto justify-content-between">
-                    <a href="" routerLink="/dishpage" class="col text-center link-head disabled">
+                    <a href="" routerLink="/dishpage" class="col text-center link-head">
                         <ng-container *ngIf="!globalService.isEnglish">
                             巴のお料理
                         </ng-container>
@@ -254,4 +254,6 @@
     <ng-container *ngIf="globalService.isEnglish">
         <app-home-en></app-home-en>
     </ng-container>
+    <!-- basic info -->
+    <app-base-info></app-base-info>
 </div>

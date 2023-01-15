@@ -1,182 +1,188 @@
 <main id="main" class="mb-5">
     <div id="header_image" class="container-fluid d-flex flex-column justify-content-center align-items-center">
         <div class="col-10 col-md-8">
-            <h1 class="text-center text-light">巴の懐石料理<br><br></h1>
-            <p class="text-center dishStr d-none d-md-block">
-                巴では四季折々の懐石料理を堪能できます<br><br>
-                本格京料理を提供するとともに、御接待や御友人との会食などでご利用できるようにお客様のリクエストに合わせた特別コースもご用意しております。
-            </p>
+            <ng-component *ngIf="gService.isEnglish then en_header else jp_header" ></ng-component>
+                <!-- jp -->
+                <ng-template #jp_header>
+                    <h1 class="text-center text-light">巴の懐石料理<br><br></h1>
+                    <p class="text-center dishStr d-none d-md-block">
+                        巴では四季折々の懐石料理を堪能できます<br><br>
+                        本格京料理を提供するとともに、御接待や御友人との会食などでご利用できるようにお客様のリクエストに合わせた特別コースもご用意しております。
+                    </p>
+                </ng-template>
+                <!-- en -->
+                <ng-template #en_header>
+                    <h1 class="text-center text-light">Our dishs<br><br></h1>
+                    <p class="text-center dishStr d-none d-md-block">
+                        Here at Tomoe, you get the taste of what Japanese authentic dishs in each season<br><br>
+                        Serving Kyoto cuisine but we also do serve special course that caters to your needs for your occasion such as businesslike, date and things like your own scene.
+                    </p>
+                </ng-template>
         </div>
     </div>
     <!-- course -->
     <div class="mx-auto col-12 col-md-8 p-2">
-        <div class="d-block d-md-none p-3">
-            <h3>巴のお料理</h3>
-            <p class="my-2" style="line-height: 1.85rem;">
-                巴では四季折々の懐石料理を堪能できます<br>
-                本格京料理を提供するとともに、御接待や御友人との会食などでご利用できるようにお客様のリクエストに合わせた特別コースもご用意しております。
-            </p>
-        </div>
-        <hr>
-        <p class="text-center header2">巴のコース一覧</p>
-        <hr>
-        <div>
-            <ul>
-                <div class="mb-3">
-                    <li class="mb-2 header2">
-                        <fa-icon [icon]="gService.faLeaf"></fa-icon>
-                        通常コース 巴 
-                        <span class="price">7,050(税込)</span>
-                    </li>
-                    <div class="course_discription p-3">
-                        <img src="../../../assets/images/tomoe-image9.JPG" alt="alacarte" class="course_img mb-2" id="tomoe">
-                        <p class="caution">その月のコース内容は画像の内容と異なる可能性があります</p>
-                        <p class="discription">
-                            四季折々の食材を使用し、京料理の前菜から〆までの全7～8品からなる献立となります。<br>
-                            <span>〆ではお蕎麦ですが、+1,000円でつや姫を使用した土鍋ご飯に変更可能です。</span>
-                        </p>
-                    </div>
+        <ng-component *ngIf="!gService.isEnglish then en else jp"></ng-component>
+            <ng-template #jp>
+                <div class="d-block d-md-none p-3">
+                    <h3>巴のお料理</h3>
+                    <p class="my-2" style="line-height: 1.85rem;">
+                        巴では四季折々の懐石料理を堪能できます<br>
+                        本格京料理を提供するとともに、御接待や御友人との会食などでご利用できるようにお客様のリクエストに合わせた特別コースもご用意しております。
+                    </p>
                 </div>
-                <div class="mb-3">
-                    <li class="mb-2 header2">
-                        <fa-icon [icon]="gService.faLeaf"></fa-icon>
-                        特別コース 
-                        <span class="price">10,000～(税込)</span>
-                    </li>
-                    <div class="course_discription p-3">
-                        <img src="../../../assets/images/tomoe_insta_images/crab3.jpg" alt="alacarte" class="course_img mb-2" id="special">
-                        <p class="caution">特別コースは季節、リクエスト内容によって異なります。</p>
-                        <p class="discription">
-                            ご接待や会食などお客様の用途、ご希望に併せてご用意させていただきます。こちらのコースは事前予約制で3日前までのみの受付となります。コース内容のリクエストがある際はお気軽にご相談ください。
-                        </p>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <li class="mb-2 header2">
-                        <fa-icon [icon]="gService.faLeaf"></fa-icon>
-                        巴のお決まり <span class="price">2,750～(税込)</span>
-                    </li>
-                    <div class="course_discription p-3">
-                        <img src="../../../assets/images/tomoe-image4.JPG" alt="alacarte" class="course_img mb-2" id="alacarte">
-                        <p class="caution">その月のお決まり内容は画像の内容と異なる可能性があります</p>
-                        <p class="discription">
-                            巴のお決まりでは、その日の食材で、お野菜のお料理、お魚料理、口吸いと、3品お出しいたします。
-                            その後はお好みの一品料理を召し上がるもよし、〆てもよし。お客様の趣向でご堪能ください。<br>
-                            ＊日替わりメニューございます。店主にお尋ね下さい。
-                        </p>
-                        <hr>
-                        <div class="p-4" id="alacarte_container">
-                            <li class="header2">- アラカルト -</li>
-                            <p>
-                                アラカルト(à la carte)とはフランス語由来の言葉で、一品料理という意味でございます。(税込表示)<br>
-                            </p>
-                            <ul>
-                                <li class="mb-2">
-                                    お造り
-                                    <ul>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                ＊産地直送のため店主にお尋ねください
-                                            </div>
-                                            <div>
-                                                1,000円～
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="mb-2">
-                                    珍味
-                                    <ul>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                珍味3種盛り
-                                            </div>
-                                            <div>
-                                                1,000円
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="mb-2">
-                                    小鍋 (1人前)
-                                    <ul>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                虎河豚ちり鍋
-                                            </div>
-                                            <div>
-                                                2,000円
-                                            </div>
-                                        </li>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                穴子卵とじ
-                                            </div>
-                                            <div>
-                                                1,280円
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="mb-2">
-                                    強肴
-                                    <ul>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                茨城県弓野さん家の弓豚香煎揚げ
-                                            </div>
-                                            <div>
-                                                1,000円
-                                            </div>
-                                        </li>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                蝦夷鹿炭火焼
-                                            </div>
-                                            <div>
-                                                1,980円
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="mb-2">
-                                    食事
-                                    <ul>
-                                        <li class="item d-flex flex-wrap">
-                                            <div class="me-2">
-                                                山形産地「つや姫」土鍋ご飯1合 お供、漬物・止椀
-                                            </div>
-                                            <div>
-                                                1,380円
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul><br>
-                            <p class="caution">※仕入れ状況、季節によって変更がありますので予め、ご了承ください。</p>
+                <hr>
+                <p class="text-center header2">巴のコース一覧</p>
+                <hr>
+                <div>
+                    <ul>
+                        <div class="mb-3">
+                            <li class="mb-2 header2">
+                                <fa-icon [icon]="gService.faLeaf"></fa-icon>
+                                通常コース 巴 
+                                <span class="price">7,050(税込)</span>
+                            </li>
+                            <div class="course_discription p-3">
+                                <img src="../../../assets/images/tomoe-image9.JPG" alt="alacarte" class="course_img mb-2" id="tomoe">
+                                <p class="caution">その月のコース内容は画像の内容と異なる可能性があります</p>
+                                <p class="discription">
+                                    四季折々の食材を使用し、京料理の前菜から〆までの全7～8品からなる献立となります。<br>
+                                    <span>〆ではお蕎麦ですが、+1,000円でつや姫を使用した土鍋ご飯に変更可能です。</span>
+                                </p>
+                            </div>
                         </div>
-                        <hr>
-                    </div>
+                        <div class="mb-3">
+                            <li class="mb-2 header2">
+                                <fa-icon [icon]="gService.faLeaf"></fa-icon>
+                                特別コース 
+                                <span class="price">10,000～(税込)</span>
+                            </li>
+                            <div class="course_discription p-3">
+                                <img src="../../../assets/images/tomoe_insta_images/crab3.jpg" alt="alacarte" class="course_img mb-2" id="special">
+                                <p class="caution">特別コースは季節、リクエスト内容によって異なります。</p>
+                                <p class="discription">
+                                    ご接待や会食などお客様の用途、ご希望に併せてご用意させていただきます。こちらのコースは事前予約制で3日前までのみの受付となります。コース内容のリクエストがある際はお気軽にご相談ください。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <li class="mb-2 header2">
+                                <fa-icon [icon]="gService.faLeaf"></fa-icon>
+                                巴のお決まり <span class="price">2,750～(税込)</span>
+                            </li>
+                            <div class="course_discription p-3">
+                                <img src="../../../assets/images/tomoe-image4.JPG" alt="alacarte" class="course_img mb-2" id="alacarte">
+                                <p class="caution">その月のお決まり内容は画像の内容と異なる可能性があります</p>
+                                <p class="discription">
+                                    巴のお決まりでは、その日の食材で、お野菜のお料理、お魚料理、口吸いと、3品お出しいたします。
+                                    その後はお好みの一品料理を召し上がるもよし、〆てもよし。お客様の趣向でご堪能ください。<br>
+                                    ＊日替わりメニューございます。店主にお尋ね下さい。
+                                </p>
+                                <hr>
+                                <div class="p-4" id="alacarte_container">
+                                    <li class="header2">- アラカルト -</li>
+                                    <p>
+                                        アラカルト(à la carte)とはフランス語由来の言葉で、一品料理という意味でございます。<span class="form-text">(税込表示)</span><br>
+                                    </p>
+                                    <ul>
+                                        <li class="mb-2">
+                                            お造り
+                                            <ul>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        ＊産地直送のため店主にお尋ねください
+                                                    </div>
+                                                    <div>
+                                                        1,000円～
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            珍味
+                                            <ul>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        珍味3種盛り
+                                                    </div>
+                                                    <div>
+                                                        1,000円
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            小鍋 (1人前)
+                                            <ul>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        虎河豚ちり鍋
+                                                    </div>
+                                                    <div>
+                                                        2,000円
+                                                    </div>
+                                                </li>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        穴子卵とじ
+                                                    </div>
+                                                    <div>
+                                                        1,280円
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            強肴
+                                            <ul>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        茨城県弓野さん家の弓豚香煎揚げ
+                                                    </div>
+                                                    <div>
+                                                        1,000円
+                                                    </div>
+                                                </li>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        蝦夷鹿炭火焼
+                                                    </div>
+                                                    <div>
+                                                        1,980円
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mb-2">
+                                            食事
+                                            <ul>
+                                                <li class="item d-flex flex-wrap">
+                                                    <div class="me-2">
+                                                        山形産地「つや姫」土鍋ご飯1合 お供、漬物・止椀
+                                                    </div>
+                                                    <div>
+                                                        1,380円
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul><br>
+                                    <p class="caution">※仕入れ状況、季節によって変更がありますので予め、ご了承ください。</p>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </ul>
                 </div>
-            </ul>
-        </div>
+            </ng-template>
+
+            <!-- en component -->
+            <ng-template #en>
+                <app-dishpage-en></app-dishpage-en>
+            </ng-template>
+
         <!-- Basic info -->
-        <div class="text-center my-4 ">
-            <h4>ご予約・お問い合わせ</h4>
-            <p class="form-text">休日情報など、お気軽にお問い合わせください</p>
-            <hr>
-            <h2>
-                <a href="tel:0364248466" class="text-dark">
-                    <fa-icon [icon]="gService.faPhone"></fa-icon>
-                    03-6424-8466
-                </a>
-            </h2>
-            <p class="form-text">
-                営業時間 / 17:30 ～ 23:00<br>
-                定休日 / 毎週日曜日 
-            </p>
-            <a routerLink="/reservation" style="color: #07630c;">ネットでご予約はこちら >></a>
-        </div>
+        <app-base-info></app-base-info>
     </div>
 
 </main>

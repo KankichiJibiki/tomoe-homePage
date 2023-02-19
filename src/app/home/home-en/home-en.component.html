@@ -21,13 +21,13 @@
         </ng-template>
 
         <div class="d-flex justify-content-around align-items-center">
-            <a class="stren_card" (click)="introService.open(content, 'meal')">
+            <a routerLink="/dishpage" class="stren_card" (click)="introService.open(content, 'meal')">
                 <div style="background-color: #e3dfd8;">
                     <img src="../../assets/images/tomoe-image4.JPG" alt="meals" class="card-img-top">
                     <p class="text-center my-2">Dishes</p>
                 </div>
             </a>
-            <a class="stren_card" (click)="introService.open(content, 'drink')">
+            <a routerLink="/drinkspage" class="stren_card" (click)="introService.open(content, 'drink')">
                 <div style="background-color: #e3dfd8;">
                     <img src="../../assets/images/drinks.jpeg" alt="drinks" class="card-img-top">
                     <p class="text-center my-2">Drinks</p>
@@ -182,12 +182,12 @@
     <!-- links -->
     <div class="mb-5 col-12 col-md-9 mx-auto px-3 pb-3 links">
         <div class="row mx-auto justify-content-between mb-2">
-            <a href="" routerLink="/" class="col-5 text-center link disabled">Dishes</a>
-            <a href="" routerLink="/" class="col-5 text-center link disabled">Drinks</a>
+            <a routerLink="/dishpage" class="col-5 text-center link disabled">Dishes</a>
+            <a routerLink="/drinkpage" class="col-5 text-center link disabled">Drinks</a>
         </div>
         <div class="row mx-auto justify-content-between">
-            <a href="" routerLink="/mapPage" class="col-5 text-center link">Access</a>
-            <a href="" routerLink="/reservation" class="col-5 text-center link">Reservation</a>
+            <a routerLink="/mapPage" class="col-5 text-center link">Access</a>
+            <a routerLink="/reservation" class="col-5 text-center link">Reservation</a>
         </div>
     </div>
 </div>

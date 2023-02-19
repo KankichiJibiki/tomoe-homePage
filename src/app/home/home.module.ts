@@ -18,7 +18,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeEnComponent } from './home-en/home-en.component';
 import { DishpageComponent } from './dishpage/dishpage.component';
 import { BaseInfoComponent } from './common/base-info/base-info.component';
-import { DishpageEnComponent } from './dishpage/dishpage-en/dishpage-en.component'; 
+import { DishpageEnComponent } from './dishpage/dishpage-en/dishpage-en.component';
+import { DrinkPageComponent } from './drink-page/drink-page.component';
+import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.component'; 
 
 
 
@@ -37,7 +39,9 @@ import { DishpageEnComponent } from './dishpage/dishpage-en/dishpage-en.componen
     HomeEnComponent,
     DishpageComponent,
     BaseInfoComponent,
-    DishpageEnComponent
+    DishpageEnComponent,
+    DrinkPageComponent,
+    DrinkPageEnComponent
   ],
   imports: [
     CommonModule,

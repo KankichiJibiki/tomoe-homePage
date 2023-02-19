@@ -1,0 +1,164 @@
+<main class="mb-5">
+    <div id="header_image" class="container-fluid d-flex flex-column justify-content-center align-items-center">
+        <div class="col-10 col-md-8">
+            <ng-component *ngIf="gService.isEnglish then en_header else jp_header" ></ng-component>
+            <!-- jp -->
+            <ng-template #jp_header>
+                <h1 class="text-center text-light">巴のお飲み物<br><br></h1>
+                <p class="text-center dishStr d-none d-md-block">
+                    巴では季節の地酒を中心に日本各地の日本酒を取り寄せております<br><br>
+                    旬の食材を盛り込んだお食事はお酒に寄り添う肴としても御楽しみいただけます。お料理に合わせたペアリングもご提案いたしますので、お気軽にお声がけください。
+                </p>
+            </ng-template>
+            <!-- en -->
+            <ng-template #en_header>
+                <h1 class="text-center text-light">Our drinks<br><br></h1>
+                <p class="text-center dishStr d-none d-md-block">
+                    Here at Tomoe, we mainly serve local and seasonal Sake, but also variety of Sake from South to North as well<br><br>
+                    Every dish using seasonal ingredients beatifully goes with Sake. No hestation needed to ask the owner what the best combination with your dish is.
+                </p>
+            </ng-template>
+        </div>
+    </div>
+    <!-- drink -->
+    <div class="mx-auto col-12 col-md-8 p-2">
+        <ng-component *ngIf="gService.isEnglish then en else jp"></ng-component>
+        <ng-template #jp>
+            <div class="d-block d-md-none p-3">
+                <h3>巴のお飲み物</h3>
+                <p class="my-2" style="line-height: 1.85rem;">
+                    巴では季節の地酒を中心に日本各地の日本酒を取り寄せております<br><br>
+                    旬の食材を盛り込んだお食事はお酒に寄り添う肴としても御楽しみいただけます。お料理に合わせたペアリングもご提案いたしますので、お気軽にお声がけください。
+                </p>
+            </div>
+            <hr>
+            <h4 class="text-center header2">お飲み物一覧</h4>
+            <hr>
+            <div class="mb-4">
+                <img src="../../../assets/images/drinks.jpeg" alt="drinks" class="drink-img mb-3">
+                <div class="drink-menu p-2">
+                    <h4 class="text-center my-3">Menu</h4>
+                    <div class="d-flex flex-wrap justify-content-between">
+                        <!-- beer -->
+                        <div class="col-12 col-md-5 mb-3">
+                            <h5 class="text-center">ビール各種</h5>
+                            <hr>
+                            <div class="mx-auto p-2">
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">生ビール</div>
+                                    <div class="col-3 text-right">￥480</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">キリンラガー 一瓶</div>
+                                    <div class="col-3 text-right">￥890</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">アサヒドライゼロ</div>
+                                    <div class="col-3 text-right">￥550</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">梅酒</div>
+                                    <div class="col-3 text-right">￥660</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">ウイスキー 陸</div>
+                                    <div class="col-3 text-right">￥550</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Sake -->
+                        <div class="col-12 col-md-5 mb-3">
+                            <h5 class="text-center mb-3">芋</h5>
+                            <hr>
+                            <div class="mx-auto p-2">
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">萬膳庵</div>
+                                    <div class="col-3 text-right">￥800</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">甑州</div>
+                                    <div class="col-3 text-right">￥750</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">六代目百合</div>
+                                    <div class="col-3 text-right">￥690</div>
+                                </div>
+                            </div>
+                            <h5 class="text-center mb-3">麦</h5>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-8">青一髪</div>
+                                <div class="col-3 text-right">￥690</div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-8">麦麦 旭万年</div>
+                                <div class="col-3 text-right">￥690</div>
+                            </div>
+                        </div>
+                        <!-- Nihonshu -->
+                        <div class="col-12 col-md-5 mb-3">
+                            <h5 class="text-center mb-1">日本酒</h5>
+                            <hr>
+                            <div class="mx-auto p-2">
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">王禄</div>
+                                    <div class="col-3 text-right">￥670</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">上喜元</div>
+                                    <div class="col-3 text-right">￥670</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">雪の美人</div>
+                                    <div class="col-3 text-right">￥890</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">姿 初すがた</div>
+                                    <div class="col-3 text-right">￥830</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">悦 凱陣</div>
+                                    <div class="col-3 text-right">￥850</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">阿部勘</div>
+                                    <div class="col-3 text-right">￥790</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pop -->
+                        <div class="col-12 col-md-5 mb-3">
+                            <h5 class="text-center mb-1">ソフトドリンク</h5>
+                            <hr>
+                            <div class="mx-auto p-2">
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">ウーロン茶</div>
+                                    <div class="col-3 text-right">￥400</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">緑茶</div>
+                                    <div class="col-3 text-right">￥400</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">ジンジャエール</div>
+                                    <div class="col-3 text-right">￥400</div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="col-8">コーラ</div>
+                                    <div class="col-3 text-right">￥400</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        
+        <ng-template #en>
+            <app-drink-page-en></app-drink-page-en>
+        </ng-template>
+        
+        <!-- Basic info -->
+        <app-base-info [backColor]="color"></app-base-info>
+    </div>
+</main>

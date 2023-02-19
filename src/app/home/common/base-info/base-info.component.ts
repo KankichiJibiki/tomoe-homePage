@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GlobalService } from 'src/app/service/global.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { GlobalService } from 'src/app/service/global.service';
   styleUrls: ['./base-info.component.css']
 })
 export class BaseInfoComponent implements OnInit {
+  @Input() backColor: string = "";
 
   constructor(
     public gService: GlobalService,

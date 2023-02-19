@@ -1,6 +1,6 @@
+import { DrinkPageComponent } from './home/drink-page/drink-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
 import { DiaryPageComponent } from './home/diary-page/diary-page.component';
 import { DishpageComponent } from './home/dishpage/dishpage.component';
 import { HomeComponent } from './home/home.component';
@@ -12,8 +12,8 @@ const routes: Routes = [
   {path: 'mapPage', component: MapPageComponent},
   {path: 'reservation', component: ReservationPageComponent},
   {path: 'dishpage', component: DishpageComponent},
+  {path: 'drinkpage', component: DrinkPageComponent},
   {path: 'diaryPage/:post_id', component: DiaryPageComponent},
-  // {path: 'adminPage', component: AdminComponent},
 ];
 
 @NgModule({

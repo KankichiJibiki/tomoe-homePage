@@ -7,7 +7,7 @@
         id="name" 
         class="form-control" 
         placeholder="Rosen Michael" 
-        [(ngModel)]="reserveService.bookingInfo.name" 
+        [(ngModel)]="reserveService.reserveInfo.name" 
         #name="ngModel"
         required
         maxlength="100"
@@ -31,7 +31,7 @@
         name="howMany" 
         id="howMany" 
         class="form-control" 
-        [(ngModel)]="reserveService.bookingInfo.howMany"
+        [(ngModel)]="reserveService.reserveInfo.howMany"
         required
         min="1"
         max="13"
@@ -61,9 +61,9 @@
         min="{{reserveService.today | date:'yyyy-MM-dd'}}"
         class="form-control" 
         (change)="reserveService.getDay()"
-        [(ngModel)]="reserveService.bookingInfo.bookedDate"
+        [(ngModel)]="reserveService.reserveInfo.bookedDate"
         required
-        [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedDate == null}"
+        [ngClass]="{'text-secondary': reserveService.reserveInfo.bookedDate == null}"
         #date="ngModel"
         >
         <ng-container *ngIf="reserveService.isSunday">
@@ -93,8 +93,8 @@
     <div class="form-group mb-3">
         <label for="bookedTime" class="form-label">Preferable time</label>
         <select name="bookedTime" id="bookedTime" class="form-control"
-        [(ngModel)]="reserveService.bookingInfo.bookedTime"
-        [ngClass]="{'text-secondary': reserveService.bookingInfo.bookedTime == ''}"
+        [(ngModel)]="reserveService.reserveInfo.bookedTime"
+        [ngClass]="{'text-secondary': reserveService.reserveInfo.bookedTime == ''}"
         #time="ngModel"
         >
             <option disabled="disabled" value="">Select here</option>
@@ -119,10 +119,10 @@
     </div>
     <div class="form-group mb-3">
         <label for="course" class="form-label">Course</label>
-        <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.bookingInfo.course" required #course="ngModel" 
+        <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.reserveInfo.course" required #course="ngModel" 
         (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()
         "
-        [ngClass]="{'text-secondary': reserveService.bookingInfo.course == ''}"
+        [ngClass]="{'text-secondary': reserveService.reserveInfo.course == ''}"
         >
             <!-- later, make this dynamic -->
             <option value="" disabled="disabled">Choice of courses</option>
@@ -130,9 +130,9 @@
             <option value="特別コース">Special course ￥10,000～</option>
             <option value="巴コース">Tomoe course ￥7,050</option>
         </select>
-        <ng-container *ngIf="reserveService.bookingInfo.course == '巴コース'">
+        <ng-container *ngIf="reserveService.reserveInfo.course == '巴コース'">
             <div class="form-check">
-                <input type="checkbox" name="course_option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.bookingInfo.course_option">
+                <input type="checkbox" name="course_option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.reserveInfo.course_option">
                 <label for="options" class="form-check-label">＋￥1,000 Tsuyahime rice made of Yamagata prefecture</label>
             </div>
         </ng-container>
@@ -143,7 +143,7 @@
                 Please Select your course. If none, select None.
             </p>
         </ng-container>
-        <ng-container *ngIf="reserveService.bookingInfo.course == '特別コース' && !reserveService.isSpecialCourseValid()">
+        <ng-container *ngIf="reserveService.reserveInfo.course == '特別コース' && !reserveService.isSpecialCourseValid()">
             <p class="alert alert-danger">
                 Special course takes 3 days prior.
             </p>
@@ -151,7 +151,7 @@
     </div>
     <div class="form-group mb-3">
         <label for="discription" class="form-label">Request</label>
-        <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="Feel free to enter any requests of yours such as allergy, food you hate and so on." [(ngModel)]="reserveService.bookingInfo.discription">
+        <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="Feel free to enter any requests of yours such as allergy, food you hate and so on." [(ngModel)]="reserveService.reserveInfo.description">
         </textarea>
     </div>
     <div class="form-group mb-3">
@@ -162,7 +162,7 @@
         id="email" 
         class="form-control" 
         placeholder="tanaka@aaaaa.com" 
-        [(ngModel)]="reserveService.bookingInfo.email"
+        [(ngModel)]="reserveService.reserveInfo.email"
         #email="ngModel"
         required
         email
@@ -186,7 +186,7 @@
         id="phone" 
         class="form-control" 
         placeholder="Without hyphen {-}" 
-        [(ngModel)]="reserveService.bookingInfo.phone"
+        [(ngModel)]="reserveService.reserveInfo.phone_number"
         #phone="ngModel"
         pattern="[0-9]{11}"
         >

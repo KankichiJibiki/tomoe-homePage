@@ -1,16 +1,21 @@
+import { ReserveInfo } from './../../model/reserveInfo';
+import { Observable } from 'rxjs';
+import { environment } from './../../../environments/environment.prod';
 import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Booking } from 'src/app/types/booking';
 // httpClient 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as moment from 'moment';
 import { GlobalService } from 'src/app/service/global.service';
-
+import { ApiUrls } from 'src/app/constants/ApiUrls';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReserveService implements OnInit{
+  reserveInfo = new ReserveInfo();
+
   restrictedDate: string = "2023-02-18";
   today: any = new Date();
   year: any = "";
@@ -25,35 +30,17 @@ export class ReserveService implements OnInit{
   isSunday: boolean = false;
   isDateValid: String = "valid";
   isValidForm: boolean = false;
+  displayTime: string | Date = "";
 
   is_exec : boolean = false;
   successAlert: string = '';
   emailAlert: string = '';
   modalRef: any;
 
-  //For ajax
-    private base_url: string = 'http://tomoereservation-env.eba-9z6xx2ex.ap-northeast-1.elasticbeanstalk.com/tomoe_db_restapi_prod/';
-  //
-
-  bookingInfo: Booking = {
-    name : "",
-    howMany : null,
-    bookedDate : {} as Date,
-    bookedTime : "",
-    course : "",
-    course_option : null,
-    discription : "",
-    email : "",
-    phone : "",
-    dateForDisplay : "",
-    timeForDisplay : "",
-  }
-
-
   constructor(
     private modalService: NgbModal, 
     private http: HttpClient,
-    public globalService: GlobalService
+    public globalService: GlobalService,
     ) {
       this.setDate();
     }
@@ -71,7 +58,7 @@ export class ReserveService implements OnInit{
   }
 
   selectReset(){
-    this.bookingInfo.course_option = null;
+    this.reserveInfo.course_option = null;
   }
 
   addTime(date : Date){
@@ -82,7 +69,7 @@ export class ReserveService implements OnInit{
   }
 
   isSpecialCourseValid(){
-    if(this.bookingInfo.course == "特別コース" && new Date((this.addTime(new Date(this.bookingInfo.bookedDate)).getTime() - this.today.getTime())).getDate() <= 3) {
+    if(this.reserveInfo.course == "特別コース" && new Date((this.addTime(new Date(this.reserveInfo.bookedDate)).getTime() - this.today.getTime())).getDate() <= 3) {
       this.isValidForm = false;
       return false;
     }
@@ -96,26 +83,29 @@ export class ReserveService implements OnInit{
     this.isDateValid = "valid";
     this.today = new Date(Date.now());
 
-    this.selectedDay = new Date(this.bookingInfo.bookedDate).getDay();
-    this.selectedDate = this.addTime(new Date(this.bookingInfo.bookedDate));
-    console.log(typeof this.bookingInfo.bookedDate);
-    console.log(this.bookingInfo.bookedDate);
+    this.selectedDay = new Date(this.reserveInfo.bookedDate).getDay();
+    this.selectedDate = this.addTime(new Date(this.reserveInfo.bookedDate));
+    console.log(typeof this.reserveInfo.bookedDate);
+    console.log(this.reserveInfo.bookedDate);
     console.log(typeof this.restrictedDate);
     console.log(this.restrictedDate);
+    console.log(this.selectedDate);
+    console.log(this.today);
+    console.log(this.selectedDate < this.today);
 
     //Sunday
     if(this.selectedDay == 0) {
       this.isSunday = true;
       this.isValidForm = false;
-    } else if(new Date(this.bookingInfo.bookedDate).getMonth() == this.fullDate.getMonth() && new Date(this.bookingInfo.bookedDate).getDate() == this.fullDate.getDate() && this.limitTime < this.selectedDate) {
+    } else if(new Date(this.reserveInfo.bookedDate).getMonth() == this.fullDate.getMonth() && new Date(this.reserveInfo.bookedDate).getDate() == this.fullDate.getDate() && this.limitTime < this.selectedDate) {
       // Same date && after 3pm
       this.isDateValid = "limitation";
       this.isValidForm = false;
-    } else if(new Date(this.bookingInfo.bookedDate).getMonth() != this.fullDate.getMonth() || new Date(this.bookingInfo.bookedDate).getDate() != this.fullDate.getDate() && this.selectedDate < this.today){
+    } else if((new Date(this.reserveInfo.bookedDate).getMonth() != this.fullDate.getMonth() || new Date(this.reserveInfo.bookedDate).getDate() != this.fullDate.getDate()) && this.selectedDate < this.today){
       // passed date
       this.isDateValid = "passed";
       this.isValidForm = false;
-    } else if(this.bookingInfo.bookedDate.toString() == this.restrictedDate){
+    } else if(this.reserveInfo.bookedDate.toString() == this.restrictedDate){
       // restricted
       this.isDateValid = "unavailable";
       this.isValidForm = false;
@@ -128,52 +118,41 @@ export class ReserveService implements OnInit{
   }
 
   getDisplay(){
-    if(this.globalService.isEnglish) moment.locale('en');
-    else moment.locale('ja');
+    if(this.globalService.isEnglish) 
+      moment.locale('en');
+    else 
+      moment.locale('ja');
 
-    this.bookedTime = this.bookingInfo.bookedDate.toString() + " " + this.bookingInfo.bookedTime;
-    this.bookingInfo.dateForDisplay = moment(this.bookedTime).format('MMM Do');
-    this.bookingInfo.timeForDisplay = moment(this.bookedTime).format('LT');
+    this.bookedTime = this.reserveInfo.bookedDate.toString() + " " + this.reserveInfo.bookedTime;
   }
 
   open(content: any){
     this.getDisplay();
+    this.displayTime = this.reserveInfo.bookedTime;
 		this.modalRef = this.modalService.open(content);
   }
 
   createBookedDateForDB(){
-    return this.bookingInfo.bookedDate + " " + this.bookingInfo.bookedTime;
+    return this.reserveInfo.bookedDate + " " + this.reserveInfo.bookedTime;
   }
 
-  createBooking(){
-    this.bookingInfo.bookedTime = this.createBookedDateForDB();
+  createBooking(): Observable<string>{
+    this.reserveInfo.bookedTime = this.createBookedDateForDB();
 
-    return this.http.post<any>(this.globalService.base_url+"insert.php", JSON.stringify(this.bookingInfo));
-  }
+    let apiUrl = `${environment.apiUrl}${ApiUrls.RESERVATION_URL}${ApiUrls.RESERVATION_ACTION_RESERVE}`;
 
-  getReservations(){
-    return this.http.get<Booking[]>(this.globalService.base_url+"view.php");
-  }
-
-  delete(id: any){
-    return this.http.delete(this.globalService.base_url + "delete.php?id=" + id);
-  }
-
-  submitEmail(){
-    return this.http.post<any>(this.globalService.base_url + "submitEmail.php", JSON.stringify(this.bookingInfo), { responseType: 'text' as 'json' });
+    return this.http.post<string>(apiUrl, this.reserveInfo);
   }
 
   destroyForms(){
-    this.bookingInfo.name = "";
-    this.bookingInfo.howMany = null;
-    this.bookingInfo.bookedDate = {} as Date;
-    this.bookingInfo.bookedTime = "";
-    this.bookingInfo.course = "";
-    this.bookingInfo.course_option = null;
-    this.bookingInfo.discription = "";
-    this.bookingInfo.email = "";
-    this.bookingInfo.phone = "";
-    this.bookingInfo.dateForDisplay = "";
-    this.bookingInfo.timeForDisplay = "";
+    this.reserveInfo.name = "";
+    this.reserveInfo.howMany = 1;
+    this.reserveInfo.bookedDate = new Date();
+    this.reserveInfo.bookedTime = "";
+    this.reserveInfo.course = "";
+    this.reserveInfo.course_option = null;
+    this.reserveInfo.description = "";
+    this.reserveInfo.email = "";
+    this.reserveInfo.phone_number = "";
   }
 }

@@ -1,8 +1,10 @@
+import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { LoadingService } from '../service/component/loading.service';
 import { GlobalService } from '../service/global.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiUrls } from '../constants/ApiUrls';
 
 @Injectable({
   providedIn: 'root'
@@ -44,30 +46,30 @@ export class HomeService {
     this.isLoading = true;
     console.log("Connect to Insta api");
 
-    this.getInstaPosts().subscribe(
-      (res:any) => {
+    this.getInstaPosts().subscribe({
+      next: (res:any) => {
         this.rawPostsRes = res;
         console.log(this.rawPostsRes);
-        this.insta_follower = JSON.parse(res.data)['business_discovery']["followers_count"];
-        this.postsRes = JSON.parse(res.data)['business_discovery']['media']['data'];
+
+        this.insta_follower = res['business_discovery']["followers_count"];
+        this.postsRes = res['business_discovery']['media']['data'];
         this.count = this.postsRes.length;
-        console.log(this.postsRes);
 
         this.globalService.rawPosts = this.rawPostsRes;
         this.globalService.posts = this.postsRes;
         console.log("Insta api is successfully done");
-
-        this.isLoading = false;
       },
-      error => {
+      error: (error: any) => {
         this.postsResError = error.message;
-        this.isLoading = false;
       },
-    )
+      complete: () => {
+        this.isLoading = false;
+      }
+    })
   }
 
   getInstaPosts(): Observable<any>{
-    return this.http.get<any>(this.globalService.base_url+"insta_api/instaGetPost.php");
+    return this.http.get<any>(environment.apiUrl+ApiUrls.INSTAGRAM_URL+ApiUrls.INSTAGRAM_ACTION_GETPOST);
   }
 
   getPostTitle(caption:string){

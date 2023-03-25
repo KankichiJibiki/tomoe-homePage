@@ -17,36 +17,22 @@ export class FormService {
   
   onSubmit(){
     console.log("onSubmit");
-    this.reserveService.createBooking().subscribe(
-      res => {
+    this.reserveService.createBooking().subscribe({
+      next: (res: any) => {
         this.reserveService.successAlert = res.message;
-
-        //email if success
-        this.submitEmail();
+        console.log(res);
 
         this.myInterval = setInterval(() => {
           window.location.reload();
           this.myInterval.clearInterval();
         }, 2500)
       },
-      error => {
+      error: (error: any) => {
+        console.log(error);
         alert(error.message);
-      }
-    );
-  }
-
-  submitEmail(){
-    this.reserveService.submitEmail().subscribe(
-      res => {
-        alert('Email Successfully sent');
       },
-      error => {
-        this.reserveService.emailAlert = error.message;
-        alert(error.message);
-      }
-    )
+    });
   }
-
 
   close(){
     this.modalService.dismissAll();

@@ -9,7 +9,6 @@ import { HomeModule } from './home/home.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './admin/admin.component';
 import { YPipe } from './y.pipe';
 
 @NgModule({
@@ -17,7 +16,6 @@ import { YPipe } from './y.pipe';
     AppComponent,
     NavigationComponent,
     FooterComponent,
-    AdminComponent,
     YPipe,
   ],
   imports: [

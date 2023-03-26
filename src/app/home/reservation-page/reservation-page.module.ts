@@ -1,3 +1,4 @@
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservationPageComponent } from './reservation-page.component';
@@ -32,7 +33,8 @@ import { Ng2FlatpickrModule } from 'ng2-flatpickr';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2FlatpickrModule
+    Ng2FlatpickrModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class ReservationPageModule { }

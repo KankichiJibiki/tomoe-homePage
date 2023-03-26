@@ -1,3 +1,4 @@
+import { SpinnerService } from './../../../../service/spinner/spinner.service';
 import { Injectable } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/service/global.service';
@@ -8,15 +9,20 @@ import { ReserveService } from '../../reserve.service';
 })
 export class FormService {
   myInterval: any;
+  isDisabled: boolean = false;
 
   constructor(
     public reserveService: ReserveService,
+    public spinnerService: SpinnerService,
     public globalService : GlobalService,
     public modalService: NgbModal,
   ) { }
   
   onSubmit(){
-    console.log("onSubmit");
+    console.log("Submiting");
+    this.isDisabled = true;
+    this.spinnerService.start();
+
     this.reserveService.createBooking().subscribe({
       next: (res: any) => {
         this.reserveService.successAlert = res.message;
@@ -31,6 +37,10 @@ export class FormService {
         console.log(error);
         alert(error.message);
       },
+      complete: () => {
+        this.isDisabled = false;
+        this.spinnerService.stop();
+      }
     });
   }
 

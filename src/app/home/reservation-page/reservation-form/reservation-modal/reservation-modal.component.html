@@ -56,12 +56,23 @@
         </div>
         <div class="modal-footer">
             <div class="d-grid col-6 mx-auto">
-                <button class="btn btn-outline-success" (click)="formService.onSubmit()">ご予約確定</button>
+                <button class="btn btn-outline-success" 
+                (click)="formService.onSubmit()"
+                [disabled]="formService.isDisabled"
+                >
+                    ご予約確定
+                </button>
             </div>
         </div>
     </ng-container>
     <ng-container *ngIf="globalService.isEnglish">
         <app-reservation-modal-en></app-reservation-modal-en>
+    </ng-container>
+
+    <ng-container *ngIf="spinnerService.isLoading">
+        <div class="spinner-container">
+            <mat-spinner></mat-spinner>
+        </div>
     </ng-container>
 </div>
     

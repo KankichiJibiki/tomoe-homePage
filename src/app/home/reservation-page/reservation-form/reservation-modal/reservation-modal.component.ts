@@ -1,7 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SpinnerService } from './../../../../service/spinner/spinner.service';
+import { Component, OnInit } from '@angular/core';
 import { ReserveService } from '../../reserve.service';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { GlobalService } from 'src/app/service/global.service';
 import { FormService } from './form.service';
 
@@ -15,6 +14,7 @@ export class ReservationModalComponent implements OnInit {
 
   constructor(
     public reserveService: ReserveService,
+    public spinnerService: SpinnerService,
     public globalService : GlobalService,
     public formService : FormService
   ) { }

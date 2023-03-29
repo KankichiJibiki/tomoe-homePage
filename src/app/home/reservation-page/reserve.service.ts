@@ -1,3 +1,4 @@
+import { RestrictedDates } from './../../model/restrictedDates';
 import { ReserveInfo } from './../../model/reserveInfo';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment.prod';
@@ -16,7 +17,7 @@ import { ApiUrls } from 'src/app/constants/ApiUrls';
 export class ReserveService implements OnInit{
   reserveInfo = new ReserveInfo();
 
-  restrictedDate: string = "2023-02-18";
+  restrictedDates: RestrictedDates[] = [];
   today: any = new Date();
   year: any = "";
   month: any = "";
@@ -43,6 +44,7 @@ export class ReserveService implements OnInit{
     public globalService: GlobalService,
     ) {
       this.setDate();
+      this.getRestrictedDates();
     }
 
   ngOnInit(): void {
@@ -85,13 +87,6 @@ export class ReserveService implements OnInit{
 
     this.selectedDay = new Date(this.reserveInfo.bookedDate).getDay();
     this.selectedDate = this.addTime(new Date(this.reserveInfo.bookedDate));
-    console.log(typeof this.reserveInfo.bookedDate);
-    console.log(this.reserveInfo.bookedDate);
-    console.log(typeof this.restrictedDate);
-    console.log(this.restrictedDate);
-    console.log(this.selectedDate);
-    console.log(this.today);
-    console.log(this.selectedDate < this.today);
 
     //Sunday
     if(this.selectedDay == 0) {
@@ -105,7 +100,7 @@ export class ReserveService implements OnInit{
       // passed date
       this.isDateValid = "passed";
       this.isValidForm = false;
-    } else if(this.reserveInfo.bookedDate.toString() == this.restrictedDate){
+    } else if(this.restrictedDates.find(rd => rd == this.reserveInfo.bookedDate)){
       // restricted
       this.isDateValid = "unavailable";
       this.isValidForm = false;
@@ -142,6 +137,21 @@ export class ReserveService implements OnInit{
     let apiUrl = `${environment.apiUrl}${ApiUrls.RESERVATION_URL}${ApiUrls.RESERVATION_ACTION_RESERVE}`;
 
     return this.http.post<string>(apiUrl, this.reserveInfo);
+  }
+
+  getRestrictedDates()
+  {
+    this._executeRestrictedDates().subscribe({
+      next: (res: any) => {
+        this.restrictedDates = res.data;
+        console.log(this.restrictedDates);
+      },
+    });
+  }
+
+  private _executeRestrictedDates(): Observable<any>{
+    let apiUrl = `${environment.apiUrl}${ApiUrls.RESERVATION_URL}${ApiUrls.RESERVATION_ACTION_RESTRICTED}`;
+    return this.http.get<any>(apiUrl);
   }
 
   destroyForms(){

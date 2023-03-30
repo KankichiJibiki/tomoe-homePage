@@ -39,11 +39,6 @@ export class GlobalService {
   rawPosts: any;
   posts: any;
 
-  //For ajax
-    public base_url: string = 'https://washokutomoeapi.click/tomoe_db_restapi_prod/';
-  //
-
-
   constructor() { }
 
   startGoCircleImages(element: any, imagePath: string, effect: boolean){

@@ -65,6 +65,7 @@
                 (change)="reserveService.getDay()"
                 [(ngModel)]="reserveService.reserveInfo.bookedDate"
                 required
+                [disabled]="reserveService.isDateDisabled"
                 [ngClass]="{'text-secondary': reserveService.reserveInfo.bookedDate == null}"
                 #date="ngModel"
                 >

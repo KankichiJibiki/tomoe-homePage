@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NavigationService } from './navigation/navigation.service';
 
 @Component({

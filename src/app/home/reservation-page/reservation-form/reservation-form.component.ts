@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { GlobalService } from 'src/app/service/global.service';
 import { FlatpickrOptions } from 'ng2-flatpickr/src/flatpickr-options.interface';
 import Japanese from 'flatpickr/dist/l10n/ja.js';
-import flatpickr from 'flatpickr';
 
 
 @Component({

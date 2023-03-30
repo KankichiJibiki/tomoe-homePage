@@ -49,7 +49,6 @@ export class HomeService {
     this.getInstaPosts().subscribe({
       next: (res:any) => {
         this.rawPostsRes = res;
-        console.log(this.rawPostsRes);
 
         this.insta_follower = res['business_discovery']["followers_count"];
         this.postsRes = res['business_discovery']['media']['data'];

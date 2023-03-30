@@ -2,11 +2,10 @@ import { RestrictedDates } from './../../model/restrictedDates';
 import { ReserveInfo } from './../../model/reserveInfo';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment.prod';
-import { Injectable, OnInit, OnDestroy } from '@angular/core';
-import { NgbActiveModal, NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { Booking } from 'src/app/types/booking';
+import { Injectable, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // httpClient 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 import { GlobalService } from 'src/app/service/global.service';
 import { ApiUrls } from 'src/app/constants/ApiUrls';
@@ -24,6 +23,7 @@ export class ReserveService implements OnInit{
   date: any = "";
   fullDate: Date = {} as Date;
   limitTime : Date = {} as Date;
+  isDateDisabled : boolean = true;
 
   bookedTime: any;
   selectedDay!: number;
@@ -146,6 +146,9 @@ export class ReserveService implements OnInit{
         this.restrictedDates = res.data;
         console.log(this.restrictedDates);
       },
+      complete: () => {
+        this.isDateDisabled = false;
+      }
     });
   }
 

@@ -1,3 +1,5 @@
+import { BaseInfoComponent } from './common/base-info/base-info.component';
+import { OverlayComponent } from './common/overlay/overlay.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
@@ -17,10 +19,9 @@ import { DiaryPageComponent } from './diary-page/diary-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeEnComponent } from './home-en/home-en.component';
 import { DishpageComponent } from './dishpage/dishpage.component';
-import { BaseInfoComponent } from './common/base-info/base-info.component';
 import { DishpageEnComponent } from './dishpage/dishpage-en/dishpage-en.component';
 import { DrinkPageComponent } from './drink-page/drink-page.component';
-import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.component'; 
+import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.component';
 
 
 
@@ -38,10 +39,11 @@ import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.c
     DiaryPageComponent,
     HomeEnComponent,
     DishpageComponent,
-    BaseInfoComponent,
     DishpageEnComponent,
     DrinkPageComponent,
-    DrinkPageEnComponent
+    DrinkPageEnComponent,
+    OverlayComponent,
+    BaseInfoComponent,
   ],
   imports: [
     CommonModule,

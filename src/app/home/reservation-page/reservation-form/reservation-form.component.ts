@@ -23,7 +23,6 @@ export class ReservationFormComponent implements OnInit {
   constructor(
     public reserveService: ReserveService,
     public globalService: GlobalService,
-    private router: Router,
     ) { }
 
   ngOnInit(): void {

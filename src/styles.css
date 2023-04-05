@@ -5,17 +5,16 @@ body{
     background-color: black;
 }
 
-.spinner-container { 
-    position: fixed;
-    left: 47.5%;
-    top: 30%;
-    width: 30%;
-    height: 30%;
+.app-loading-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
-    .spinner-container { 
-        left: 42%;
-        top: 32%;
-    }
+.app-loading-indicator-backdrop {
+    background-color: rgba(0, 0, 0, .28);
+}
+.cdk-overlay-container{
+    z-index: 1056!important;
 }

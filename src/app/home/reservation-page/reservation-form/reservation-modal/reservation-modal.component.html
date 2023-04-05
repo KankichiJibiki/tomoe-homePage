@@ -1,4 +1,4 @@
-<div class="text-dark mt-5">
+<div class="text-dark mt-5 form-modal">
     <ng-container *ngIf="!globalService.isEnglish">
         <ng-container *ngIf="reserveService.successAlert.length > 0">
             <div class="alert alert-success">
@@ -67,12 +67,6 @@
     </ng-container>
     <ng-container *ngIf="globalService.isEnglish">
         <app-reservation-modal-en></app-reservation-modal-en>
-    </ng-container>
-
-    <ng-container *ngIf="spinnerService.isLoading">
-        <div class="spinner-container">
-            <mat-spinner></mat-spinner>
-        </div>
     </ng-container>
 </div>
     

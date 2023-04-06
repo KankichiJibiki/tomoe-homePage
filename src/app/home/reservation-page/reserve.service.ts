@@ -23,7 +23,7 @@ export class ReserveService implements OnInit{
   date: any = "";
   fullDate: Date = {} as Date;
   limitTime : Date = {} as Date;
-  isDateDisabled : boolean = true;
+  isFormDisabled : boolean = true;
 
   bookedTime: any;
   selectedDay!: number;
@@ -147,7 +147,7 @@ export class ReserveService implements OnInit{
         console.log(this.restrictedDates);
       },
       complete: () => {
-        this.isDateDisabled = false;
+        this.isFormDisabled = false;
       }
     });
   }

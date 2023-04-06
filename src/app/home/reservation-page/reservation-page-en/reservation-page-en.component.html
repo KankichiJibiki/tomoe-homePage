@@ -52,16 +52,20 @@
     <hr>
 
     <div class="d-grid mx-auto col-6 col-md-4">
-        <button type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed;" [attr.aria-expanded]="!isCollapsed" aria-controls="formSection">
+        <button type="button" class="btn btn-success" (click)="isCollapsed = !isCollapsed;" [attr.aria-expanded]="!isCollapsed" aria-controls="formSection" [disabled]="reserveService.isFormDisabled">
             Reserve here
         </button>
     </div>
     <app-reservation-form [isCollapsed]="isCollapsed">
     </app-reservation-form>
 
-    <ng-container *ngIf="isCollapsed">
+    <ng-container *ngIf="isCollapsed && !reserveService.isFormDisabled">
         <div class="form-text text-center mb-3" id="target">
             Scroll down once clicking the button
+        </div>
+    </ng-container><ng-container *ngIf="reserveService.isFormDisabled">
+        <div class="form-text text-center mb-3">
+            Please wait a moment...
         </div>
     </ng-container>
 </div>

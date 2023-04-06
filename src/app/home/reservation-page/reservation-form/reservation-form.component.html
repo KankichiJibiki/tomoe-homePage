@@ -67,8 +67,6 @@
                 (change)="reserveService.getDay()"
                 [(ngModel)]="reserveService.reserveInfo.bookedDate"
                 required
-                [disabled]="reserveService.isDateDisabled"
-                [ngClass]="{'bg-secondary': reserveService.isDateDisabled}"
                 #date="ngModel"
                 date
                 >
@@ -216,7 +214,7 @@
             </ng-template>
     
             <div class="mb-3 d-grid col-6 mx-auto">
-                <button type="button" class="btn btn-primary" (click)="reserveService.open(content);" [disabled]="reserveForm.form.invalid || !reserveService.isValidForm || !date.touched">
+                <button type="button" class="btn btn-primary" (click)="reserveService.open(content);" [disabled]="reserveForm.form.invalid || !reserveService.isValidForm">
                     確認画面へ
                 </button>
             </div>

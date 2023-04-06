@@ -1,3 +1,4 @@
+import { ReserveService } from './../reserve.service';
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/service/global.service';
 
@@ -12,7 +13,10 @@ import { GlobalService } from 'src/app/service/global.service';
 export class ReservationPageEnComponent implements OnInit {
   isCollapsed: boolean = true;
 
-  constructor(public globalService: GlobalService) { }
+  constructor(
+    public reserveService: ReserveService,
+    public globalService: GlobalService
+  ) { }
 
   ngOnInit(): void {
   }

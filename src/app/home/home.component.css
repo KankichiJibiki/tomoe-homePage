@@ -5,18 +5,36 @@
 }
 
 #home{
-    /* background-color: #e3dfd8; */
     background-color: #fff;
     margin-bottom: 2.5rem;
 }
 
-#header_intro, #header_intro_en{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)) ,url(../../assets/images/tomoe-image5.JPG);
+.header-image{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     height: 42rem;
     width: 100%;
+    position: relative;
+
+    transition: 2.5s ease-in-out;
+    will-change: transform; 
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000; 
+}
+
+#initila_header_bg{
+    background-image: url('../../assets/images/tomoe-image1.JPG');
+    transition: 2.5s ease-in-out;
+}
+
+.next {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
 }
 
 #subHeader{
@@ -61,8 +79,6 @@
     transform: scale(1.05);
 }
 
-
-
 #owner_intro{
     font-size: var(--intro);
     opacity: .9;
@@ -91,28 +107,6 @@
     opacity: .5;
 }
 
-.link-head:nth-child(odd){
-    padding: .8rem;
-    border-left: 1px #fff solid;
-}
-
-.links-head{
-    margin-top: 2.5rem;
-}
-
-.link-head{
-    padding: .8rem;
-    border-right: 1px #fff solid;
-    color: #fff;
-    font-size: .9;
-    opacity: .8;
-    text-decoration: none;
-}
-
-.link-head:hover{
-    background-color: black;
-    opacity: .5;
-}
 
 #mainModal{
     background-color: #13101a;
@@ -197,19 +191,6 @@
     margin-left: auto;
     margin-right: auto;
     padding: 0;
-}
-
-@keyframes deplete {
-    0% {
-        opacity: .5;
-        transform: scale(0.8);
-    }
-    50%{
-        opacity: 1;
-    }
-    100%{
-        opacity: .5;
-    }
 }
 
 @media screen and (min-width: 768px) {

@@ -1,65 +1,27 @@
 <div id="home">
-    <!-- header img -->
-    <div id="header_intro" class="d-flex flex-column mb-3">
-        <div class="my-auto">
-            <div>
-                <h1 class="text-center">
-                    <ng-container *ngIf="!globalService.isEnglish">
-                        和食 巴のご紹介
-                    </ng-container>
-                    <ng-container *ngIf="globalService.isEnglish">
-                        Introduction of Tomoe
-                    </ng-container>
-                </h1>
-            </div><br>
-            <div class="col-11 mx-auto p-2 mb-2">
-                <p class="text-center">
-                    <span id="subHeader">
-                        <ng-container *ngIf="!globalService.isEnglish">
-                            四季折々の旬の素材を盛り込んだ京料理と季節の日本酒が味わえる大人の隠れ家。
-                        </ng-container>
-                        <ng-container *ngIf="globalService.isEnglish">
-                            This is the right place for you that you get the taste of Kyoto cuisine with seasonal foods in each season and Japanese traditional Sake, like you never visited
-                        </ng-container>
-                    </span>
-                </p>
-            </div>
-            <div class="d-none d-md-block">
-                <p id="subArt" class="col-11 col-md-8 mx-auto text-center">
-                    <ng-container *ngIf="!globalService.isEnglish">
-                        毎朝豊洲市場から仕入れる鮮魚や、産地直送のエゾシカなど、選りすぐりの食材を使った日本料理をご提供しております。土鍋で炊き上げるご飯には、上品な甘みと香りが特徴の山形産の「つや姫」を使用。お食事と一緒にご堪能いただくお酒は、季節の日本酒や厳選した焼酎を幅広くご用意しました。旬の食材で織り成す季節の料理と合わせてお愉しみください。店内は、接待、記念日、デートなどに最適な上質感漂う隠れ家のような空間。
-                    </ng-container>
-                    <ng-container *ngIf="globalService.isEnglish">
-                        Japanese traditinal dish is served using such as fresh fish that is coming from Toyosu market every single morning, Ezo deer (Hokkaido deer) from the production area and things like those ingredients that are very much taken care of.
-                        Rice, [Tsuyahime] made by a Clay pot provides both well sweet taste and scent.
-                        Alcohol With dishes we serve is Japanese seasonal Sake and variery of other ones.
-                        Spending time with your friends, co-workers or any folks you love, we provide experiences you will never forget.
-                    </ng-container>
-                </p>
-            </div>
-
-            <div class="d-block d-md-none links-head p-2">
-                <div class="row mx-auto justify-content-between">
-                    <a routerLink="/dishpage" class="col text-center link-head">
-                        <ng-container *ngIf="!globalService.isEnglish">
-                            巴のお料理
-                        </ng-container>
-                        <ng-container *ngIf="globalService.isEnglish">
-                            Dishes
-                        </ng-container>
-                    </a>
-                    <a routerLink="/drinkpage" class="col text-center link-head">
-                        <ng-container *ngIf="!globalService.isEnglish">
-                            巴のお飲み物
-                        </ng-container>
-                        <ng-container *ngIf="globalService.isEnglish">
-                            Drinks
-                        </ng-container>
-                    </a>
-                </div>
-            </div>
+<!-- header img -->
+    <ng-container>
+        <div id="header_bg" class="header-image" 
+            [ngStyle]="{ 'background-image': globalService.isSlideStarted ? 
+                'url(' + (globalService.currImage | async)?.presignedUrl + ')' :
+                'url(' + globalService.initialImage + ')'
+            }"
+        >
+            <app-header-intro></app-header-intro>
         </div>
-    </div>
+    </ng-container>
+
+    <!-- This is for loading images proactively -- Opacity: 0 -->
+    <ng-container>
+        <div class="next" 
+            [ngStyle]="{ 
+                'background-image': 'url(' + (globalService.nextImage | async)?.presignedUrl + ')' 
+            }"
+        >
+            <app-header-intro></app-header-intro>
+        </div>
+    </ng-container>
+    
     <ng-container *ngIf="!globalService.isEnglish">
         <div id="content">
             <!-- subArtForTomoeWhenSmallDisplay -->

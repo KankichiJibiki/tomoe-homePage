@@ -14,6 +14,8 @@ export class AppComponent {
   }
 
   @HostListener('window: scroll', ['$event']) onScroll(e: Event): void {
+    if(this.navService.isProgressing) return;
+
     this.navService.hide();
     this.navService.isCollapsed = true;
   }

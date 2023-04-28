@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/service/global.service';
 import { DiaryService } from '../diary-page/diary.service';
 import { HomeService } from '../home.service';

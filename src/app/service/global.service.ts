@@ -1,15 +1,25 @@
+import { ImageList } from './../model/imageList';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { faLeaf, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faMap } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { environment } from 'src/environments/environment.prod';
+import { ApiUrls } from '../constants/ApiUrls';
+import { S3Request } from '../model/s3Request';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { interval } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
+
 export class GlobalService {
   isEnglish: boolean = false;
+  isSlideStarted: boolean = false;
+
   faLocationDot = faLocationDot;
   faPhone = faPhone;
   faMap = faMap;
@@ -17,52 +27,61 @@ export class GlobalService {
   faTwitter = faTwitter;
   faLeaf = faLeaf;
 
-  images: string[] = [
-    'tomoe-image1.JPG',
-    'tomoe-image2.JPG',
-    'tomoe-image3.JPG',
-    'tomoe-image4.JPG',
-    'tomoe-image5.JPG',
-    'tomoe-image6.JPG',
-    'tomoe-image7.JPG',
-    'tomoe-image8.JPG',
-    'tomoe-image9.JPG',
-    'tomoe-image10.JPG',
-  ];
-  imageAmount: number = this.images.length;
-  counter: number = Math.floor(Math.random()*(this.imageAmount+0));
-  returnImage: string = "";
+  imageList: ImageList[] = [];
+  counter: number = 0;
+  initialImage: string = '../../assets/images/tomoe-image1.JPG';
+  currentImage?: Observable<any>;
+  currImage = new BehaviorSubject<ImageList | null>(null);
+  nextImage = new BehaviorSubject<ImageList | null>(null);
+  
   effect: boolean = false;
-  fullPath: string = '';
   myInterval: any;
   
   rawPosts: any;
   posts: any;
 
-  constructor() { }
+  constructor(
+    private http : HttpClient,
+  ) { }
 
-  startGoCircleImages(element: any, imagePath: string, effect: boolean){
-    this.myInterval = setInterval (() => {
-      this.effect = effect;
-      this.animationImages(element, imagePath);
-    }, 5000);
+  downloadImagesFromS3(options: S3Request) : Observable<Response>{
+    let url = `${environment.apiUrl}${ApiUrls.IMAGE_URL}${ApiUrls.IMAGE_ACTION_GETIMAGE}`;
+    return this.http.post<Response>(url, options);
   }
 
-  animationImages(element: any, imagePath: string){
-    this.fullPath = imagePath + this.getImage();
-    element.style.backgroundImage = 'url(' + this.fullPath + ')';
-    if(this.effect) element.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url(' + this.fullPath + ')';
-    else element.style.backgroundImage = 'url(' + this.fullPath + ')';
+  animated(
+    effect: boolean, 
+    imageList: ImageList[]
+  ): void {
+    this.imageList = imageList;
+    this.nextImage.next(this.imageList[(this.counter)]);
+
+    this.counter = Math.floor(Math.random()*(this.imageList.length+0));
+    this.myInterval = interval(5000).subscribe(() => {
+      this.runAnimation();
+    })
   }
 
-  getImage(){
-    this.returnImage = this.images[(this.counter%this.imageAmount)];
+  runAnimation(){
+    //* main
+    this.counter = (this.counter%this.imageList.length);
+    this.currImage.next(this.imageList[(this.counter%this.imageList.length)]);
     this.counter++;
-    return this.returnImage;
+
+    //* next (For loading proactively not to transition delay even instance)
+    this.counter = (this.counter%this.imageList.length);
+    this.nextImage.next(this.imageList[(this.counter%this.imageList.length)]);
+
+    this.isSlideStarted = true;
   }
 
   clearMyInterval(): void{
-    clearInterval(this.myInterval);
+    this.myInterval.unsubscribe();
     console.log('cleared interval')
   }
+}
+
+export enum DisplayMainOrNext {
+  Main,
+  Next,
 }

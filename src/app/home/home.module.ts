@@ -22,6 +22,8 @@ import { DishpageComponent } from './dishpage/dishpage.component';
 import { DishpageEnComponent } from './dishpage/dishpage-en/dishpage-en.component';
 import { DrinkPageComponent } from './drink-page/drink-page.component';
 import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderIntroComponent } from './component/home/header-intro/header-intro.component';
 
 
 
@@ -44,6 +46,7 @@ import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.c
     DrinkPageEnComponent,
     OverlayComponent,
     BaseInfoComponent,
+    HeaderIntroComponent,
   ],
   imports: [
     CommonModule,
@@ -52,7 +55,8 @@ import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.c
     NgbModule,
     ReservationPageModule,
     NgxPaginationModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    BrowserAnimationsModule,
   ],
 })
 export class HomeModule { }

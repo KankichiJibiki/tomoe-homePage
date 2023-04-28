@@ -1,6 +1,11 @@
 <div class="bg-light">
-    <!-- header img -->
-    <div id="header_map" class="d-flex align-items-center justify-content-center">
+<!-- header img -->
+    <div id="header_map" class="d-flex align-items-center justify-content-center"
+        [ngStyle]="{ 'background-image': globalService.isSlideStarted ? 
+            'url(' + (globalService.currImage | async)?.presignedUrl + ')' :
+            'url(' + globalService.initialImage + ')'
+        }"
+    >
         <h1 class="text-center">
             <ng-container *ngIf="!globalService.isEnglish">
                 <strong>ご予約ページ</strong>
@@ -10,6 +15,16 @@
             </ng-container>
         </h1>
     </div>
+    <!-- This is for loading images proactively -- Opacity: 0 -->
+    <ng-container>
+        <div class="next" 
+            [ngStyle]="{ 
+                'background-image': 'url(' + (globalService.nextImage | async)?.presignedUrl + ')' 
+            }"
+        >
+        </div>
+    </ng-container>
+
     <div class="col-11 mx-auto text-dark">
         <ng-container *ngIf="!globalService.isEnglish">
             <!-- phone number -->

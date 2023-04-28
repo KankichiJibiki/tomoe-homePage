@@ -4,12 +4,13 @@
 }
 
 #header_map{
-    background-image: url(../../../assets/images/tomoe-image1.JPG);
+    /* background-image: url(../../../assets/images/tomoe-image1.JPG); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     height: 23rem;
     width: 100%;
+    transition: 2.5s ease-in-out;
 }
 
 #description{

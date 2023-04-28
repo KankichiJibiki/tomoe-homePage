@@ -1,0 +1,26 @@
+.header-height{
+    height: 42rem;
+}
+
+.links-head{
+    margin-top: 2.5rem;
+}
+
+.link-head{
+    padding: .8rem;
+    border-right: 1px #fff solid;
+    color: #fff;
+    font-size: .9;
+    opacity: .8;
+    text-decoration: none;
+}
+
+.link-head:hover{
+    background-color: black;
+    opacity: .5;
+}
+
+.link-head:nth-child(odd){
+    padding: .8rem;
+    border-left: 1px #fff solid;
+}

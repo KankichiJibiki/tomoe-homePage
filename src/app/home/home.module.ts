@@ -24,6 +24,8 @@ import { DrinkPageComponent } from './drink-page/drink-page.component';
 import { DrinkPageEnComponent } from './drink-page/drink-page-en/drink-page-en.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderIntroComponent } from './component/home/header-intro/header-intro.component';
+import { DrinkHeaderIntroComponent } from './component/drink/drink-header-intro/drink-header-intro.component';
+import { DishHeaderIntroComponent } from './component/dish-header-intro/dish-header-intro.component';
 
 
 
@@ -47,6 +49,8 @@ import { HeaderIntroComponent } from './component/home/header-intro/header-intro
     OverlayComponent,
     BaseInfoComponent,
     HeaderIntroComponent,
+    DrinkHeaderIntroComponent,
+    DishHeaderIntroComponent,
   ],
   imports: [
     CommonModule,

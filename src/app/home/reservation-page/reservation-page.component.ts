@@ -20,10 +20,10 @@ export class ReservationPageComponent implements OnInit, OnDestroy{
   constructor(
     public globalService: GlobalService, 
     public reserveService: ReserveService,
-    private router: Router,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
+    this.globalService.initialImage = '../../assets/images/tomoe-image3.JPG';
     moment.locale('ja');
     this.getImagesFromS3();
   }
@@ -34,13 +34,12 @@ export class ReservationPageComponent implements OnInit, OnDestroy{
       return;
     }
 
-    this.s3RequestOptions.prefix = ApiUrls.MAIN;
+    this.s3RequestOptions.prefix = ApiUrls.RESERVATION;
     this.globalService.downloadImagesFromS3(this.s3RequestOptions).subscribe({
       next: (res: Response | any) => {
-        console.log(res.message);
+        console.log(res.data);
+        if(res.data.length <= 0) return;
         this.imageList = res.data;
-        console.log(this.imageList);
-        
         this.globalService.animated(true, this.imageList);
       },
       error: (res: any) => {

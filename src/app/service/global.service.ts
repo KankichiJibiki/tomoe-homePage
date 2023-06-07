@@ -30,7 +30,6 @@ export class GlobalService {
   imageList: ImageList[] = [];
   counter: number = 0;
   initialImage: string = '../../assets/images/tomoe-image1.JPG';
-  currentImage?: Observable<any>;
   currImage = new BehaviorSubject<ImageList | null>(null);
   nextImage = new BehaviorSubject<ImageList | null>(null);
   
@@ -54,9 +53,9 @@ export class GlobalService {
     imageList: ImageList[]
   ): void {
     this.imageList = imageList;
-    this.nextImage.next(this.imageList[(this.counter)]);
 
     this.counter = Math.floor(Math.random()*(this.imageList.length+0));
+    this.nextImage.next(this.imageList[(this.counter)]);
     this.myInterval = interval(5000).subscribe(() => {
       this.runAnimation();
     })
@@ -77,7 +76,9 @@ export class GlobalService {
 
   clearMyInterval(): void{
     this.myInterval.unsubscribe();
-    console.log('cleared interval')
+    this.currImage = new BehaviorSubject<ImageList | null>(null);
+    this.nextImage = new BehaviorSubject<ImageList | null>(null);
+    this.isSlideStarted = false;
   }
 }
 

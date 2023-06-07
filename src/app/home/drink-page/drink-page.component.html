@@ -1,25 +1,26 @@
 <main class="mb-5">
-    <div id="header_image" class="container-fluid d-flex flex-column justify-content-center align-items-center">
-        <div class="col-10 col-md-8">
-            <ng-component *ngIf="gService.isEnglish then en_header else jp_header" ></ng-component>
-            <!-- jp -->
-            <ng-template #jp_header>
-                <h1 class="text-center text-light">巴のお飲み物<br><br></h1>
-                <p class="text-center dishStr d-none d-md-block">
-                    巴では季節の地酒を中心に日本各地の日本酒を取り寄せております<br><br>
-                    旬の食材を盛り込んだお食事はお酒に寄り添う肴としても御楽しみいただけます。お料理に合わせたペアリングもご提案いたしますので、お気軽にお声がけください。
-                </p>
-            </ng-template>
-            <!-- en -->
-            <ng-template #en_header>
-                <h1 class="text-center text-light">Our drinks<br><br></h1>
-                <p class="text-center dishStr d-none d-md-block">
-                    Here at Tomoe, we mainly serve local and seasonal Sake, but also variety of Sake from South to North as well<br><br>
-                    Every dish using seasonal ingredients beatifully goes with Sake. No hestation needed to ask the owner what the best combination with your dish is.
-                </p>
-            </ng-template>
+    <ng-container>
+        <div id="header_bg" class="header-image container-fluid d-flex flex-column justify-content-center align-items-center" 
+            [ngStyle]="{ 'background-image': gService.isSlideStarted ? 
+                'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + (gService.currImage | async)?.presignedUrl + ')' :
+                'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + gService.initialImage + ')'
+            }"
+        >
+            <app-drink-header-intro></app-drink-header-intro>
         </div>
-    </div>
+    </ng-container>
+
+    <!-- This is for loading images proactively -- Opacity: 0 -->
+    <ng-container>
+        <div class="next" 
+            [ngStyle]="{ 
+                'background-image': 'url(' + (gService.nextImage | async)?.presignedUrl + ')' 
+            }"
+        >
+            <app-drink-header-intro></app-drink-header-intro>
+        </div>
+    </ng-container>
+
     <!-- drink -->
     <div class="mx-auto col-12 col-md-8 p-2">
         <ng-component *ngIf="gService.isEnglish then en else jp"></ng-component>

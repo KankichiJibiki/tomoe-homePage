@@ -144,7 +144,6 @@ export class ReserveService implements OnInit{
     this._executeRestrictedDates().subscribe({
       next: (res: any) => {
         this.restrictedDates = res.data;
-        console.log(this.restrictedDates);
       },
       complete: () => {
         this.isFormDisabled = false;

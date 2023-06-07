@@ -1,6 +1,14 @@
 <div>
     <div>
-        <div id="header_map" class="d-flex align-items-center justify-content-center">
+        <!-- header img -->
+        <div 
+        id="header_map" 
+        class="header-image d-flex align-items-center justify-content-center"
+        [ngStyle]="{ 'background': globalService.isSlideStarted ? 
+            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + (globalService.currImage | async)?.presignedUrl + ')' :
+            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + globalService.initialImage + ')'
+        }"
+        >
             <h1 class="text-center">
                 <ng-container *ngIf="!globalService.isEnglish">
                     <strong>お店へのアクセス</strong>
@@ -10,6 +18,15 @@
                 </ng-container>
             </h1>
         </div>
+        <!-- This is for loading images proactively -- Opacity: 0 -->
+        <ng-container>
+            <div class="next" 
+                [ngStyle]="{ 
+                    'background-image': 'url(' + (globalService.nextImage | async)?.presignedUrl + ')' 
+                }"
+            >
+            </div>
+        </ng-container>
     </div>
     <ng-container *ngIf="!globalService.isEnglish">
         <div class="col-11 mx-auto p-2 mt-3 mb-5" id="access_map">
@@ -17,7 +34,9 @@
             <hr>
             <div class="d-flex flex-column justify-content-center p-2">
                 <div class="d-flex justify-content-between mb-3">
-                    <h3 class=""><span style="font-size: smaller;">和食</span> 巴</h3>
+                    <h3 class="">
+                        <span style="font-size: smaller;">和食</span> 巴
+                    </h3>
                     <a routerLink="/reservation" class="pt-1" id="reservation">
                         ご予約はこちら >>
                     </a>

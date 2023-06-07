@@ -1,0 +1,9 @@
+:host{
+    --headerString: 1.3rem;
+}
+
+.dishStr{
+    font-size: var(--headerString);
+    font-weight: 500;
+    color: #fff;
+}

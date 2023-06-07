@@ -9,33 +9,6 @@
     margin-bottom: 2.5rem;
 }
 
-.header-image{
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 23rem;
-    width: 100%;
-    position: relative;
-
-    transition: 2.5s ease-in-out;
-    will-change: transform; 
-    -webkit-backface-visibility:hidden;
-    backface-visibility:hidden;
-    transform: translate3d(0, 0, 0);
-    perspective: 1000; 
-}
-
-#initila_header_bg{
-    background-image: url('../../assets/images/tomoe-image1.JPG');
-    transition: 2.5s ease-in-out;
-}
-
-.next {
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-}
 
 #subHeader{
     font-size: var(--subHeader);
@@ -194,10 +167,6 @@
 }
 
 @media screen and (min-width: 768px) {
-    .header-image{
-        height: 42rem;
-        width: 100%;
-    }
 
     #mainModal{
         background-color: #13101a;

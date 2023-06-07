@@ -1,9 +1,11 @@
 <main class="mb-5">
     <ng-container>
-        <div id="header_bg" class="header-image container-fluid d-flex flex-column justify-content-center align-items-center" 
+        <div 
+            id="header_bg" 
+            class="header-image container-fluid d-flex flex-column justify-content-center align-items-center" 
             [ngStyle]="{ 'background-image': gService.isSlideStarted ? 
-                'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + (gService.currImage | async)?.presignedUrl + ')' :
-                'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + gService.initialImage + ')'
+                'url(' + (gService.currImage | async)?.presignedUrl + ')' :
+                'url(' + gService.initialImage + ')'
             }"
         >
             <app-drink-header-intro></app-drink-header-intro>

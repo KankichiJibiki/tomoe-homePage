@@ -20,7 +20,8 @@ export class MapPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.globalService.initialImage = '../../assets/images/inner5.jpeg';
+    this.globalService.initialImage = '../../assets/images/tomoe-image5.JPG';
+    this.getImagesFromS3();
   }
 
   getImagesFromS3() {
@@ -32,7 +33,6 @@ export class MapPageComponent implements OnInit {
     this.s3RequestOptions.prefix = ApiUrls.MAP;
     this.globalService.downloadImagesFromS3(this.s3RequestOptions).subscribe({
       next: (res: Response | any) => {
-        console.log(res.data);
         if(res.data.length <= 0) return;
         this.imageList = res.data;
         this.globalService.animated(true, this.imageList);

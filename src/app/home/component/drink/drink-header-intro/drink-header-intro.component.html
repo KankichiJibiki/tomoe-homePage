@@ -1,0 +1,19 @@
+<div class="col-10 col-md-8 mx-auto">
+    <ng-component *ngIf="gService.isEnglish then en_header else jp_header" ></ng-component>
+    <!-- jp -->
+    <ng-template #jp_header>
+        <h1 class="text-center text-light">巴のお飲み物<br><br></h1>
+        <p class="text-center dishStr d-none d-md-block">
+            巴では季節の地酒を中心に日本各地の日本酒を取り寄せております<br><br>
+            旬の食材を盛り込んだお食事はお酒に寄り添う肴としても御楽しみいただけます。お料理に合わせたペアリングもご提案いたしますので、お気軽にお声がけください。
+        </p>
+    </ng-template>
+    <!-- en -->
+    <ng-template #en_header>
+        <h1 class="text-center text-light">Our drinks<br><br></h1>
+        <p class="text-center dishStr d-none d-md-block">
+            Here at Tomoe, we mainly serve local and seasonal Sake, but also variety of Sake from South to North as well<br><br>
+            Every dish using seasonal ingredients beatifully goes with Sake. No hestation needed to ask the owner what the best combination with your dish is.
+        </p>
+    </ng-template>
+</div>

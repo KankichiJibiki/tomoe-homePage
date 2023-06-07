@@ -1,9 +1,11 @@
 <div class="bg-light">
-<!-- header img -->
-    <div id="header_map" class="d-flex align-items-center justify-content-center"
+    <!-- header img -->
+    <div 
+        id="header_map" 
+        class="header-image d-flex align-items-center justify-content-center"
         [ngStyle]="{ 'background-image': globalService.isSlideStarted ? 
-            'url(' + (globalService.currImage | async)?.presignedUrl + ')' :
-            'url(' + globalService.initialImage + ')'
+            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + (globalService.currImage | async)?.presignedUrl + ')' :
+            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + globalService.initialImage + ')'
         }"
     >
         <h1 class="text-center">

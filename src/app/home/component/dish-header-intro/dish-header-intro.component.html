@@ -1,0 +1,19 @@
+<div class="col-10 col-md-8 mx-auto">
+    <ng-component *ngIf="gService.isEnglish then en_header else jp_header" ></ng-component>
+    <!-- jp -->
+    <ng-template #jp_header>
+        <h1 class="text-center text-light">巴の懐石料理<br><br></h1>
+        <p class="text-center dishStr d-none d-md-block">
+            巴では四季折々の懐石料理を堪能できます<br><br>
+            本格京料理を提供するとともに、御接待や御友人との会食などでご利用できるようにお客様のリクエストに合わせた特別コースもご用意しております。
+        </p>
+    </ng-template>
+    <!-- en -->
+    <ng-template #en_header>
+        <h1 class="text-center text-light">Our dishs<br><br></h1>
+        <p class="text-center dishStr d-none d-md-block">
+            Here at Tomoe, you get the taste of what Japanese authentic dishs in each season<br><br>
+            Serving Kyoto cuisine but we also do serve special course that caters to your needs for your occasion such as businesslike, date and things like your own scene.
+        </p>
+    </ng-template>
+</div>

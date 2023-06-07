@@ -1,7 +1,9 @@
 <div id="home">
 <!-- header img -->
     <ng-container>
-        <div id="header_bg" class="header-image" 
+        <div 
+            id="header_bg" 
+            class="header-image" 
             [ngStyle]="{ 'background-image': globalService.isSlideStarted ? 
                 'url(' + (globalService.currImage | async)?.presignedUrl + ')' :
                 'url(' + globalService.initialImage + ')'

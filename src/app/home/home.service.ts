@@ -36,8 +36,7 @@ export class HomeService {
   
   getInstaInfo(){
     if(this.globalService.posts != null){
-      this.rawPostsRes = this.globalService.rawPosts;
-      this.insta_follower = JSON.parse(this.rawPostsRes.data)['business_discovery']["followers_count"];
+      this.insta_follower = this.rawPostsRes['business_discovery']["followers_count"];
       this.postsRes = this.globalService.posts;
       this.count = this.postsRes.length;
       return;

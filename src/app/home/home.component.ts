@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.globalService.initialImage = '../../assets/images/tomoe-image10.JPG';
     this.getImagesFromS3();
     this.homeService.getInstaInfo();
   }
@@ -39,10 +40,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.s3RequestOptions.prefix = ApiUrls.MAIN;
     this.globalService.downloadImagesFromS3(this.s3RequestOptions).subscribe({
       next: (res: Response | any) => {
-        console.log(res.message);
+        console.log(res.data);
+        if(res.data.length <= 0) return;
         this.imageList = res.data;
-        console.log(this.imageList);
-        
         this.globalService.animated(true, this.imageList);
       },
       error: (res: any) => {

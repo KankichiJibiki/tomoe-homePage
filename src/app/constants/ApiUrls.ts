@@ -15,4 +15,8 @@ export class ApiUrls {
     //* S3 Prefixes
     static readonly BUCKETNAME: string = "tomoe-image-storage";
     static readonly MAIN: string = "main-page";
+    static readonly DRINK: string = "drink-page";
+    static readonly DISH: string = "dish-page";
+    static readonly MAP: string = "map-page";
+    static readonly RESERVATION: string = "reservation-page";
 }

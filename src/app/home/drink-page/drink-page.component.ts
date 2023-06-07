@@ -34,7 +34,6 @@ export class DrinkPageComponent implements OnInit, OnDestroy{
     this.s3RequestOptions.prefix = ApiUrls.DRINK;
     this.gService.downloadImagesFromS3(this.s3RequestOptions).subscribe({
       next: (res: Response | any) => {
-        console.log(res.data);
         if(res.data.length <= 0) return;
         this.imageList = res.data;
         this.gService.animated(true, this.imageList);

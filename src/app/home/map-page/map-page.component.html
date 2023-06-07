@@ -2,11 +2,11 @@
     <div>
         <!-- header img -->
         <div 
-        id="header_map" 
-        class="header-image d-flex align-items-center justify-content-center"
-        [ngStyle]="{ 'background': globalService.isSlideStarted ? 
-            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + (globalService.currImage | async)?.presignedUrl + ')' :
-            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + globalService.initialImage + ')'
+            id="header_map" 
+            class="header-image d-flex align-items-center justify-content-center"
+            [ngStyle]="{ 'background-image': globalService.isSlideStarted ? 
+            'url(' + (globalService.currImage | async)?.presignedUrl + ')' :
+            'url(' + globalService.initialImage + ')'
         }"
         >
             <h1 class="text-center">

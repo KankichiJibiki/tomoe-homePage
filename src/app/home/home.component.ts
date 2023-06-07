@@ -40,7 +40,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.s3RequestOptions.prefix = ApiUrls.MAIN;
     this.globalService.downloadImagesFromS3(this.s3RequestOptions).subscribe({
       next: (res: Response | any) => {
-        console.log(res.data);
         if(res.data.length <= 0) return;
         this.imageList = res.data;
         this.globalService.animated(true, this.imageList);

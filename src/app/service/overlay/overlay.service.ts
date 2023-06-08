@@ -1,4 +1,4 @@
-import { OverlayComponent } from './../../home/common/overlay/overlay.component';
+import { OverlayComponent } from './../../views/common/overlay/overlay.component';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { GlobalPositionStrategy, Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { Injectable, ComponentRef } from '@angular/core';

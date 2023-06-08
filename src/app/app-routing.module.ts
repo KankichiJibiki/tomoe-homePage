@@ -1,11 +1,11 @@
-import { DrinkPageComponent } from './home/drink-page/drink-page.component';
+import { DiaryPageComponent } from './views/home/diary-page/diary-page.component';
+import { DrinkPageComponent } from './views/drink-page/drink-page.component';
+import { DishpageComponent } from './views/dishpage/dishpage.component';
+import { ReservationPageComponent } from './views/reservation-page/main/reservation-page.component';
+import { MapPageComponent } from './views/map-page/map-page.component';
+import { HomeComponent } from './views/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DiaryPageComponent } from './home/diary-page/diary-page.component';
-import { DishpageComponent } from './home/dishpage/dishpage.component';
-import { HomeComponent } from './home/home.component';
-import { MapPageComponent } from './home/map-page/map-page.component';
-import { ReservationPageComponent } from './home/reservation-page/reservation-page.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

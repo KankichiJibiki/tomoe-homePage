@@ -22,7 +22,8 @@ export class ReservationFormComponent implements OnInit {
   constructor(
     public reserveService: ReserveService,
     public globalService: GlobalService,
-    ) { }
+    ) { 
+    }
 
   ngOnInit(): void {
   }

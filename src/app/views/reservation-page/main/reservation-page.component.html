@@ -83,9 +83,12 @@
                 <hr>
         
                 <div class="d-grid mx-auto col-6 col-md-4">
-                    <button type="button" class="btn btn-success" 
-                    (click)="isCollapsed = !isCollapsed;" [attr.aria-expanded]="!isCollapsed" aria-controls="formSection"
-                    [disabled]="reserveService.isFormDisabled"
+                    <button 
+                        type="button" 
+                        class="btn btn-success" 
+                        (click)="openModal()" 
+                        [attr.aria-expanded]="!isCollapsed" aria-controls="formSection"
+                        [disabled]="reserveService.isFormDisabled"
                     >
                         ネット予約
                     </button>

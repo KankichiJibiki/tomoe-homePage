@@ -1,209 +1,267 @@
-<div class="mx-auto col-12 col-md-7 bg-dark my-3 p-3 text-light border rounded" id="formSection" [ngbCollapse]="isCollapsed">
+<div class="mx-auto col-12 col-md-7 bg-dark my-3 p-4 text-light border rounded" id="formSection" [ngbCollapse]="isCollapsed">
     <ng-container *ngIf="!globalService.isEnglish">
         <form method="post" #reserveForm="ngForm">
-            <div class="form-group mb-3">
-                <label for="name" class="form-label">ご予約名</label>
-                <input 
-                type="text" 
-                name="name" 
-                id="name" 
-                class="form-control" 
-                placeholder="田中美和子" 
-                [(ngModel)]="reserveService.reserveInfo.name" 
-                #name="ngModel"
-                required
-                maxlength="100"
-                >
-    
-                <!-- validations -->
-                <ng-container  
-                *ngIf="name.invalid && (name.dirty || name.touched)">
-                    <p *ngIf="name.errors?.['required']" class="alert alert-danger">
-                        ご予約名の入力。
-                    </p>
-                    <p *ngIf="name.errors?.['maxlength']" class="alert alert-danger">
-                        100文字以下のご予約名
-                    </p>
-                </ng-container>
-            </div>
-            <div class="form-group mb-3">
-                <label for="howMany" class="form-label">ご人数</label>
-                <input 
-                type="number" 
-                name="howMany" 
-                id="howMany" 
-                class="form-control" 
-                [(ngModel)]="reserveService.reserveInfo.howMany"
-                required
-                min="1"
-                max="13"
-                placeholder="ご人数の入力"
-                #howMany="ngModel"
-                >
-    
-                <!-- validations -->
-                <ng-container *ngIf="howMany.invalid && (howMany.dirty || howMany.touched)">
-                    <p class="alert alert-danger" *ngIf="howMany.errors?.['required']">
-                        人数のご入力をお願い致します
-                    </p>
-                    <p class="alert alert-danger" *ngIf="howMany.errors?.['min']">
-                        おひとり様からご予約が可能です
-                    </p>
-                    <p class="alert alert-danger" *ngIf="howMany.errors?.['max']">
-                        13名様を超える場合、お手数をおかけしますが、お電話にてご相談させていただきます。
-                    </p>
-                </ng-container>
-            </div>
-            <div class="form-group mb-3">
-                <label for="bookedDate" class="form-label">
-                    お日にち
-                </label>
-                <input 
-                type="date" 
-                name="bookedDate" 
-                id="bookedDate" 
-                min="{{reserveService.today | date:'yyyy-MM-dd'}}"
-                class="form-control" 
-                (change)="reserveService.getDay()"
-                [(ngModel)]="reserveService.reserveInfo.bookedDate"
-                required
-                #date="ngModel"
-                date
-                >
-                <ng-container *ngIf="reserveService.isSunday">
-                    <p class="alert alert-danger">
-                        日曜日は休日とさせていただいております。
-                    </p>
-                </ng-container>
-                <ng-container *ngIf="reserveService.isDateValid == 'passed'">
-                    <p class="alert alert-danger">
-                        お日にちが過ぎています。再選択お願い致します。
-                    </p>
-                </ng-container>
-                <ng-container *ngIf="reserveService.isDateValid == 'limitation'">
-                    <p class="alert alert-danger">
-                        当日のご予約は15時までとなっております。
-                    </p>
-                </ng-container>
-                <ng-container *ngIf="reserveService.isDateValid == 'unavailable'">
-                    <p class="alert alert-danger">
-                        申し訳ございませんがその日はご予約ができません。
-                    </p>
-                </ng-container>
-                <div class="form-text text-light" style="font-size: 11px;">
-                    ※日曜日はお休みとさせていただいております
+            <!-- Name -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="name" class="form-label text-center col-mid-6">
+                        <span>ご予約名</span>
+                    </label>
+                    <span class="must-batch col-mid-6">必須</span>
+                </div>
+                <!-- Input -->
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    class="form-control" 
+                    placeholder="田中美和子" 
+                    [(ngModel)]="reserveService.reserveInfo.name" 
+                    #name="ngModel"
+                    required
+                    maxlength="100"
+                    >
+        
+                    <!-- validations -->
+                    <ng-container  
+                    *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <p *ngIf="name.errors?.['required']" class="alert alert-danger">
+                            ご予約名の入力。
+                        </p>
+                        <p *ngIf="name.errors?.['maxlength']" class="alert alert-danger">
+                            100文字以下のご予約名
+                        </p>
+                    </ng-container>
                 </div>
             </div>
-            <div class="form-group mb-3">
-                <label for="bookedTime" class="form-label">お時間帯</label>
-                <select name="bookedTime" id="bookedTime" class="form-control"
-                [(ngModel)]="reserveService.reserveInfo.bookedTime"
-                [ngClass]="{'text-secondary': reserveService.reserveInfo.bookedTime == ''}"
-                #time="ngModel"
-                >
-                    <option disabled="disabled" value="">ご予約時間の選択</option>
-                    <option value="17:30">17:30</option>
-                    <option value="17:45">17:45</option>
-                    <option value="18:00">18:00</option>
-                    <option value="18:15">18:15</option>
-                    <option value="18:30">18:30</option>
-                    <option value="18:45">18:45</option>
-                    <option value="19:00">19:00</option>
-                    <option value="19:15">19:15</option>
-                    <option value="19:30">19:30</option>
-                    <option value="19:45">19:45</option>
-                    <option value="20:00">20:00</option>
-                    <option value="20:15">20:15</option>
-                    <option value="20:30">20:30</option>
-                    <option value="20:45">20:45</option>
-                    <option value="21:00">21:00</option>
-                    <option value="21:15">21:15</option>
-                    <option value="21:30">21:30</option>
-                </select>
+            <!-- HowMany -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="howMany" class="form-label text-center">
+                        <span>ご人数</span>
+                    </label>
+                    <span class="must-batch col-mid-6">必須</span>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <input 
+                    type="number" 
+                    name="howMany" 
+                    id="howMany" 
+                    class="form-control" 
+                    [(ngModel)]="reserveService.reserveInfo.howMany"
+                    required
+                    min="1"
+                    max="13"
+                    placeholder="ご人数の入力"
+                    #howMany="ngModel"
+                    >
+        
+                    <!-- validations -->
+                    <ng-container *ngIf="howMany.invalid && (howMany.dirty || howMany.touched)">
+                        <p class="alert alert-danger" *ngIf="howMany.errors?.['required']">
+                            人数のご入力をお願い致します
+                        </p>
+                        <p class="alert alert-danger" *ngIf="howMany.errors?.['min']">
+                            おひとり様からご予約が可能です
+                        </p>
+                        <p class="alert alert-danger" *ngIf="howMany.errors?.['max']">
+                            13名様を超える場合、お手数をおかけしますが、お電話にてご相談させていただきます。
+                        </p>
+                    </ng-container>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label for="course" class="form-label">ご予約コース</label>
-                <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.reserveInfo.course" required #course="ngModel" 
-                (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()
-                "
-                [ngClass]="{'text-secondary': reserveService.reserveInfo.course == ''}"
-                >
-                    <!-- later, make this dynamic -->
-                    <option value="" disabled="disabled">コースの有無</option>
-                    <option value="無し">無し</option>
-                    <option value="特別コース">特別コース ￥10,000～</option>
-                    <option value="巴コース">巴コース ￥7,050</option>
-                </select>
-                <ng-container *ngIf="reserveService.reserveInfo.course == '巴コース'">
-                    <div class="form-check">
-                        <input type="checkbox" name="course_option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.reserveInfo.course_option">
-                        <label for="options" class="form-check-label">＋￥1,000 山形県産つや姫の土鍋ご飯</label>
+            <!-- Date -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="bookedDate" class="form-label text-center">
+                        <span>お日にち</span>
+                    </label>
+                    <span class="must-batch">必須</span>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <input 
+                    type="date" 
+                    name="bookedDate" 
+                    id="bookedDate" 
+                    min="{{reserveService.today | date:'yyyy-MM-dd'}}"
+                    class="form-control" 
+                    (change)="reserveService.getDay()"
+                    [(ngModel)]="reserveService.reserveInfo.bookedDate"
+                    required
+                    #date="ngModel"
+                    date
+                    >
+                    <ng-container *ngIf="reserveService.isSunday">
+                        <p class="alert alert-danger">
+                            日曜日は休日とさせていただいております。
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="reserveService.isDateValid == 'passed'">
+                        <p class="alert alert-danger">
+                            お日にちが過ぎています。再選択お願い致します。
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="reserveService.isDateValid == 'limitation'">
+                        <p class="alert alert-danger">
+                            当日のご予約は15時までとなっております。
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="reserveService.isDateValid == 'unavailable'">
+                        <p class="alert alert-danger">
+                            申し訳ございませんがその日はご予約ができません。
+                        </p>
+                    </ng-container>
+                    <div class="form-text text-light" style="font-size: 11px;">
+                        ※日曜日はお休みとさせていただいております
                     </div>
-                </ng-container>
-    
-                <!-- validations -->
-                <ng-container *ngIf="course.invalid && (course.dirty || course.touched)">
-                    <p class="alert alert-danger" *ngIf="course.errors?.['required']">
-                        コースの選択お願いいたします。
-                        コースを無しの方は、無しと選択お願いいたします
-                    </p>
-                </ng-container>
-                <ng-container *ngIf="reserveService.reserveInfo.course == '特別コース' && !reserveService.isSpecialCourseValid()">
-                    <p class="alert alert-danger">
-                        特別コースは事前予約制で3日前でのみご予約可能です。
-                    </p>
-                </ng-container>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label for="discription" class="form-label">ご要望欄</label>
-                <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="アレルギーまたは苦手な食材があるなど、お客様のご希望をこちらで承らせていただきます。" [(ngModel)]="reserveService.reserveInfo.description">
-                </textarea>
+            <!-- Time -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="bookedTime" class="form-label text-center">お時間帯</label>
+                    <span class="must-batch">必須</span>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    
+                    <select name="bookedTime" id="bookedTime" class="form-control"
+                    [(ngModel)]="reserveService.reserveInfo.bookedTime"
+                    [ngClass]="{'text-secondary': reserveService.reserveInfo.bookedTime == ''}"
+                    #time="ngModel"
+                    >
+                        <option disabled="disabled" value="">ご予約時間の選択</option>
+                        <option value="17:30">17:30</option>
+                        <option value="17:45">17:45</option>
+                        <option value="18:00">18:00</option>
+                        <option value="18:15">18:15</option>
+                        <option value="18:30">18:30</option>
+                        <option value="18:45">18:45</option>
+                        <option value="19:00">19:00</option>
+                        <option value="19:15">19:15</option>
+                        <option value="19:30">19:30</option>
+                        <option value="19:45">19:45</option>
+                        <option value="20:00">20:00</option>
+                        <option value="20:15">20:15</option>
+                        <option value="20:30">20:30</option>
+                        <option value="20:45">20:45</option>
+                        <option value="21:00">21:00</option>
+                        <option value="21:15">21:15</option>
+                        <option value="21:30">21:30</option>
+                    </select>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label for="email" class="form-label">メールアドレス</label>
-                <input 
-                type="email" 
-                name="email" 
-                id="email" 
-                class="form-control" 
-                placeholder="tanaka@aaaaa.com" 
-                [(ngModel)]="reserveService.reserveInfo.email"
-                #email="ngModel"
-                required
-                email
-                >
-    
-                <!-- validations -->
-                <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
-                    <p class="alert alert-danger" *ngIf="email.errors?.['required']">
-                        メールアドレスのご入力
-                    </p>
-                    <p class="alert alert-danger" *ngIf="email.errors?.['email']">
-                        メールのアドレスが有効ではありません
-                    </p>
-                </ng-container>
+            <!-- Course -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="course" class="form-label text-center">ご予約コース</label>
+                    <span class="must-batch">必須</span>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <select name="course" id="course" class="form-control" [(ngModel)]="reserveService.reserveInfo.course" required #course="ngModel" 
+                    (change)="reserveService.isSpecialCourseValid(); reserveService.selectReset()
+                    "
+                    [ngClass]="{'text-secondary': reserveService.reserveInfo.course == ''}"
+                    >
+                        <!-- later, make this dynamic -->
+                        <option value="" disabled="disabled">コースの有無</option>
+                        <option value="無し">無し</option>
+                        <option value="特別コース">特別コース ￥10,000～</option>
+                        <option value="巴コース">巴コース ￥7,050</option>
+                    </select>
+                    <ng-container *ngIf="reserveService.reserveInfo.course == '巴コース'">
+                        <div class="form-check">
+                            <input type="checkbox" name="course_option" id="rice" value="rice" class="form-check-input" [(ngModel)]="reserveService.reserveInfo.course_option">
+                            <label for="options" class="form-check-label">＋￥1,000 山形県産つや姫の土鍋ご飯</label>
+                        </div>
+                    </ng-container>
+        
+                    <!-- validations -->
+                    <ng-container *ngIf="course.invalid && (course.dirty || course.touched)">
+                        <p class="alert alert-danger" *ngIf="course.errors?.['required']">
+                            コースの選択お願いいたします。
+                            コースを無しの方は、無しと選択お願いいたします
+                        </p>
+                    </ng-container>
+                    <ng-container *ngIf="reserveService.reserveInfo.course == '特別コース' && !reserveService.isSpecialCourseValid()">
+                        <p class="alert alert-danger">
+                            特別コースは事前予約制で3日前でのみご予約可能です。
+                        </p>
+                    </ng-container>
+                </div>
             </div>
-            <div class="form-group mb-3">
-                <label for="phone" class="form-label">お電話番号</label>
-                <input 
-                type="text" 
-                name="phone" 
-                id="phone" 
-                class="form-control" 
-                placeholder="ハイフンなしで入力お願いします" 
-                [(ngModel)]="reserveService.reserveInfo.phone_number"
-                #phone="ngModel"
-                pattern="[0-9]{11}"
-                >
-    
-                <!-- validations -->
-                <ng-container *ngIf="phone.invalid && (phone.dirty || phone.touched)">
-                    <p class="alert alert-danger" *ngIf="phone.errors?.['pattern']">
-                        お電話番号が有効ではありません(文字、ハイフン等)
-                    </p>
-                </ng-container>
-                <div class="form-text text-light" style="font-size: 11px;">
-                    ご入力は必須ではありませんが確認のため、お電話をかけさせていただく場合があります。
+            <!-- Request -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="discription" class="text-center">ご要望欄</label>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <textarea name="discription" class="form-control" id="discription" cols="30" rows="5" placeholder="アレルギーまたは苦手な食材があるなど、お客様のご希望をこちらで承らせていただきます。" [(ngModel)]="reserveService.reserveInfo.description">
+                    </textarea>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="email" class="form-label text-center">メールアドレス</label>
+                    <span class="must-batch">必須</span>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    class="form-control" 
+                    placeholder="tanaka@aaaaa.com" 
+                    [(ngModel)]="reserveService.reserveInfo.email"
+                    #email="ngModel"
+                    required
+                    email
+                    >
+        
+                    <!-- validations -->
+                    <ng-container *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <p class="alert alert-danger" *ngIf="email.errors?.['required']">
+                            メールアドレスのご入力
+                        </p>
+                        <p class="alert alert-danger" *ngIf="email.errors?.['email']">
+                            メールのアドレスが有効ではありません
+                        </p>
+                    </ng-container>
+                </div>
+            </div>
+            <!-- Phone -->
+            <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                <!-- Label -->
+                <div class="col-12 col-md-3">
+                    <label for="phone" class="form-label text-center">お電話番号</label>
+                    <span class="must-batch">必須</span>
+                </div>
+                <div class="form-group col-12 col-md-9 mb-1">
+                    <input 
+                    type="text" 
+                    name="phone" 
+                    id="phone" 
+                    class="form-control" 
+                    placeholder="ハイフンなしで入力お願いします" 
+                    [(ngModel)]="reserveService.reserveInfo.phone_number"
+                    #phone="ngModel"
+                    pattern="[0-9]{11}"
+                    >
+        
+                    <!-- validations -->
+                    <ng-container *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                        <p class="alert alert-danger" *ngIf="phone.errors?.['pattern']">
+                            お電話番号が有効ではありません(文字、ハイフン等)
+                        </p>
+                    </ng-container>
                 </div>
             </div>
     
@@ -213,9 +271,14 @@
                 </app-reservation-modal>
             </ng-template>
     
-            <div class="mb-3 d-grid col-6 mx-auto">
-                <button type="button" class="btn btn-primary" (click)="reserveService.open(content);" [disabled]="reserveForm.form.invalid || !reserveService.isValidForm">
-                    確認画面へ
+            <div class="mt-4 d-grid col-6 mx-auto">
+                <button 
+                    type="button" 
+                    class="btn btn-primary" 
+                    (click)="reserveService.open(content);"
+                    [disabled]="reserveForm.form.invalid || !reserveService.isValidForm"
+                >
+                    予約確認
                 </button>
             </div>
         </form>

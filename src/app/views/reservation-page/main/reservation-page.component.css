@@ -28,7 +28,6 @@
 @media screen and (min-width: 800px){
 
     #header_map{
-        background-image: url(../../../assets/images/tomoe-image1.JPG);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

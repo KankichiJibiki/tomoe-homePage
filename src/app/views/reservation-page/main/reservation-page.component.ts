@@ -48,6 +48,15 @@ export class ReservationPageComponent implements OnInit, OnDestroy{
     });
   }
 
+  openModal(){
+    this.isCollapsed = !this.isCollapsed;
+    if(!this.isCollapsed){
+      setTimeout(() => {
+        window.scrollTo(0,1000);
+      }, 100)
+    }
+  }
+
   ngOnDestroy(): void {
     this.reserveService.destroyForms();
     this.globalService.clearMyInterval();

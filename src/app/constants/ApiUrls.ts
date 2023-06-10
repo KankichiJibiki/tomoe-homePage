@@ -1,7 +1,7 @@
 export class ApiUrls {
     //* Reservation CRUD api
     static readonly RESERVATION_URL: string = "/Reservation";
-        static readonly     RESERVATION_ACTION_RESERVE: string = "/Reserve";
+        static readonly RESERVATION_ACTION_RESERVE: string = "/Reserve";
         static readonly RESERVATION_ACTION_RESTRICTED: string = "/GetRestrictedDates";
 
     //* Instagram api
@@ -14,9 +14,9 @@ export class ApiUrls {
 
     //* S3 Prefixes
     static readonly BUCKETNAME: string = "tomoe-image-storage";
-    static readonly MAIN: string = "main-page";
-    static readonly DRINK: string = "drink-page";
-    static readonly DISH: string = "dish-page";
-    static readonly MAP: string = "map-page";
-    static readonly RESERVATION: string = "reservation-page";
+        static readonly MAIN: string = "main-page";
+        static readonly DRINK: string = "drink-page";
+        static readonly DISH: string = "dish-page";
+        static readonly MAP: string = "map-page";
+        static readonly RESERVATION: string = "reservation-page";
 }

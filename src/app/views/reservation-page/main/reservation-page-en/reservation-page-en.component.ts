@@ -21,4 +21,13 @@ export class ReservationPageEnComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openModal(){
+    this.isCollapsed = !this.isCollapsed;
+    if(!this.isCollapsed){
+      setTimeout(() => {
+        window.scrollTo(0,1000);
+      }, 100)
+    }
+  }
+
 }

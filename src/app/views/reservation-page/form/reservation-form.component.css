@@ -1,1 +1,9 @@
 
+.must-batch{
+    font-size: .8rem;
+    padding: .3rem;
+    margin: .6rem;
+    background-color: brown;
+    border-radius: 7%;
+    border: .1px #fff solid;
+}

@@ -4,14 +4,14 @@ import { ReservationPageEnComponent } from './main/reservation-page-en/reservati
 import { ReservationModalComponent } from './modal/reservation-modal.component';
 import { ReservationFormComponent } from './form/reservation-form.component';
 import { ReservationPageComponent } from './main/reservation-page.component';
-import { GlobalService } from './../../service/global/global.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2FlatpickrModule } from 'ng2-flatpickr';
+import { SharedModule } from '../common/shared/shared.module';
+import { ReservationPageRoutingModule } from './reservation-page-routing.module';
 
 
 
@@ -24,17 +24,15 @@ import { Ng2FlatpickrModule } from 'ng2-flatpickr';
     ReservationFormEnComponent,
     ReservationModalEnComponent,
   ],
-  providers:[
-    GlobalService,
-  ],
   imports: [
     CommonModule,
+    ReservationPageRoutingModule,
     NgbModule,
-    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     Ng2FlatpickrModule,
     MatProgressSpinnerModule,
+    SharedModule,
   ]
 })
 export class ReservationPageModule { }

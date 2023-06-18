@@ -125,7 +125,10 @@
                             <div class="diary_post p-2 my-3">
                                 <a [routerLink]="['/diaryPage', post.id]" class="diary_link"
                                 (click)="diaryService.selectedPost = post"
-                                >
+                                >   
+                                    <div>
+                                        {{ post.timestamp | date : "yyyy/M/d" }}
+                                    </div>
                                     <ng-container
                                         *ngIf="post.caption == null;
                                         then none;

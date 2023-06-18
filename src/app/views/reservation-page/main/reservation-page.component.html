@@ -83,29 +83,16 @@
                 <hr>
         
                 <div class="d-grid mx-auto col-6 col-md-4">
-                    <button 
+                    <a 
                         type="button" 
-                        class="btn btn-success" 
-                        (click)="openModal()" 
-                        [attr.aria-expanded]="!isCollapsed" aria-controls="formSection"
-                        [disabled]="reserveService.isFormDisabled"
+                        class="btn btn-success"
+                        href="https://booking.resebook.jp/webrsv/search/s014266801/12794?isfixshop=true"
+                        target="_blank"
                     >
                         ネット予約
-                    </button>
+                        <fa-icon [icon]="globalService.faArrow"></fa-icon>
+                    </a>
                 </div>
-                <app-reservation-form [isCollapsed]="isCollapsed">
-                </app-reservation-form>
-
-                <ng-container *ngIf="isCollapsed && !reserveService.isFormDisabled">
-                    <div class="form-text text-center mb-3" id="target">
-                        ボタンを押した後下へスクロール
-                    </div>
-                </ng-container>
-                <ng-container *ngIf="reserveService.isFormDisabled">
-                    <div class="form-text text-center mb-3">
-                        少々お待ちください...
-                    </div>
-                </ng-container>
             </div>
         </ng-container>
         <!-- english page -->

@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BaseInfoComponent implements OnInit {
   @Input() backColor: string = "";
+  @Input() linkColor: string = "";
 
   constructor(
     public gService: GlobalService,

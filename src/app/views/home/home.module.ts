@@ -1,16 +1,7 @@
 import { ReservationPageModule } from './../reservation-page/reservation-page.module';
 import { AppRoutingModule } from './../../app-routing.module';
-import { DishHeaderIntroComponent } from './../component/dish/dish-header-intro.component';
-import { DrinkHeaderIntroComponent } from './../component/drink/drink-header-intro/drink-header-intro.component';
 import { HeaderIntroComponent } from './../component/home/header-intro/header-intro.component';
-import { BaseInfoComponent } from './../common/base-info/base-info.component';
 import { OverlayComponent } from './../common/overlay/overlay.component';
-import { DrinkPageEnComponent } from './../drink-page/drink-page-en/drink-page-en.component';
-import { DrinkPageComponent } from './../drink-page/drink-page.component';
-import { DishpageEnComponent } from './../dishpage/dishpage-en/dishpage-en.component';
-import { DishpageComponent } from './../dishpage/dishpage.component';
-import { MapPageEnComponent } from './../map-page/map-page-en/map-page-en.component';
-import { MapPageComponent } from './../map-page/map-page.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
@@ -26,6 +17,7 @@ import { DiaryPageComponent } from './diary-page/diary-page.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HomeEnComponent } from './home-en/home-en.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '../common/shared/shared.module';
 
 
 
@@ -33,24 +25,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     HomeComponent,
-    MapPageComponent,
-    MapPageEnComponent,
+    HomeEnComponent,
     IntroModalComponent,
     IntroMealComponent,
     IntroDrinkComponent,
     IntroPlateComponent,
     IntroInnerComponent,
     DiaryPageComponent,
-    HomeEnComponent,
-    DishpageComponent,
-    DishpageEnComponent,
-    DrinkPageComponent,
-    DrinkPageEnComponent,
     OverlayComponent,
-    BaseInfoComponent,
     HeaderIntroComponent,
-    DrinkHeaderIntroComponent,
-    DishHeaderIntroComponent,
   ],
   imports: [
     CommonModule,
@@ -61,6 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NgxPaginationModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
+    SharedModule,
   ],
 })
 export class HomeModule { }

@@ -9,11 +9,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'mapPage', component: MapPageComponent},
-  {path: 'reservation', component: ReservationPageComponent},
-  {path: 'dishpage', component: DishpageComponent},
-  {path: 'drinkpage', component: DrinkPageComponent},
   {path: 'diaryPage/:post_id', component: DiaryPageComponent},
+  {
+    path: 'dishpage', 
+    loadChildren: () => import('./views/dishpage/dishpage.module').then(m => m.DishpageModule)
+  },
+  {
+    path: 'drinkpage', 
+    loadChildren: () => import('./views/drink-page/drink-page.module').then(m => m.DrinkPageModule)
+  },
+  {
+    path: 'mapPage', 
+    loadChildren: () => import('./views/map-page/map-page.module').then(m => m.MapPageModule)
+  },
+  {
+    path: 'reservation', 
+    loadChildren: () => import('./views/reservation-page/reservation-page.module').then(m => m.ReservationPageModule)
+  },
 ];
 
 @NgModule({

@@ -15,7 +15,13 @@
                 営業時間 / 17:30 ～ 23:00<br>
                 定休日 / 毎週日曜日 
             </p>
-            <a routerLink="/reservation" style="color: #07630c;">ネットでご予約はこちら >></a>
+            <a 
+                routerLink="/reservation" 
+                style="color: #07630c;"
+                [ngClass]="{'text-light' : linkColor == 'white', 'text-success': backColor == ''}"
+            >
+                ネットでご予約はこちら >>
+            </a>
         </div>
     </ng-template>
 
@@ -35,6 +41,12 @@
                 Open / 17:30 ～ 23:00<br>
                 Close / Sunday 
             </p>
-            <a routerLink="/reservation" style="color: #07630c;">Reserve by form here >></a>
+            <a 
+                routerLink="/reservation" 
+                style="color: #07630c;"
+                [ngClass]="{'text-light' : linkColor == 'white', 'text-success': backColor == ''}"
+            >
+                Reserve by form here >>
+            </a>
         </div>
     </ng-template>

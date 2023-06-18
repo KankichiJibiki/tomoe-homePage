@@ -3,7 +3,7 @@ import { S3Request } from 'src/app/model/s3Request';
 import { ImageList } from 'src/app/model/imageList';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { faLeaf, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare, faLeaf, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faMap } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -26,6 +26,7 @@ export class GlobalService {
   faInsta = faInstagram;
   faTwitter = faTwitter;
   faLeaf = faLeaf;
+  faArrow = faArrowUpRightFromSquare;
 
   imageList: ImageList[] = [];
   counter: number = 0;

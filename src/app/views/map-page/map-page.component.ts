@@ -13,6 +13,8 @@ import { S3Request } from 'src/app/model/s3Request';
 export class MapPageComponent implements OnInit {
   s3RequestOptions = new S3Request();
   imageList: ImageList[] = [];
+  color: string = "black";
+  linkColor: string = "white";
 
   constructor(
     public globalService: GlobalService,

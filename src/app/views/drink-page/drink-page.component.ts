@@ -11,6 +11,7 @@ import { ApiUrls } from 'src/app/constants/ApiUrls';
 })
 export class DrinkPageComponent implements OnInit, OnDestroy{
   color: string = "black";
+  linkColor: string = "white";
   s3RequestOptions = new S3Request();
   imageList: ImageList[] = [];
 

@@ -1,4 +1,4 @@
-<div>
+<main class="mb-5">
     <div>
         <!-- header img -->
         <div 
@@ -105,7 +105,14 @@
             </div>
         </div>
     </ng-container>
+
     <ng-container *ngIf="globalService.isEnglish">
         <app-map-page-en></app-map-page-en>
     </ng-container>
-</div>
+
+    <!-- Basic info -->
+    <app-base-info 
+        [backColor]="color"
+        [linkColor]="linkColor"
+    ></app-base-info>
+</main>

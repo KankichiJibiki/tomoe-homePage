@@ -23,7 +23,7 @@ export class DrinkPageComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.gService.initialImage = '../../../assets/images/inner2.jpeg';
-    this.getImagesFromS3();
+    // this.getImagesFromS3();
   }
 
   getImagesFromS3() {

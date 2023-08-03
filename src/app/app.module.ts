@@ -10,6 +10,7 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { YPipe } from './y.pipe';
+import { SeasonalCourseComponent } from './views/component/seasonal-course/seasonal-course.component';
 
 @NgModule({
   declarations: [

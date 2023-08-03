@@ -1,5 +1,5 @@
 import { GlobalService } from './../../service/global/global.service';
-import { ImageList } from 'src/app/model/imageList';
+import { ImageList } from 'src/app/interfaces/imageList';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { S3Request } from 'src/app/model/s3Request';
 import { ApiUrls } from 'src/app/constants/ApiUrls';

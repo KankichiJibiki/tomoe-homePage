@@ -3,7 +3,7 @@ import { ReserveService } from './../../../service/reserve/reserve.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as moment from 'moment';
 import { S3Request } from 'src/app/model/s3Request';
-import { ImageList } from 'src/app/model/imageList';
+import { ImageList } from 'src/app/interfaces/imageList';
 import { ApiUrls } from 'src/app/constants/ApiUrls';
 
 @Component({

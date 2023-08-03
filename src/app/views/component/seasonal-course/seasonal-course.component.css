@@ -1,4 +1,9 @@
-.course_img{
+:host{
+    --headerString: 1.3rem;
+    --header2String: 0.95rem;
+    --courseString: 1.5rem;
+}
+.limitedCourse_img{
     width: 100%;
     height: 42%;
 }
@@ -21,8 +26,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .course_img{
-        width: 100%;
+    .limitedCourse_img{
         height: 490px;
     } 
 

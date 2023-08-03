@@ -2,7 +2,7 @@ import { ReserveService } from './../../service/reserve/reserve.service';
 import { GlobalService } from './../../service/global/global.service';
 import { Component, OnInit } from '@angular/core';
 import { ApiUrls } from 'src/app/constants/ApiUrls';
-import { ImageList } from 'src/app/model/imageList';
+import { ImageList } from 'src/app/interfaces/imageList';
 import { S3Request } from 'src/app/model/s3Request';
 
 @Component({

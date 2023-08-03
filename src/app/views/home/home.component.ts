@@ -1,6 +1,6 @@
 import { ApiUrls } from 'src/app/constants/ApiUrls';
 import { S3Request } from 'src/app/model/s3Request';
-import { ImageList } from 'src/app/model/imageList';
+import { ImageList } from 'src/app/interfaces/imageList';
 import { NavigationService } from './../../service/navigation/navigation.service';
 import { HomeService } from './../../service/home/home.service';
 import { DiaryService } from './../../service/diary/diary.service';

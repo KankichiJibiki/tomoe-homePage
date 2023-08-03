@@ -1,6 +1,6 @@
 import { ApiUrls } from 'src/app/constants/ApiUrls';
 import { S3Request } from 'src/app/model/s3Request';
-import { ImageList } from 'src/app/model/imageList';
+import { ImageList } from 'src/app/interfaces/imageList';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { faArrowUpRightFromSquare, faLeaf, faLocationDot } from '@fortawesome/free-solid-svg-icons';

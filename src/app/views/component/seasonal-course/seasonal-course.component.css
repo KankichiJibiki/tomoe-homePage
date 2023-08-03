@@ -17,6 +17,12 @@
     font-size: var(--header2String);
 }
 
+.caution{
+    font-size: .7rem;
+    color: #787878;
+    text-align: end;
+}
+
 .discription{
     font-size: var(--header2String);
     line-height: 1.8rem;
@@ -32,7 +38,5 @@
 
     .caution{
         font-size: .9rem;
-        color: #787878;
-        text-align: end;
     }
 }

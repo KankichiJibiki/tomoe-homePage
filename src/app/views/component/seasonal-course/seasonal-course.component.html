@@ -1,0 +1,51 @@
+<ng-component *ngIf="this.isLimitedCourseOn then on else off"></ng-component>
+
+<ng-template #on>
+    <ng-container *ngIf="gService.isEnglish then en else jp"></ng-container>
+    <ng-template #jp>
+        <div class="course_discription p-3">
+            <li class="mb-2 header2">
+                <fa-icon [icon]="gService.faLeaf"></fa-icon>
+                期間限定
+                    - {{ limitedCourse.name_jp }}
+                    <span class="price">{{ limitedCourse.price_jp }}</span>
+            </li>
+            <img src="{{ limitedCourse.image }}" alt="alacarte" class="limitedCourse_img mb-2" id="tomoe">
+            <p class="caution">食材無くなり次第終了となります。</p>
+            <p class="discription">
+                {{ limitedCourse.discription_jp }}
+            </p>
+        </div>
+    </ng-template>
+    
+    <ng-template #en>
+        <div class="course_discription p-3">
+            <li class="mb-2 header2">
+                <fa-icon [icon]="gService.faLeaf"></fa-icon>
+                Limited Course
+                    - {{ limitedCourse.name_en }}
+                    <span class="price">{{ limitedCourse.price_en }}</span>
+            </li>
+            <img src="{{ limitedCourse.image }}" alt="alacarte" class="course_img mb-2" id="tomoe">
+            <p class="caution">The course ends if ingredients out of stock.</p>
+            <p class="discription">
+                {{ limitedCourse.discription_en }}
+            </p>
+        </div>
+    </ng-template>
+</ng-template>
+
+
+<ng-template #off>
+    <div class="course_discription p-3">
+        <li class="mb-2 header2">
+            <fa-icon [icon]="gService.faLeaf"></fa-icon>期間限定
+        </li>
+        <div class="no-limited-course">
+            現在、期間限定コースはありません。
+        </div>
+    </div>
+</ng-template>
+
+
+

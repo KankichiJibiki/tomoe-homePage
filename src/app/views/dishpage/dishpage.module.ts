@@ -6,6 +6,7 @@ import { DishHeaderIntroComponent } from '../component/dish/dish-header-intro.co
 import { DishpageEnComponent } from './dishpage-en/dishpage-en.component';
 import { DishpageComponent } from './dishpage.component';
 import { SharedModule } from '../common/shared/shared.module';
+import { SeasonalCourseComponent } from '../component/seasonal-course/seasonal-course.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { SharedModule } from '../common/shared/shared.module';
     DishpageComponent,
     DishpageEnComponent,
     DishHeaderIntroComponent,
+    SeasonalCourseComponent,
   ],
   imports: [
     CommonModule,

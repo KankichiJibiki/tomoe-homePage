@@ -69,10 +69,6 @@
     border: #323333 1px solid;
 }
 
-.image-mover{
-    
-}
-
 @media screen and (min-width: 768px) {
     #header_image{
         height: 42rem;
@@ -91,5 +87,11 @@
         font-size: .9rem;
         color: #787878;
         text-align: end;
+    }
+
+    .image-mover{
+        font-size: 2rem;
+        line-height: 460px;
+        height: 2rem;
     }
 }

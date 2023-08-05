@@ -6,11 +6,14 @@
         <div class="course_discription p-3">
             <li class="mb-2 header2">
                 <fa-icon [icon]="gService.faLeaf"></fa-icon>
-                期間限定
-                    - {{ limitedCourse.name_jp }}
-                    <span class="price">{{ limitedCourse.price_jp }}</span>
+                {{ limitedCourse.name_jp }}
+                <span class="price">{{ limitedCourse.price_jp }}</span>
             </li>
-            <img src="{{ limitedCourse.image }}" alt="limitedCourse" class="limitedCourse_img mb-2" id="tomoe">
+            <img src="{{ displayImage }}" alt="limitedCourse" class="limitedCourse_img mb-2" id="tomoe">
+            <div class="d-flex justify-content-around mb-1">
+                <fa-icon [icon]="gService.faArrowLeft" class="image-mover" (click)="changeImage(-1)"></fa-icon>
+                <fa-icon [icon]="gService.faArrowRight" class="image-mover" (click)="changeImage(1)"></fa-icon>
+            </div>
             <p class="caution">食材無くなり次第終了となります。</p>
             <p class="discription">
                 {{ limitedCourse.discription_jp }}
@@ -22,11 +25,14 @@
         <div class="course_discription p-3">
             <li class="mb-2 header2">
                 <fa-icon [icon]="gService.faLeaf"></fa-icon>
-                Limited Course
-                    - {{ limitedCourse.name_en }}
-                    <span class="price">{{ limitedCourse.price_en }}</span>
+                {{ limitedCourse.name_en }}
+                <span class="price">{{ limitedCourse.price_en }}</span>
             </li>
-            <img src="{{ limitedCourse.image }}" alt="limitedCourse" class="limitedCourse_img mb-2" id="tomoe">
+            <img src="{{ displayImage }}" alt="limitedCourse" class="limitedCourse_img mb-2" id="tomoe">
+            <div class="d-flex justify-content-around mb-1">
+                <fa-icon [icon]="gService.faArrowLeft" class="image-mover" (click)="changeImage(-1)"></fa-icon>
+                <fa-icon [icon]="gService.faArrowRight" class="image-mover" (click)="changeImage(1)"></fa-icon>
+            </div>
             <p class="caution">The course ends if ingredients out of stock.</p>
             <p class="discription">
                 {{ limitedCourse.discription_en }}

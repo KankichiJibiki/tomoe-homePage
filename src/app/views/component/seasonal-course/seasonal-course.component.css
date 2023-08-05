@@ -4,8 +4,23 @@
     --courseString: 1.5rem;
 }
 .limitedCourse_img{
-    width: 100%;
+    width: 96%;
     height: 42%;
+    
+    transition: 1s ease-in-out;
+}
+
+.image-mover{
+    text-align: center;
+    font-size: .8rem;
+    width: 1.3rem;
+    background-color: #c5fae5;
+    border-radius: 50%;
+}
+
+.image-mover:hover{
+    opacity: .7;
+    cursor: pointer;
 }
 
 .header2{
@@ -35,6 +50,12 @@
     .limitedCourse_img{
         height: 490px;
     } 
+
+    .image-mover{
+        font-size: 1.5rem;
+        width: 2.5rem;
+        padding: .5rem;
+    }
 
     .caution{
         font-size: .9rem;

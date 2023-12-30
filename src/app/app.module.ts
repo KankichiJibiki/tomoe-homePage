@@ -10,7 +10,10 @@ import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { YPipe } from './y.pipe';
-import { SeasonalCourseComponent } from './views/component/seasonal-course/seasonal-course.component';
+import { PopupComponent } from './views/component/popup/popup.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { SeasonalCourseComponent } from './views/component/seasonal-course/seaso
     NavigationComponent,
     FooterComponent,
     YPipe,
+    PopupComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,8 @@ import { SeasonalCourseComponent } from './views/component/seasonal-course/seaso
     FontAwesomeModule,
     HttpClientModule,
     OverlayModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [
     NgbActiveModal,

@@ -1,10 +1,6 @@
 .tomoe-title{
-    width: 50%;
-    height: 180px;
-}
-
-.popup-container{
-
+    width: 35%;
+    height: 130px;
 }
 
 .popup-title{
@@ -14,8 +10,4 @@
 
 .popup-discription{
     text-align: center;
-}
-
-.new_restrant_map{
-
 }

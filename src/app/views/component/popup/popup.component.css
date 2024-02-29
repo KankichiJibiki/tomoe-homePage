@@ -1,6 +1,6 @@
 .tomoe-title{
     width: 35%;
-    height: 130px;
+    height: 160px;
 }
 
 .popup-title{
@@ -15,6 +15,9 @@
 @media screen and (max-width: 760px) {
     .popup-container{
         height: 380px;
+    }
+    .tomoe-title{
+        height: 140px;
     }
 }
 
